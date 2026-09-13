@@ -2,8 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS),
 rebuilt with its defects fixed, released as two xdelta patches for the
-Japanese game. The summary is `RELEASE_NOTES.md`. What was changed and how it was checked is in `BUILD_NOTES.md` (thirty
-builds, each with its own section) and the test route is `TESTING.md`.
+Japanese game. The summary is `RELEASE_NOTES.md`. What was changed and how it was checked is in `BUILD_NOTES.md` (thirty builds, in dated sections) and the test route is `TESTING.md`.
 
 ## What you get
 
@@ -37,7 +36,7 @@ exactly:
 
 The easy way: `patches/apply_patches.bat` with the two decrypted files as
 its arguments (or drag both onto it). It uses the bundled `xdelta3.exe`
-(3.2.0, GPL) and writes the two CIAs next to the patches.
+(3.2.0, Apache License 2.0) and writes the two CIAs next to the patches.
 
 By hand, with xdelta3 (3.1 or newer; the patches carry no application
 header, so you name both files yourself):
@@ -74,8 +73,8 @@ keyboard restored; factual errors, wrong numbers and spelling fixed; names
 made consistent with each other (skill book names now match the skill they
 teach, guard and break traits are told apart, the Crack ranks follow the
 same ladder as every other family, the card-suit monsters have their suits
-back); 63 player titles shortened to the 14-character cap the game
-enforces; and the hand line breaks that the original update files had lost
+back); 54 player titles shortened to the 14-character cap the game
+enforces (and nine more corrected); and the hand line breaks that the original update files had lost
 put back, so descriptions no longer split words at the box edge.
 
 **The graphics.** 101 UI textures and 60 layout text panes that the original
@@ -130,9 +129,9 @@ raised too (four more words).
 
 **The dialogue, read in full.** Every NPC line, cutscene line, quest and shop line (5,697 strings) was proofread the way the help layer was: 595 spelling, agreement, wrong-word and stray-token slips fixed, the names the dialogue spelled two ways aligned with the game's own tables (Nochoro, Tiko, Lenate, Theresa, Mt. Elpis, Undead Garden and a dozen more), and sixteen lines the 2021 text had garbled put right from the Japanese, among them the cryogenic-sleep records, the boulder line in the crystal caves, the red and yellow mushrooms that both said pink, and the dying underling who now addresses his two bats instead of claiming to be one.
 
-**The menus, read in full.** The last layer: every menu prompt, tutorial pop-up, battle event line, Speed Road and race string, reactor readout, diary entry and network screen (1,614 strings). 122 slips fixed, the terms the menus spelled several ways settled (Present Code, G-Cup, Network Coins, Wi-Fi Square, and SpotPass and StreetPass spelled Nintendo's way everywhere, dialogue included), and eleven lines corrected from the Japanese, among them two Speed Road attacks labelled ranged that are close-range, three that said one slime drops where all of them do, and a garbled diary line about the ship remains.
+**The menus, read in full.** The last layer: every menu prompt, tutorial pop-up, battle event line, Speed Road and race string, reactor readout, diary entry and network screen (1,614 strings). 122 slips fixed, the terms the menus spelled several ways settled (Present Code, G-Cup, Network Coins, Wi-Fi Square, and SpotPass and StreetPass spelled Nintendo's way everywhere, dialogue included), and ten lines corrected from the Japanese, among them two Speed Road attacks labelled ranged that are close-range, three that said one slime drops where all of them do, and a garbled diary line about the ship remains.
 
-**The page layout.** Every dialogue page was measured against the same page of the Japanese. In about a hundred lines the page-break code was wrapped in spaces or glued to the text where the Japanese breaks the line, which left a stray space or a blank line at the top of the next page; a few pages opened with an empty line; 26 pages ran to a third line because a short line had been broken by hand; one line had two Japanese pages on one. All are back in the Japanese shape, with no wording changed. Five more pages whose English simply had too many words for two lines were shortened, and one prompt that was not a sentence was retranslated. The Bastille's remodeling machine, named nine ways in the 2021 text, has the two names the Japanese gives it; the Snapped family is named by its table names; and the chapter 7 hint, which said the opposite of the Japanese, is retranslated.
+**The page layout.** Every dialogue page was measured against the same page of the Japanese. In 64 lines the page-break code was wrapped in spaces or glued to the text where the Japanese breaks the line, which left a stray space or a blank line at the top of the next page; a few pages opened with an empty line; 26 pages ran to a third line because a short line had been broken by hand; one line had two Japanese pages on one. All are back in the Japanese shape, with no wording changed. Five more pages whose English simply had too many words for two lines were shortened, and one prompt that was not a sentence was retranslated. The Bastille's remodeling machine, named nine ways in the 2021 text, has the two names the Japanese gives it; the Snapped family is named by its table names; and the chapter 7 hint, which said the opposite of the Japanese, is retranslated.
 
 ## Not fixed, known
 

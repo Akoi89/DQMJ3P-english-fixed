@@ -1,6 +1,6 @@
 # The rebuilt CIAs
 
-Built 2026-09-08. Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
+First built 2026-09-08; the thirtieth and latest build is dated 2026-09-13. Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
 
 | File | Size | Title | Version |
 |---|---|---|---|
@@ -8,7 +8,7 @@ Built 2026-09-08. Output is in `FIXED_BUILD/` at the project root, alongside a c
 | `DQMJ3P-update-fixed-3.4.0.cia` | 20.4 MB | `0004000E001ACB00` | 3.4.0 |
 
 **The crash fix is included.** Both CIAs carry Lurpigi's corrected
-`break_font_L.bffnt`, md5 `4fe77591a49b87f5c72f76000b78979d`, read back out of the packed files to
+`break_font_L.bffnt`, md5 `66add92a51eb6a865070d2949981a61e` (819,828 bytes: Lurpigi's font with the four glyphs the twentieth build appended; before that build the packed font was `4fe77591a49b87f5c72f76000b78979d`), read back out of the packed files to
 confirm it: 17x21 cells, three 512x1024 sheets, A4, which is the Japanese layout. Both builds got
 slightly smaller because the correct font is 819 KB against the broken one's 2.1 MB.
 
@@ -135,8 +135,8 @@ there.
 
 - **Base:** all 101 changed textures and all 60 changed panes present and
   correct. All 362 archives parse and all 3,938 textures decode. The font is
-  still Lurpigi's fixed `break_font_L.bffnt`, md5
-  `4fe77591a49b87f5c72f76000b78979d`. Zero untranslated strings outside the
+  still Lurpigi's fixed `break_font_L.bffnt` (md5
+  `66add92a51eb6a865070d2949981a61e` since the twentieth build's four added glyphs). Zero untranslated strings outside the
   keyboard tables.
 - **Update:** the three repaired fragments read `Left`, `Times` and `etc.`
   straight out of the packed file.
@@ -252,7 +252,7 @@ shortened title would have duplicated another, and a ranking the Japanese
 climbs (champion, emperor, overlord) that the English had flattened. The same
 pass fixed seven inherited title errors that were never cut off: four typos,
 `Ground` for "grand", a coined word standing in for "mapper", and
-`Lost Traveler` for a title that means a traveler who never loses their way. `_audit/titles.py` applies it; 62 titles change.
+`Lost Traveler` for a title that means a traveler who never loses their way. `_audit/titles.py` applies it; 63 titles change (54 shortened to the cap, nine corrected).
 
 Only the base title changes. The update CIA is byte for byte the previous one.
 
@@ -860,7 +860,7 @@ the Mega Body pop-up's missing verb, "ice floe" for 氷塊, the local-battle
 prompt's missing "on the", a possessive, and the ship-remains line of the
 Grim Tundra diary page, rewritten from ポーラパークのそばにある ストレンジャー号は
 コアから切り離された 母船の一部だという. The reviewer approved all of it
-(122 rows, B1 to B11, C1 to C11).
+(122 rows and the eleven C rows, B1 to B11).
 
 `round21.py` is round 20's engine with two additions. Sweeps carry a
 scope, so the two spellings also run over the dialogue files. And since
@@ -969,7 +969,7 @@ and the short 改造装置; the 2021 English rendered it nine ways. It is
 "Break Remodeling Device" wherever the Japanese uses the full name and
 "Remodeling Device" wherever it uses the short one (nine lines; the
 Estark remnants' 製造装置, "production apparatus", is a different word and
-stays). Five lines said just "Snapped" where the Japanese names
+stays). Four lines said just "Snapped" where the Japanese names
 Snapped-off (ガルビルス) or Snapped-Almighty (ガルマザード), the tables'
 names; one wrote "Dr. Snapped" with a period the tables lack. And the
 chapter 7 hint said the boss had revived his minions where the Japanese
