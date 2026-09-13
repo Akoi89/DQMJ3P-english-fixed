@@ -1,6 +1,6 @@
 # The rebuilt CIAs
 
-First built 2026-09-08; the thirtieth and latest build is dated 2026-09-13. Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
+First built 2026-09-08; the thirty-first and latest build is dated 2026-09-13. Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
 
 | File | Size | Title | Version |
 |---|---|---|---|
@@ -981,3 +981,31 @@ catch). Both titles change (29 labels in the base, 2 in the update: the
 bestiary entry and the chapter hint). Pack, keyboard,
 item and analyze patch, verification, install (checkinstall OK both) and
 both xdeltas redone and round-tripped.
+
+## Thirty-first build, 2026-09-13: the monster-name caps, settled with a live debugger
+
+The 27th build's note said the Library rows and the party header were cut
+by a stored copy of the name whose writer could not be found. That was
+wrong, and the emulator's GDB stub showed why. A write watchpoint on a
+monster record's name field, breakpoints on the name builders, and a few
+pokes (`_audit/NAMECAP_LIVE.md`) gave the real picture: the record holds
+11 characters and the capture-time writer stores 11 (the user's own save
+still carries the tails of 11-letter defaults behind the 2-letter names
+they gave their monsters); the Library lists cut at 10 because their row
+builder formats each name into a 16-character buffer behind a family icon
+that is five units long, not one (the static chain blamed for it, 0x25f3f4,
+never runs on that screen); the Manage Monsters header cut at 10 through
+the 12-character buffer the static pass had found and dismissed; and names
+ended at 8 only after a rename, because the keyboard took 8 characters,
+pre-filled the name cut to 8, and OK wrote it back. Each site was patched
+in memory first and looked at on screen before it went into
+`codepatch.py`: 27 more words in the update's executable (the Library row
+buffer to 38 characters with its frame grown, the header buffer and the
+three member-list prompt buffers to 32 with their frames, the keyboard
+limit and slot counts to 11, the four rename handlers and the two lineage
+copies to 11). The refuter re-ran the byte and frame checks (ACCEPT); a
+clean boot with the new code showed an 11-letter rename kept in full,
+"Slamen Dark, the Reaper" whole in its Library row, and an 11-letter
+player name stored in its 24-byte save field. Anthony's plugin's hook and
+probe words are untouched. Only the update's executable changes; both CIAs
+are repacked as usual, the xdeltas regenerated and round-tripped.

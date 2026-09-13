@@ -1,6 +1,6 @@
 # Dragon Quest Monsters: Joker 3 Professional, English fixed build
 
-A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, Ver.1.3) with its defects fixed. The translation is the Joker 3 Translation Team's, as released for Professional by Eiz in 2021; this build only fixes what was broken in it. Every change is scripted and reproduced from the two 2021 CIAs, and the whole record is in `BUILD_NOTES.md` (thirty builds, in dated sections).
+A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, Ver.1.3) with its defects fixed. The translation is the Joker 3 Translation Team's, as released for Professional by Eiz in 2021; this build only fixes what was broken in it. Every change is scripted and reproduced from the two 2021 CIAs, and the whole record is in `BUILD_NOTES.md` (thirty-one builds, in dated sections).
 
 ## The fixes, in one paragraph each
 
@@ -14,11 +14,11 @@ A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, 
 
 **Prompts and codes.** Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts, which closed before a choice could be made and locked players out of the later races.
 
-**The executable.** Twenty words are changed in the update's executable: the name-entry keyboard opens on the Latin "Aa" tab, and item names are no longer cut at 14 characters in lists, the info window and the equip lists, nor at 10 on the reactor's analyze readout.
+**The executable.** Forty-seven words are changed in the update's executable: the name-entry keyboard opens on the Latin "Aa" tab; item names are no longer cut at 14 characters in lists, the info window and the equip lists, nor at 10 on the reactor's analyze readout; the Library's monster lists and the Manage Monsters header no longer cut monster names at 10; and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name (a stored name holds 11).
 
 ## Not fixed, known
 
-Monster names in the Library list stop at 10 characters and in the party header at 8. The game stores a shortened copy of the name in the monster record when the monster is obtained, and the code that writes it has not been found; raising the display limits (tried, on screen) changes nothing.
+A monster's stored name holds 11 characters, so a species name longer than that is still cut to 11 when the monster is obtained or renamed; the field is part of the save format. Names already cut to 8 in an existing save stay that way until renamed.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) is outside this patch. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its five Ver.1.3 hook addresses hold the stock instructions in this build's executable, so the two should coexist, but they have not been run together.
 

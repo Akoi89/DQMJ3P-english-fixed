@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the thirtieth (2026-09-13). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the thirty-first (2026-09-13). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -63,6 +63,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Menus (twenty-seventh build) | the Speed Road attack list and its descriptions, the diary, the Present Code screen, any network prompt | nothing runs past its box; the diary's Grim Tundra page reads whole; attack ranges match the list |
 | Page layout (twenty-eighth build) | any multi-page dialogue, the Aroma contact call, the summoning shrine | no page opens with a blank line or a leading space; no page needs a third line except the results and instruction panels |
 | Term fixes (thirtieth build) | the Darkiron Bastille dialogue, the Snapped family lines, the chapter 7 hint | "Break Remodeling Device" or "Remodeling Device" for the machine; Snapped-off / Snapped-Almighty by name; the chapter 7 hint says you beat the minions and reached the boss |
+| Monster names (thirty-first build) | Library > Monster > any family; Manage Monsters, the header; Change Name on any monster | species names drawn whole in the rows ("Golden Pearl Slime"); an 11-letter name whole in the header; the keyboard shows 11 slots and keeps all 11 after OK |
 | Letter spacing (fourteenth build) | the status screen's AGI and INT labels, the bestiary second page's "Items" pill, a map place name, the StreetPass list | letters no longer run into each other; nothing now too wide for its pill |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives

@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS),
 rebuilt with its defects fixed, released as two xdelta patches for the
-Japanese game. The summary is `RELEASE_NOTES.md`. What was changed and how it was checked is in `BUILD_NOTES.md` (thirty builds, in dated sections) and the test route is `TESTING.md`.
+Japanese game. The summary is `RELEASE_NOTES.md`. What was changed and how it was checked is in `BUILD_NOTES.md` (thirty-one builds, in dated sections) and the test route is `TESTING.md`.
 
 ## What you get
 
@@ -13,9 +13,9 @@ so you can check what the patches produced.
 | File | Size | SHA-256 |
 |---|---:|---|
 | `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | 8e2892f9e72ffa89c536d3d44c2041e5b42381873d8d7cd71363a36d6d0a204b |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | b8c6209496fb9e9bf89acc57639fe4a96e8cec76da7cc3e10fd97731dc7220c3 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | ad65f6c8dbf57f0b1a8051ad39abef3500015651c0b9942cb5688948f7168d1c |
 | `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,815,352 | 81368db97db57b0eb5ed257d5ed96392705d0b4575d8d8abd92c738a126fd1a0 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,748,349 | 6a3810a56756b3235a593c2b6e28b7e8a0d0e7aa6b7b90b095a92c78e325f23c |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,366,223 | 50d6ae1b834a76e55dac5d62e4fa6cd2a7c11b070fcf465d2bcde6de670ccc86 |
 
 Install the base first, then the update. Both are needed: the update carries
 the Ver.1.3 content and the executable, including the keyboard fix.
@@ -125,6 +125,19 @@ are raised to 32 (thirteen words changed), so names draw in full. The
 reactor's two analyze panes cut them at 10 the same way; that buffer is
 raised too (four more words).
 
+**Monster names.** The Library's monster lists cut species names at 10
+characters ("Metal Slim"; 495 of the 1,024 names are longer) because one
+row builder formats each name into a 16-character buffer behind a
+five-unit family icon; that buffer is now 38 characters (32 visible; the
+longest name is 24). The Manage Monsters header cut the monster's own name
+at 10 through a 12-character buffer, now 32. The rename keyboard took 8
+characters while a default name holds 11, so opening Change Name on a
+monster with a long name and pressing OK cut it to 8; the keyboard now
+takes 11, its four handlers copy 11, and the two copies that carry a
+parent's name into a synthesized monster's record keep 11 instead of 10.
+Twenty-seven words in the update's executable, found with a live debugger
+and each seen on screen.
+
 **The quest and hint text, checked against the Japanese.** After the Shiny Sap hint turned out to point at the wrong kind of chest, every quest instruction, hint, tutorial, signpost, shop and NPC guidance line (1,007 of them) was read beside its Japanese with one question: is it true? 125 lines said something the Japanese does not (a place, a direction, a container, a quantity, a condition, or what the player is told to do) and now say what the Japanese says. Three names the dialogue used are now the names the tables use (Δ Slime, Don Mole, Darkiron Bastille), and the two mine puzzle hints say clockwise and counterclockwise.
 
 **The dialogue, read in full.** Every NPC line, cutscene line, quest and shop line (5,697 strings) was proofread the way the help layer was: 595 spelling, agreement, wrong-word and stray-token slips fixed, the names the dialogue spelled two ways aligned with the game's own tables (Nochoro, Tiko, Lenate, Theresa, Mt. Elpis, Undead Garden and a dozen more), and sixteen lines the 2021 text had garbled put right from the Japanese, among them the cryogenic-sleep records, the boulder line in the crystal caves, the red and yellow mushrooms that both said pink, and the dying underling who now addresses his two bats instead of claiming to be one.
@@ -137,24 +150,23 @@ raised too (four more words).
 
 See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find something, note the exact text and the screen.
 
-Monster names in the Library list stop at 10 characters and in the party
-header at 8. Those are not display buffers: the game stores a cut copy of
-the name in the monster record when the monster is obtained, and the
-writer of that copy has not been found, so raising the display limits
-(tried, on screen) changes nothing. The bestiary's own header pane shows
-the species name in full up to 14.
+A monster's stored name holds 11 characters, so a species name longer
+than that ("Metal Pearl Slime") is still cut to 11 when the monster is
+obtained or renamed; the record field is 24 bytes and changing it would
+change the save format. Names already cut to 8 in an existing save stay
+as they are until renamed.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and
 events, StreetPass and SpotPass exclusives, the transfers) is not this
 patch's business. Anthony's plugin at
 https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a
 modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a
-game whose code is untouched; this build changes twenty words of the
-update's code (the keyboard tab and the name buffers). I checked the five
-Ver.1.3 code addresses the plugin hooks against this build's executable:
-all five still hold the stock instructions, and none of the twenty changed
-words is near them, so the two should coexist. I have not run them
-together.
+game whose code is untouched; this build changes forty-seven words of the
+update's code (the keyboard tab, the name buffers, the keyboard limit). I
+checked the five Ver.1.3 code addresses the plugin hooks, and the four
+words it probes to recognise the version, against this build's executable:
+all nine still hold the stock instructions, so the two should coexist. I
+have not run them together.
 
 ## Credits
 
