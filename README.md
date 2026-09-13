@@ -46,13 +46,13 @@ Yes, the base patch turns a `.cci` into a `.cia`. That's deliberate: the decrypt
 
 The short version. `FIXES.md` has a paragraph on each.
 
-The crash is gone. The 2021 patch shipped a broken font that crashed the game at a cutscene; both CIAs now carry the corrected font from Lurpigi's Italian project, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts.
+The crash is gone. The 2021 patch shipped a broken font that crashed the game for some players at The Core, the cutscene after the Break Archdemon boss; both CIAs now carry the corrected font from Lurpigi's Italian project, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes people reported in 2021 were already fixed in Eiz's 2021-05-30 build, which is what this starts from.
 
 Every text layer was proofread: the help text (3,570 strings), the quest and hint text (1,007 lines, each checked against the Japanese), the dialogue (5,697 strings) and the menus (1,614 strings). Just over a thousand spelling, agreement and wrong-word slips are fixed, 167 untranslated strings are translated, and about 150 lines that said something the Japanese doesn't now say what it says. Names are spelled the same way in dialogue, menus and tables.
 
 Layout is back in the Japanese shape. Every dialogue page and description breaks between words at its box edge (the engine wraps by character), page-break codes sit where the Japanese puts them, and no page runs to a third line where the Japanese has two. 101 UI textures and 60 layout text panes that were still Japanese are English, and 135 labels that ran letters together ("Iems") have their spacing fixed.
 
-Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts, which closed before you could choose and locked you out of the later races.
+Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
 
 Forty-seven words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name.
 
