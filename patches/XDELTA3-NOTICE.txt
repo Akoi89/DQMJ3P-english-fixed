@@ -1,0 +1,6 @@
+xdelta3.exe is Xdelta 3 by Joshua MacDonald, redistributed unmodified.
+It is free software under the GNU General Public License; the source and
+the licence text are at https://github.com/jmacd/xdelta and
+https://www.gnu.org/licenses/gpl-2.0.html. It is included only so the
+patches can be applied with a drag and drop; any xdelta3 3.1 or newer
+does the same job.
