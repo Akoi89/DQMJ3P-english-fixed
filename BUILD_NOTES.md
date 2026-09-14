@@ -1194,3 +1194,42 @@ name 攻撃力ガード＋ and 守備力ガード＋ in 34 more, and the seven c
 
 Both CIAs change; the executable is the thirty-third build's. Pack,
 verification, install and both xdeltas redone.
+
+## Thirty-seventh build, 2026-09-14: the rest of those help lists (round 29)
+
+Checking round 28 turned up the same defects in strings it had not
+listed. They went to Gemini as round 29 and were approved as recommended.
+
+A. The JESTER question from round 28: no change. ＪＥＳＴＥＲ's skill and
+book stay "JESTER", because "Jester" is the 遊び人 class skill (and its
+spell "Jester's Jig"); the capitals tell the two apart.
+
+B. The seven collab skill sets' own help texts (SkillHelp0579 to 0585,
+shown in synthesis under Inherited Skills > Info) were each one flat line
+in English against
+ten lines in Japanese. `_audit/round29a.py` (round28a.py aimed at
+SkillHelpMessage.mes) rewrites each one item per line at the Japanese item
+boundaries. One word changes: SkillHelp0580 "Pile Driver" becomes
+"Swelling Strike". Held back: the verdict also asked for the Brass list's
+"Fullheal" to become "Moreheal" (the Japanese is ベホイマ), but the same
+"Fullheal" for ベホイマ is in 22 more help texts the package had not
+listed, and changing one would make the game less consistent, not more.
+All 23 go back to Gemini together. Each list is ten lines, the most
+any other skill-set help text has, and the widest line is 111 units
+against 120 for the widest line those texts already show. On screen
+(2026-09-14) the text turned out to live in synthesis, Inherited Skills,
+Info (Y) on a skill set; Library > Skill and Allocate Skill Points draw
+their lists from the skill table instead. A ten-line list (Muspell) fits
+that box with its tenth line whole. The collab lists themselves were not
+seen there: the test save has no stored monster carrying one.
+
+C and D. `_audit/round29.py` (round 25's engine, `_audit/proof_terms/
+round29.tsv`, 43 rows, 43 labels in each title): "Pile Driver" becomes
+"Swelling Strike" in nine more help texts, the action table's name for
+パイルハンマー, and "Attack Ward+" / "Defense Ward+" become "Blunt Ward+" /
+"Sap Ward+" in 34 help-list lines, the skill table's names for 攻撃力ガード＋
+and 守備力ガード＋. The new names are shorter, so no line grows. None of the
+three old names is left in either title. Refuter reviewed.
+
+Both CIAs change; the executable is the thirty-third build's. Pack,
+verification, install and both xdeltas redone.
