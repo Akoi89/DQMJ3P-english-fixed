@@ -1302,3 +1302,27 @@ record.
 
 No text changed. Only the update CIA changes; the base CIA and its xdelta
 are byte-identical to v1.6's.
+
+## Fortieth build, 2026-09-15: the skill-point hint, and round 31
+
+A last pass on the unplaced callers of the icon+name formatter (StreetPass
+Battle from the title screen; a skill book used on a party monster, then
+Allocate Skill Points) placed one more, and it was the worst of them. The
+line under the skill-point counter ("Learns:" or "NN SP unlocks:") cut
+every ability name at 10 letters. The name wrapper 0x22fa1c formats into a
+21-character buffer, and this caller asks for coloured icons, whose colour
+codes take 10 of the 21. Five words in `codepatch.py` give it a 40-
+character buffer (29 letters after the icons) in a frame grown to hold
+it; 91 words in all (md5 141afb82...). Refuter reviewed; seen whole on
+screen from a fresh boot, and the "has learned" pop-ups still work.
+`_audit/NAMECAP_18_LIVE.md` has the record, including the seven callers
+still unplaced (online, StreetPass match-ups, Ride Fuse and one more).
+
+Round 31 (`_audit/round31.py`, `_audit/proof_terms/round31.tsv`), Gemini
+verdict A-i, B-i: A634 (闇獄凍滅斬) "A Dark, Cold, Place..." becomes "A
+Dark, Cold Place...", keeping the 2021 phrase without the comma before the
+noun; I0230 (破毒のおまもり) "Amulet of Clensing" becomes "Amulet of
+Cleansing". Both labels in both titles, nothing else names them. Refuter
+reviewed.
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
