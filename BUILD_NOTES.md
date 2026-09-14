@@ -1152,3 +1152,45 @@ replacement would also have rewritten the update patch's xdelta window
 (268435456), so the replacement is now targeted and the window checked.
 Both CIAs change; the executable is the thirty-third build's. Pack,
 verification, install and both xdeltas redone.
+
+## Thirty-sixth build, 2026-09-14: help lines that named the wrong thing (round 28)
+
+A check of every skill book's help text, "Skill: X" against the English
+skill table, found sixteen mismatches after v1.3. They went to Gemini as
+round 28 with the Pusugon spelling, and were approved as recommended with
+two additions: the Vearn, the Beholder list says "Swelling Strike" for
+パイルハンマー, as the action table does, and ＪＥＳＴＥＲ should follow its
+species, "Jester". The second addendum is held back, see below.
+
+A. The seven Ver.1.3 Dai collab books (IH1079 to IH1085) listed several
+skills to a line, because the 2021 text was one flat line and the rebuild
+re-broke it like prose. `_audit/round28a.py` rewrites each list one item
+per line, cut at the Japanese item boundaries without changing a word
+except "Pile Driver" in IH1080. Each list is ten lines, the most any of
+the other 532 book help texts has, and the widest line is 120 units
+against 147 for the widest line already shown in that window.
+
+B to E, `_audit/round28.py` (round 25's engine, `_audit/proof_terms/
+round28.tsv`, 17 rows, 16 labels in each title): four help lines say
+Blunt Ward and Sap Ward; the recovery SP skills lose their plus and their
+books follow ("Cure-All SP Book", "Purifier SP Book", "Mage's Aid SP
+Book"); ＪＯＫＥＲ's book, help line and trivia say "Wildcard", and the same
+trivia sentence names ＪＥＳＴＥＲ by its species name, "Jester"; "Pusugon the
+Monstrous", and its book "Pusugon the Monstrous Book", which overrules
+round 9's leave list for that one label as the verdict says. Refuter
+reviewed.
+
+Held back from the verdict: ＪＥＳＴＥＲ's skill, book and help line stay
+"JESTER". "Jester" is already the English name of another skill, the
+遊び人 class skill taught by "Goof-off's Book" (help line "Skill: Jester"),
+and the review package had not said so; renaming would give two skills one
+name. It goes back to Gemini with that fact.
+
+Found while checking this round and NOT changed (outside what was ruled):
+"Pile Driver" still names パイルハンマー in ten more help texts of the
+update (five book, five skill-set), "Attack Ward+" and "Defense Ward+"
+name 攻撃力ガード＋ and 守備力ガード＋ in 34 more, and the seven collab skill sets' own help texts (SkillHelp0579 to
+0585) are each still one flat line. They are the next round.
+
+Both CIAs change; the executable is the thirty-third build's. Pack,
+verification, install and both xdeltas redone.
