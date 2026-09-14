@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the thirty-eighth (2026-09-15). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the thirty-ninth (2026-09-15). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -70,6 +70,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Help lines and outliers (thirty-sixth build) | the info window of a Dai collab book (Kill-Vearn, Gome-chan, Brass); the bag's book pages; Library > Skill | one skill per line, nothing past the box; "Cure-All SP Book", "Wildcard Book", "Pusugon the Monstrous Book" whole; "Cure-All SP" in the skill list |
 | Skill-set help lists (thirty-seventh build) | synthesis > Inherited Skills > Info (Y) on a Dai collab skill set (Great King Vearn, Gome-chan, Brass), which needs a parent that has one; any skill-set help with a Ward or Swelling Strike | one skill per line, nothing past the box; "Blunt Ward+", "Sap Ward+", "Swelling Strike", never "Attack Ward+", "Defense Ward+" or "Pile Driver" |
 | Moreheal and the Teaches column (thirty-eighth build) | Allocate Skill Points or Library > Skill on a skill set that teaches a long action name (Gome-chan: Giga Essence Extractor, Miracle of the Stars); the help list of a set or book that teaches ベホイマ (Slime SP, Healer SP, Zoma's Book) | the whole name, clear of the SP numbers; "Moreheal", never "Fullheal", in those lists |
+| The other 18-character screens (thirty-ninth build) | Library > Abilities > All (Combustive Rending Arts, A Dark, Cold, Place...); a monster's status screen, R to its skill pages, and the same pages from the battle Swap screen (Gome-chan: Giga Essence Extractor, Miracle of the Stars); the field ability menu (the wand icon), a spell, Info (Y) and Use | every name whole, nothing over the column divider or the row edge |
 | Letter spacing (fourteenth build) | the status screen's AGI and INT labels, the bestiary second page's "Items" pill, a map place name, the StreetPass list | letters no longer run into each other; nothing now too wide for its pill |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives

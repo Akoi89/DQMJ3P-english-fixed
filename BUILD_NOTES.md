@@ -1269,3 +1269,36 @@ Essence Extractor" and "Miracle of the Stars" whole, and Wild SP Book's
 help list reads "Moreheal".
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Thirty-ninth build, 2026-09-15: the other screens that cut action names at 18
+
+The icon+name formatter behind v1.6's Teaches fix (0x22f818) has thirteen
+other callers, and every one handed it a 21-character buffer. A screen
+hunt on the end-game save, one-shot breakpoints on all thirteen
+(`_audit/hitlog.py`) while walking the menus, a battle, the field ability
+menu and the Library, placed five of them:
+
+| Function | Screen | Cut in v1.6 |
+|---|---|---|
+| 0x429a5c | Library > Abilities rows | yes ("Combustive Rending", "A Dark, Cold, Plac") |
+| 0x3be878 | a monster's skill pages (status screen, battle Swap) | yes ("Giga Essence Extra", "Miracle of the Sta") |
+| 0x5f8ad8 | Info header in the field ability menu | not seen (field spells are short) |
+| 0x5f88fc | the field ability menu's list | not seen |
+| 0x57a348 | the chosen-ability row above Use / Cancel | not seen |
+
+Each buffer becomes 32 characters and each frame grows to hold it, the
+same fix as 0x3bd0b4: 21 words in `codepatch.py`, 86 in all (md5
+c11419c5...). The last three only ever show field-usable spells; they are
+fixed anyway because the change is small and the field-usable list was not
+checked against every long name. Refuter reviewed. Seen whole on screen
+from a fresh boot; a battle and the field menu ran normally.
+
+Not capped, checked on screen: the battle Orders list, its Info window and
+the action banner. Not placed, unchanged: 0x22fa68, 0x385dd4, 0x385f00,
+0x38616c, 0x3c1394, 0x3c1584, 0x3de964 and 0x426fec; the strings near
+them suggest online, StreetPass, Ride Fuse and pop-up screens, but nearby
+strings misled twice during the hunt. `_audit/NAMECAP_18_LIVE.md` has the
+record.
+
+No text changed. Only the update CIA changes; the base CIA and its xdelta
+are byte-identical to v1.6's.
