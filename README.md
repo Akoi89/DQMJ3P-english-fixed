@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | 8e2892f9e72ffa89c536d3d44c2041e5b42381873d8d7cd71363a36d6d0a204b |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | ad65f6c8dbf57f0b1a8051ad39abef3500015651c0b9942cb5688948f7168d1c |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,815,352 | 81368db97db57b0eb5ed257d5ed96392705d0b4575d8d8abd92c738a126fd1a0 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,366,223 | 50d6ae1b834a76e55dac5d62e4fa6cd2a7c11b070fcf465d2bcde6de670ccc86 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | ba610f318e29de3223d2c69ba0105b52d001059b9e4b4163a98ea9b6560064aa |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 8826544654048324dc4eb93c6e17e66d112efc52f3c9281a7f36cd34f7bd84f0 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,819,738 | 0eb253a5ebeca37b6ec0ac762b5a674744a3a79c2b09be99fa136fe302c66ae2 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,366,057 | 440d48850820d960e9b5702adb9c98bfc5736785e2b4562803c228f9e8c5cdb6 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -61,6 +61,8 @@ Forty-seven words are changed in the update's executable. The name-entry keyboar
 See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find something, note the exact text and the screen.
 
 A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is still cut to 11 when the monster is obtained or renamed. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
+
+Three panels still cut names at 14 characters: the status screen's Skill panel ("Great King Vea"), the Library's Basic Info header ("Gold Angel Sli") and the Monsters panel under Library > Skill. They are the same kind of buffer as the item-name one that was fixed, and are on the list for the next code round.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes forty-seven words of the update's code (the keyboard tab, the name buffers, the keyboard limit). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, so the two should coexist. I haven't run them together.
 

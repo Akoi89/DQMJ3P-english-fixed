@@ -1009,3 +1009,29 @@ clean boot with the new code showed an 11-letter rename kept in full,
 player name stored in its 24-byte save field. Anthony's plugin's hook and
 probe words are untouched. Only the update's executable changes; both CIAs
 are repacked as usual, the xdeltas regenerated and round-tripped.
+
+## Thirty-second build, 2026-09-14: the text findings from the v1.1 rig sweep (round 25)
+
+A menu-by-menu pass over v1.1 on the emulator (`_audit/RIG_SWEEP_2026-09-13.md`)
+confirmed nine of the TESTING.md Tier 3 rows on screen and turned up six
+things nobody had seen. The four text ones went to Gemini as round 25 and
+were approved as recommended; the two code ones (three more 14-character
+panels) wait for a live-debugger round after the RHDN posting and are
+listed under "Not fixed, known" meanwhile.
+
+`_audit/round25.py` (round 24's engine, 42 rows in
+`_audit/proof_terms/round25.tsv`, refuter ACCEPT on a dry run) writes 74
+labels: the thirty skill books that had kept the 2021 "Xguard" stem
+through round 9 (their help lines wrote the skill in kana, so round 9's
+stem test never saw them) now carry the English skill table's name plus
+"Book", trailing spaces and one lowercase "book" gone; the five
+HabitatMessage strings that read "as Map", "as Fiery Volcano" and so on
+(Japanese ワールドマップなど) read "World Map etc."; the six "Point Zero"
+occurrences in five strings (the diary twice, the Zoom list's rooftop
+entry, the Z00_00 wormhole prompt and its record) read "Ground Zero" like
+the other 23; and "Heavens Thunder" gets its apostrophe. No new item name
+collides with an existing one; the longest, "Quake & Gravity Ward EX
+Book", measures 149 units against the 138 of "Essence Drain Ward SP Book"
+the bag already drew whole. Both CIAs change (HabitatMessage, DiaryMessage
+and RulerPointMessage are base-only files); the executable is the 31st
+build's. Pack, verification, install and both xdeltas redone.

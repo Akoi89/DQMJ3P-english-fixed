@@ -8,7 +8,7 @@ A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, 
 
 **The text.** Every layer was proofread: the help text (3,570 item, skill, trait, action, trivia and title strings), the quest and hint text (checked line by line against the Japanese), the dialogue (5,697 strings) and the menus (1,614 strings). Just over a thousand spelling, agreement, wrong-word and stray-token slips are fixed (301 in the help layer, 595 in the dialogue, 122 in the menus, and the Helpful Tips). 167 untranslated strings are translated. About 150 lines that said something the Japanese doesn't (a place, a direction, a container, a count, a condition, what you're told to do) now say what the Japanese says.
 
-**Names.** Monster, skill, item, place and character names are the same in dialogue, menus and tables (Nochoro, Tiko, Lenate, Theresa, Δ Slime, Don Mole, Darkiron Bastille, Mt. Elpis, Undead Garden, Wi-Fi Square, Present Code, G-Cup, SpotPass and StreetPass, and a dozen more). Skill book names match the skill they teach, the Crack ranks follow the same ladder as every other family, and the card-suit monsters have their suits back.
+**Names.** Monster, skill, item, place and character names are the same in dialogue, menus and tables (Nochoro, Tiko, Lenate, Theresa, Δ Slime, Don Mole, Darkiron Bastille, Mt. Elpis, Undead Garden, Wi-Fi Square, Present Code, G-Cup, SpotPass and StreetPass, and a dozen more). Skill book names match the skill they teach (the thirty "Xguard SP" and "EX" books included, since v1.2), the Crack ranks follow the same ladder as every other family, and the card-suit monsters have their suits back. The place the diary and the Zoom list called both "Ground Zero" and "Point Zero" is Ground Zero everywhere, and the five bestiary habitats that read "as Fiery Volcano" say "Fiery Volcano etc." as the Japanese does.
 
 **Layout.** Every dialogue page and description is re-broken between words at its box (the engine wraps by character). Every page-break code sits where the Japanese puts it, and no page needs a third line where the Japanese page has two. 135 layout labels that ran letters together ("Iems") have their spacing fixed. 101 UI textures and 60 layout text panes the original left in Japanese are English.
 
@@ -19,6 +19,8 @@ A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, 
 ## Not fixed, known
 
 A monster's stored name holds 11 characters, so a species name longer than that is still cut to 11 when the monster is obtained or renamed; the field is part of the save format. Names already cut to 8 in an existing save stay that way until renamed.
+
+Three panels still cut names at 14 characters: the status screen's Skill panel, the Library's Basic Info header and the Monsters panel under Library > Skill. Same kind of buffer as the item-name one that was fixed; next code round.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) is outside this patch. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its five Ver.1.3 hook addresses hold the stock instructions in this build's executable, so the two should coexist, but they haven't been run together.
 
