@@ -1075,3 +1075,39 @@ King Slime" whole in the Monsters list. Anthony's plugin's five hook words
 and four version probes are byte-identical in the new executable. Only the
 update title changes; the base CIA and its patch are the thirty-second
 build's. Pack, verification, install and the update xdelta redone.
+
+## Thirty-fourth build, 2026-09-14: seven skill books round 25 missed (round 26)
+
+The thirty-third build was never released on its own; this build adds seven
+book renames to it and is what v1.3 ships. Round 25's list of books came
+from a stem test for "guard", so books whose 2021 names never had that
+stem slipped past. Each is now named after the skill it teaches, spelled
+as the English skill table spells it, plus " Book": the rule Gemini
+approved as round 25 C-i. "SPD Ward EX Book", "INT Ward EX Book" and "MP
+Ward EX Book" become "Slow Ward EX Book", "Wisdom Ward EX Book" and "MP
+Drain Ward EX Book". The four Mist SP books become "Red Mister SP Book",
+"White Mister SP Book" (it also read "BOOK" with a trailing space),
+"Netherworld Mister SP Book" (it read "Underwold Mist SP Book") and
+"Sublime Mister SP Book" (it read "Clear Skies Mist SP Book"), matching
+their base books, which round 9 had already renamed.
+
+`_audit/round26.py` is round 25's script with only its table changed
+(`_audit/proof_terms/round26.tsv`, 7 rows, 14 label writes across both
+trees, refuter reviewed). None of the new names collides with another
+item, and the widest, "Netherworld Mister SP Book", measures 132 units
+against the 149 of "Quake & Gravity Ward EX Book", which the bag draws
+whole.
+
+Held back for a ruling, not changed: "Black Mist SP Book", because the
+skill table names its skill "Black Mister+" while every sibling SP rank
+reads "... Mister SP" and the book's own help line says "Black Mister SP",
+so the table entry is probably the slip; and six stat "Up SP" books, whose
+help lines name the rank-3 skill while the Japanese rank maps to "... Boost
+EX". Both need a wording decision, not a mechanical rename. The first
+review of this round caught that two names had been taken from help lines
+instead of the skill table; the table, which the rule names, is what the
+final seven follow.
+
+ItemMessage.mes lives in both titles, so both CIAs change and both
+patches are regenerated. The executable is the thirty-third build's. Pack,
+verification, install and both xdeltas redone.

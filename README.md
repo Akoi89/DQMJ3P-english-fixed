@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | ba610f318e29de3223d2c69ba0105b52d001059b9e4b4163a98ea9b6560064aa |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 7d8cf7597d2538f708a1282f932c1a6cbe6a641e20b0f169e10e0a1953676e91 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,819,738 | 0eb253a5ebeca37b6ec0ac762b5a674744a3a79c2b09be99fa136fe302c66ae2 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,342,994 | b5293cff8a1e2febcbed825987bda5f271ad7b850c702897d10677c7b2273212 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,040,192 | 418018dfb3ac996d2742ee8e23daa5e63482a85bcedc54f660d5f6b0329d7034 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 1939cf0b07ae491fb1077cb8062fdf3d90286eac11f609a61867d056a4a84100 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,839,906 | 207efa35f640ee91c288b638ce86dedaff7b3e9509ffc371a5fce00303451ddf |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,343,155 | 03b8c4425429dddd4df663b2b24a8356e7722428a148318f6d77cac45f7f40f5 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
