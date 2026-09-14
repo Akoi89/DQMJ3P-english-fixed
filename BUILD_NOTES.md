@@ -1111,3 +1111,44 @@ final seven follow.
 ItemMessage.mes lives in both titles, so both CIAs change and both
 patches are regenerated. The executable is the thirty-third build's. Pack,
 verification, install and both xdeltas redone.
+
+## Thirty-fifth build, 2026-09-14: the books and mist names held back from round 26 (round 27)
+
+Round 26 held back two things for a ruling, and measuring them turned up
+two more. All four went to Gemini as round 27 and were approved as
+recommended; this build adds them to the thirty-fourth and is what v1.3
+ships.
+
+A. The skill table named every mist skill set's SP rank "... Mister SP"
+except one, "Black Mister+", the only place that string occurs. It is now
+"Black Mister SP", and its book "Black Mister SP Book"; the book's help
+line already said "Black Mister SP".
+
+B. Each stat has four books; the Japanese ranks アップ１, ２, ３, ＳＰ are
+Boost, Boost+, Boost SP and Boost EX in the English skill table. The six
+fourth-rank books were still "X Up SP Book", and their help lines named the
+third-rank skill, which a different book already teaches, while the
+Japanese help lines name the fourth. They now read "HP Boost EX Book",
+"MP Boost EX Book", "Attack Boost EX Book", "Defense Boost EX Book", "Speed
+Boost EX Book" and "Wisdom Boost EX Book", with help lines to match.
+
+C. The spell 青天の霧 is "Sublime Mist" in the action table and its skill
+set "Sublime Mister", but the 2021 name "Blue" survived in eight labels:
+the second of its two trait labels ("Chance Blue Mister"), the SP book's
+help line, and the skill lists of six help texts. The SP book's help text
+carried it twice, its Skill line and its list, and both are changed. "Blue
+Mist" no longer occurs anywhere in either title. "Chance Underworld
+Mister" stays, as ruled: every mist trait is named after the spell it
+casts, and 冥界の霧 is "Underworld Fog" in 31 strings of each title.
+
+D. "Shepard's Book" is "Shepherd's Book" (羊飼い; the skill is "Shepherd").
+
+`_audit/round27.py`, round 25's engine with the table
+`_audit/proof_terms/round27.tsv` (24 rows, 23 labels in each title),
+refuter reviewed. No new book name collides with another item and the
+widest, "Defense Boost EX Book", measures 112 units. The build chain script
+was derived from the last one by renaming its log numbers; a blind
+replacement would also have rewritten the update patch's xdelta window
+(268435456), so the replacement is now targeted and the window checked.
+Both CIAs change; the executable is the thirty-third build's. Pack,
+verification, install and both xdeltas redone.
