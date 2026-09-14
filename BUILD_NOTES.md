@@ -1233,3 +1233,39 @@ three old names is left in either title. Refuter reviewed.
 
 Both CIAs change; the executable is the thirty-third build's. Pack,
 verification, install and both xdeltas redone.
+
+## Thirty-eighth build, 2026-09-15: Moreheal, and the 18-character Teaches column (round 30)
+
+Round 30 went to Gemini with the one word held back from round 29 and a
+name cap found while checking v1.5. Both approved as recommended.
+
+A. `_audit/round30.py` (round 25's engine, `_audit/proof_terms/
+round30_A.tsv`, 23 rows): "Fullheal" becomes "Moreheal" in 23 help lists
+of the update (ten book help texts, thirteen skill-set help texts) and the
+same 22 of the base title (SkillHelp0584, Brass, is update-only). In every
+one the "Fullheal" line stands where the Japanese line reads ベホイマ, and
+the action table names ベホイマ "Moreheal" (A065) and ベホマ "Fullheal"
+(A602), which stays. "Moreheal" measures 44 px against 36; no label's
+widest line changes. The only "Fullheal" left in either title is A602.
+Refuter reviewed.
+
+B. A skill set's Teaches list, the top screen of Allocate Skill Points and
+of Library > Skill, cut every action name at 18 characters. The row
+builder at 0x3bd0b4 handed the icon+name formatter 0x22f818 a stack
+buffer of 21 characters: two icon codes, 18 letters, the NUL. Five words
+in `codepatch.py` grow its frame 0x48 -> 0x88, move the buffer into the
+new space at sp+0x48 and raise the capacity to 32 characters; the longest
+real action name is 23. Found with a read watchpoint on a stored name and
+a stack walk; seen whole on screen from a fresh boot. Eleven action names
+were affected; "Essence Drain Ward+", counted as a twelfth in the review
+package, is a trait, and trait rows skip that buffer. The formatter has
+thirteen other callers that also pass 21; they draw other screens, were
+not identified, and are unchanged. The record is `_audit/NAMECAP_18_LIVE.md`.
+The executable now has sixty-five changed words (md5 e8fa730f...).
+
+Seen on the shipped CIAs from a fresh boot on the end-game save:
+Gome-chan's Teaches list under Allocate Skill Points shows "Giga
+Essence Extractor" and "Miracle of the Stars" whole, and Wild SP Book's
+help list reads "Moreheal".
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.

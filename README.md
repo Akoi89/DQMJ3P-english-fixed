@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,040,192 | a9eefebad6d7d83d39ce2cd40a0350b63dc2c779e4497f96649774a1c26f6051 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 93046d1ba625617e037641c61321a17fbc6a736146d29204723a9d49eda01d70 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,832,866 | d3f64ae61f547c42ad9ea822cc950edd8f832484373df4e65aaf75db451899ac |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,342,731 | f6090db9d44351de77fd93b5f3b83bef3dae1c8fb26c88ed389327a2a19826af |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,040,192 | 607c774689dfe0b7506271389ee12c5082f1613ff1d4e3aa053ae3e3cc450d57 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 454123a1fc17aab8feadb0a0799dec4c7fbf4967a53a12443d48e6baef6ea387 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,832,855 | bd3e4974616c48f79add1260e328510670cc754bea6520eebf26c8ca864bcae2 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 3,714,863 | b5e0edf9bf9d36b5677ac1109beee7908967bf7875c195b5a6ddab198cdaf80e |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -54,7 +54,7 @@ Layout is back in the Japanese shape. Every dialogue page and description breaks
 
 Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
 
-Sixty words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill.
+Sixty-five words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars").
 
 ## Not fixed, known
 
