@@ -14,13 +14,11 @@ A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, 
 
 **Prompts.** Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
 
-**The executable.** Forty-seven words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters in lists, the info window and the equip lists, nor at 10 on the reactor's analyze readout. The Library's monster lists and the Manage Monsters header don't cut monster names at 10 any more, and the rename keyboard takes 11 characters instead of 8, so renaming doesn't shorten a name (a stored name holds 11).
+**The executable.** Sixty words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters in lists, the info window and the equip lists, nor at 10 on the reactor's analyze readout. The Library's monster lists and the Manage Monsters header don't cut monster names at 10 any more, and the rename keyboard takes 11 characters instead of 8, so renaming doesn't shorten a name (a stored name holds 11). Three more panels that cut at 14 draw in full since v1.3: the status screen's Skill panel, the Library's Basic Info header and the Monsters list under Library > Skill.
 
 ## Not fixed, known
 
 A monster's stored name holds 11 characters, so a species name longer than that is still cut to 11 when the monster is obtained or renamed; the field is part of the save format. Names already cut to 8 in an existing save stay that way until renamed.
-
-Three panels still cut names at 14 characters: the status screen's Skill panel, the Library's Basic Info header and the Monsters panel under Library > Skill. Same kind of buffer as the item-name one that was fixed; next code round.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) is outside this patch. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its five Ver.1.3 hook addresses hold the stock instructions in this build's executable, so the two should coexist, but they haven't been run together.
 

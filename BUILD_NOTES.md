@@ -1035,3 +1035,43 @@ Book", measures 149 units against the 138 of "Essence Drain Ward SP Book"
 the bag already drew whole. Both CIAs change (HabitatMessage, DiaryMessage
 and RulerPointMessage are base-only files); the executable is the 31st
 build's. Pack, verification, install and both xdeltas redone.
+
+## Thirty-third build, 2026-09-14: the last three 14-character panels
+
+Round 25 section A, which Gemini approved as a code round after the RHDN
+posting. Three panels cut names at exactly 14 characters: the status
+screen's Skill panel, the Library's Basic Info header and the Monsters
+list under Library > Skill. Two hypotheses died first, both worth
+recording. It is not the layouts: across all 362 Layout archives and 2,730
+text panes only 17 allocate between 13 and 17 characters and none is on
+these screens, and the panes that hold these names allocate nothing at all
+(`_audit/panesweep.py`). And it is not the six name-builder callers that
+pass a 16-character buffer: breakpoints on all six never fired while the
+Library header was rebuilt, though the header did rebuild.
+
+The cause is two sibling builders, 0x2317d8 and 0x231410, the only two
+members of the name-builder family whose printf max is 15. Each formats
+`u"%ls%ls"`, a one-unit icon plus the name, into a 16-character stack
+buffer; 16 units less the terminator less the icon leaves exactly 14. That
+one shared shape is why three unrelated screens cut at the same place.
+Thirteen words change: each buffer grows to 32 characters (30 visible,
+against a longest species name and a longest skill name that are both 24), each
+frame grows to hold it, and the locals above each buffer move up. Both
+functions have a single exit and nothing else touches a stack offset above
+the buffer in either.
+
+One word is easy to miss and cost a boot. 0x2317d8 has a second path that
+sits past its own `pop`: when the name object is null it zero-fills the
+buffer with a loop of eight turns writing four bytes each, then branches
+back into the common tail. Left at eight with a 64-byte buffer it hands
+the tail 32 bytes of uninitialised stack, and the game black-screens on
+the boot logos, because that path runs before the title. A disassembly
+that stops at the first `pop` never shows it.
+
+Each panel was checked on screen through the mod folder on the end-game
+save before the build: "Wisdom Boost EX" and "Mystic Juliante" whole in
+the Skill panel, "Metal Pearl Slime" whole in the Library header, "Metal
+King Slime" whole in the Monsters list. Anthony's plugin's five hook words
+and four version probes are byte-identical in the new executable. Only the
+update title changes; the base CIA and its patch are the thirty-second
+build's. Pack, verification, install and the update xdelta redone.

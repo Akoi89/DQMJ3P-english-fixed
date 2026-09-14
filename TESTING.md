@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the thirty-second (2026-09-14). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the thirty-third (2026-09-14). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -65,6 +65,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Term fixes (thirtieth build) | the Darkiron Bastille dialogue, the Snapped family lines, the chapter 7 hint | "Break Remodeling Device" or "Remodeling Device" for the machine; Snapped-off / Snapped-Almighty by name; the chapter 7 hint says you beat the minions and reached the boss |
 | Monster names (thirty-first build) | Library > Monster > any family; Manage Monsters, the header; Change Name on any monster | species names drawn whole in the rows ("Golden Pearl Slime"); an 11-letter name whole in the header; the keyboard shows 11 slots and keeps all 11 after OK |
 | Books, habitats, Ground Zero (thirty-second build) | the bag's book pages; Library > Monster > Coalslime (habitat); the diary's chapter 7 and 8 pages and the Zoom list | "Gravity Ward SP Book", "Quake & Gravity Ward EX Book" whole in their rows; "Fiery Volcano etc." whole in the Habitat field; "Ground Zero", never "Point Zero" |
+| Long names on three panels (thirty-third build) | a monster's Basic Info, the Skill panel on the right; Library > Monster > "Metal Pearl Slime", the header; Library > Skill > any skill, the Monsters list | "Wisdom Boost EX" and "Mystic Juliante" whole; "Metal Pearl Slime" whole in the header; "Metal King Slime" whole in the Monsters list |
 | Letter spacing (fourteenth build) | the status screen's AGI and INT labels, the bestiary second page's "Items" pill, a map place name, the StreetPass list | letters no longer run into each other; nothing now too wide for its pill |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives
