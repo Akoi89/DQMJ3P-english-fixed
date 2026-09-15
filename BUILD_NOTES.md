@@ -1428,3 +1428,28 @@ Helpful Tips 3 and 5, and the tactic list's "Don't use Abilities". Not
 seen: story dialogue, trophies, the diary, the StreetPass prompts.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-third build, 2026-09-16: the meaning pass's leftovers (round 40)
+
+Round 40 (Gemini: A-i, B-i, C-i, D-i, E-i). `_audit/meaning_round40.py`
+writes `_audit/proof_terms/round40.jsonl` (83 rows) against the finished
+v2.0 text and `_audit/round40.py` applies it right after round 39 (same
+exact-text guard). A: 魔界の門 is the Demon Realm Gate in every label whose
+Japanese has it, in any case and as "phantom door" too; DEMO_910_MSG_002
+(page 1 has only 門), DEMO_921_MSG_017 (魔界への扉) and DEMO_923_MSG_002
+(門) are worded from their Japanese. B: the speaker tag NAME_TAG_DEODORA
+is Madame Rummy (official in Dragon Quest Monsters: Joker, where デオドラン島
+is Palaish Isle). C: the かしこさガード / 賢さガード trees and books are Dumb
+Ward, Dumb Ward SP, Dumb Ward EX. D: PartnerNotyorinBattleInfoTitle01/02
+take the order names; seen whole on the Nochorin Ally page. E: six lines
+(DEMO_312_MSG_050, DEMO_323_MSG_090, DEMO_210_MSG_070, D02_35 GUIDE_MSG_001,
+I01_01 NPC_GOST_REC, IH1013). Word swaps keep their line's own layout while
+it fits (the warp prompts keep two lines). Refuter reviewed twice (one
+rework: the gate pass was case-sensitive). Labels changed against v2.0: 69
+in the base title, 14 in the update. The executable is unchanged.
+
+Seen on screen, shipped build: the Nochorin Ally page, Library > Summary
+(Fiery Volcano and Demon Realm, including the 《Demon Realm》 header) and
+the ward trees under Library > Skill.
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
