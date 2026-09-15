@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,040,192 | 711d57e9f280c0c3e5966f43ce556715c7f879803f5b6e334118444058f0a8fb |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 527e646e12f4ea9db53da948e22dbeccf6c48d5bf1c977f9261675377f4fdcca |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,850,137 | 1c7df8f210b11321508b36a1cb1764218d97cab74f4aa0f837bc08f008f19e8b |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,758,947 | 7cab0dccb88d6476a649b8014ced60c8f8b3928ad11260807ff2168d0a900fcc |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | efeb7646923d4f2a9acb2920eac7c504da031178cddf0d541827dfdbe8abf685 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 94000864960d71818cc60ca172922cb5baf4c7f90e7c797e25de1aceea81ec2d |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,853,195 | 1b625c08481338f8150865b2ddd15fde3818c59d45a1c5e4a530b7c811405343 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,684,558 | 60bd526232b53c80f2ae338842e181dc47a9237331f98da972c1edb0d46a4cc2 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -54,7 +54,7 @@ Layout is back in the Japanese shape. Every dialogue page and description breaks
 
 Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
 
-Ninety-one words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars"), and neither do Library > Abilities and a monster's skill pages. The hint under the skill-point counter no longer cuts them at 10 ("Venom Brea" for "Venom Breath").
+One hundred and eighteen words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars"), and neither do Library > Abilities and a monster's skill pages. The hint under the skill-point counter no longer cuts them at 10 ("Venom Brea" for "Venom Breath"), and the Ride Fuse screen (Fusion Info) and the skill-point Info window show whole names too.
 
 ## Not fixed, known
 
@@ -62,7 +62,7 @@ See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find 
 
 A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is still cut to 11 when the monster is obtained or renamed. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
 
-Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes sixty words of the update's code (the keyboard tab, the name buffers, the keyboard limit). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, so the two should coexist. I haven't run them together.
+Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and eighteen words of the update's code (the keyboard tab, the name buffers, the keyboard limit, one built-in prefix, one default greeting). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and none of the changed words is within 32 bytes of them, so the two should coexist. I haven't run them together.
 
 ## Credits
 

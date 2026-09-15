@@ -1326,3 +1326,54 @@ Cleansing". Both labels in both titles, nothing else names them. Refuter
 reviewed.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-first build, 2026-09-15: Ride Fuse, and one name for it (rounds 32 and 33)
+
+The last hunt for the short name buffer reached the Ride Fuse screen. Ride
+Fuse needs no special pair: in battle, Ride on one party monster, then Ride
+on the other with Nochorin, and the command unlocks; its Fusion Info screen
+has its own builders. Four callers of the icon+name formatter were placed:
+0x3de884 (the Unify Ability line), 0x385bb4 and 0x385f68 (the ability
+pages), 0x426ed0 (the Info window in Allocate Skill Points); a fifth,
+0x385e6c, has no callers at all. Each buffer stays where it is and its
+frame grows to hold 64 bytes, capacity 21 -> 32: 16 words. Refuter
+reviewed; seen whole on screen. Only the two StreetPass match-up callers
+(0x3c1394, 0x3c1584) were never reached; they need data from another
+console, and are unchanged. `_audit/NAMECAP_18_LIVE.md` has the record.
+
+Round 32 (Gemini verdict A-i, B-i, C-i). A: `_audit/round32.py` and
+`_audit/proof_terms/round32.tsv`, 36 rows, plus `_audit/round32a.py` for
+one tutorial page rewritten whole so its sentences keep their lines: 合体
+is "fuse" / "fusion" everywhere, "Ride Fuse" stays the battle command; the
+Fusion Info labels, the AI and stay-fused settings, the battle banner, the
+three help titles, the AI help page, six tutorial pages and three event
+lines (the Full Charge monument hint, and the Scout-Q #2 message, which now
+names the trait 合体上手 by its name, "Fusion Expert"), 36 labels in the
+base title and 27 in the update. B: the Ride menu's "Ride with Nochorin." /
+"Dismount with Nochorin." become "Nochorin Rides" / "Nochorin Dismounts".
+C: a fused monster's name was built from a format string in the
+executable, u"合体%ls", so Fusion Info and everything else that prints it
+showed "合体Qu"; three words make it u"%ls", and one more raises the name's
+capacity from 10 to 11 letters, the full length of a monster name.
+Refuter reviewed.
+
+A scan of the executable for other built-in Japanese found five strings.
+"チュートリアル" and "ヒント" are referenced by nothing, "不明" sits in a
+table of battle-script paths as a fallback, and "プレゼント" belongs to the
+Present Code screens; they are left. The fifth, "よろしくおねがいします!",
+is the default StreetPass profile comment.
+
+Round 33 (Gemini verdict A-i, B-i, C-i, D-ii, E-i). A: seven words in
+`codepatch.py` make that default comment "Hello there!", the most its
+twelve-character slot holds. B to D: `_audit/round33.py` and
+`_audit/proof_terms/round33.tsv`: HelpMessage4100 to 4102 (合体モンスターの
+種族名) say "Fused monster's family" instead of "Sort by monster family
+type" (they were not seen on screen; the Attempt Fusion result shows no
+family page); the Liquid Metal King's bestiary entry follows the Japanese
+(its drops become countless Liquid Metal Slimes; it is proud of its
+stamina, 体力) in four lines; the event line that sums up Full Charge says
+"You learned Full Charge, Ride Fuse and Attempt Fusion!". E: 合体解除 stays
+"Split". The executable now has 118 changed words (md5 49ff105d...).
+Refuter reviewed.
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
