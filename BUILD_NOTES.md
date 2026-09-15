@@ -1429,7 +1429,7 @@ seen: story dialogue, trophies, the diary, the StreetPass prompts.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
 
-## Forty-third build, 2026-09-16: the meaning pass's leftovers (round 40)
+## Forty-third build, 2026-09-15: the meaning pass's leftovers (round 40)
 
 Round 40 (Gemini: A-i, B-i, C-i, D-i, E-i). `_audit/meaning_round40.py`
 writes `_audit/proof_terms/round40.jsonl` (83 rows) against the finished
@@ -1451,5 +1451,74 @@ in the base title, 14 in the update. The executable is unchanged.
 Seen on screen, shipped build: the Nochorin Ally page, Library > Summary
 (Fiery Volcano and Demon Realm, including the 《Demon Realm》 header) and
 the ward trees under Library > Skill.
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-fourth build, 2026-09-15: the UI labels, a second look, the partner lines (round 41)
+
+Round 41 (Gemini: A-i, A2 by the screen, B-i, C1-i, C3-i, C4-i, the C rows,
+D-i). `_audit/meaning_round41.py` writes `_audit/proof_terms/round41.jsonl`
+(406 rows) against the finished v2.1 text and `_audit/round41.py` applies it
+right after round 40 (same exact-text guard). A: 83 UI labels, 2 copies (the
+LayoutMessage buttons, headers and explainers, status, location, area,
+habitat, disc and trophy words; 2,279 strings read). A2: the model viewer's
+rotation labels stay as shipped (seen on the rig: pushing the circle pad
+left turns the model's face to the viewer's left; the Japanese names the
+same turn from the model's side), and 人目 is "P". B: 65 corrections from
+a 600-line recall sample of the lines the v2.0 pass had passed, and 9
+identical copies. C: 9 hand-drafted consistency rows; C1 ＪＯＫＥＲ is
+Wildcard (9 labels by the word pass); C3 SPD is AGI (28 labels); C4 the
+"slightly" of the all-enemy stat items stays. D: 28 partner lines. Three
+drafts were narrowed to their panes ("Foe #1/#2" in a 36 px pane, " Mon."
+after a count) and one line break moved so a swapped name fits. Refuter
+reviewed twice (one rework: the word passes missed "SPDgain", a half-width
+JOKER and ActionHelp308, and two tips lost their blank line). Labels changed
+against v2.1: 275 in the base title, 131 in the update. The executable is
+unchanged.
+
+Seen on screen: on the shipped v2.1 build, the model viewer's rotation
+labels (the A2 ruling); on the shipped forty-fourth build, "Foe #1" and
+"Foe #2" whole on the bestiary page and the list header "Unlocked".
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-fifth build, 2026-09-15: the second read (round 42)
+
+Round 42 (Gemini: A-i, B-i, C-i), ruled E-ii in round 41: every line the
+first meaning pass had passed (9,727, the recall sample left out) read again
+for medium and high errors only, then judged and drafted with the scene or
+list in view. `_audit/meaning_round42.py` writes
+`_audit/proof_terms/round42.jsonl` (546 rows) against the forty-fourth
+build's text and `_audit/round42.py` applies it right after round 41 (same
+exact-text guard). 261 corrections (121 dialogue, 34 descriptions, 106 system),
+13 high, and 2 identical copies. IH0848 had no draft text and takes two
+word fixes on its list (Fizz for ザバ, INT for かしこさ); seven Information
+tips drafted as flat text are split back into their shipped paragraphs.
+Refuter reviewed. Labels changed against the forty-fourth build: 386 in the
+base title, 160 in the update. The executable is unchanged. The
+forty-fourth build (round 41) was not released on its own.
+
+Seen on screen, shipped forty-fifth build: Helpful Tips 7 (Monster
+Recovery), its two paragraphs and the restored "HP and MP".
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-sixth build, 2026-09-15: loose ends before v2.2 (round 43)
+
+Round 43 (Gemini: A-ii, B-i, C-i, C2-i, D-i, E-i, F-i, G-i, H-ii, I
+approved). `_audit/meaning_round43.py` writes `_audit/proof_terms/round43.jsonl`
+(73 rows, 34 strings) against the forty-fifth build's text and
+`_audit/round43.py` applies it right after round 42 (same exact-text
+guard). A: 思い出の戦い is "Battle Memories" (10 strings, the menu labels
+included). B: 本屋 is "the Book Shop" (19). C: the Fighting Spirit tip.
+D: DEMO_901_MSG_001_2. E: BattleEventMessage580. F: TICO_SUMMON_042.
+G: Scout-Q #8 (1). H-ii: nine lines whose opening control code differs
+from the Japanese are left for an emulator check (round 44). Refuter
+reviewed. Labels changed against the forty-fifth build: 41 in the base
+title, 32 in the update. The executable is unchanged. The forty-fourth and
+forty-fifth builds were not released on their own: v2.2 is this build.
+
+Seen on screen, shipped forty-sixth build: Helpful Tips "70. Manage
+Favorites" and 74 (Training), its two paragraphs.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
