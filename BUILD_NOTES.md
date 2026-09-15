@@ -1377,3 +1377,54 @@ stamina, 体力) in four lines; the event line that sums up Full Charge says
 Refuter reviewed.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-second build, 2026-09-15: the meaning pass (rounds 34 to 39)
+
+Every translated string that differs from the Japanese was compared with
+it for meaning, in four layers: the bestiary (737), the other descriptions
+(2,725: traits, abilities, skill trees, help, items), the story and field
+dialogue (6,367) and the other text in Message/ (2,734). A first reader
+flagged possible errors per batch of 50 (`_audit/meaning/SPEC.md`); a
+second judged each flag with the scene or list in view and drafted the
+correction, measured against its box with the game font
+(`_audit/meaning_fit.py`, `_audit/meaning_dlg.py`). Two scripts checked
+what readers miss: every skill-tree and skill-book line against the
+ability and trait tables (`_audit/meaning_skilltree.py`), and every name
+the Japanese uses against the English (`_audit/meaning_names.py`).
+
+Rounds 34 (bestiary, 251), 35 (descriptions, 211, and the skill-list
+names), 36 (monster names against the Dragon Quest Wiki), 37 (dialogue,
+695 plus 74 identical copies) and 38 (the rest, 416 plus 11 copies) went
+to Gemini and were approved, with seven wording tweaks. Round 36: the
+patch's names are official for most monsters that have one; サウルスロード
+and バザックス had each other's (Terrorceratops and Tyrannoceratops) and
+are swapped back; グランエスターク is Gran Estark everywhere; the other
+fan names stay.
+
+Round 39 applies all of it: `_audit/meaning_round39.py` turns the approved
+drafts and the name passes into exact whole-label rewrites for both trees
+(`_audit/proof_terms/round39.jsonl`, 3,864 rows), and `_audit/round39.py`
+writes a label only if it still holds its expected text. It runs after
+tipsflow.py; wrapdialogue.py and tipsflow.py then run again. Dialogue is
+wrapped in the generator with the player's name measured at 11 wide
+letters, so the second wrap changes nothing and no rewritten line exceeds
+the 346 px window. Identical lines drafted twice take one wording. The
+name passes: skill lists use the table names (360 lines); 魔界 is Demon
+Realm where the Japanese has it (冥界, the netherworld, stays); Network
+Coins where it has 通信コイン; the disc keywords Land / Sea / Sky where it
+has 陸神討伐の and its siblings; Sirloin Bites / Voucher, Sea Map Fragment,
+Incarnus' Stone, Phantomount, Unfinished Shrine, Malroth. Refuter reviewed
+five times (four reworks: names split across a line break, name width in
+the wrap, a skill-book stat line, a page-break newline, 魔界 variants,
+spacing at colour codes). `verify_pack.py` now accepts a label round 39
+rewrote whole if its old misspelling is gone (two bestiary entries no
+longer use the fixed phrase at all). Labels changed against v1.9: 2,728 in
+the base title, 1,136 in the update. The executable is unchanged (118
+words, md5 49ff105d...).
+
+Seen on screen, shipped build, fresh boot on the test save: the Slime's
+bestiary entry, Ultra Body and Dizzying Body, the Material+ skill tree,
+Helpful Tips 3 and 5, and the tactic list's "Don't use Abilities". Not
+seen: story dialogue, trophies, the diary, the StreetPass prompts.
+
+Both CIAs change. Pack, verification, install and both xdeltas redone.

@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the forty-first (2026-09-15). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the forty-second (2026-09-15). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -73,6 +73,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The other 18-character screens (thirty-ninth build) | Library > Abilities > All (Combustive Rending Arts, A Dark, Cold, Place...); a monster's status screen, R to its skill pages, and the same pages from the battle Swap screen (Gome-chan: Giga Essence Extractor, Miracle of the Stars); the field ability menu (the wand icon), a spell, Info (Y) and Use | every name whole, nothing over the column divider or the row edge |
 | The skill-point hint, round 31 (fortieth build) | Allocate Skill Points on a skill set with points left to spend; raise the counter a step at a time; Library > Abilities > All; the bag's accessories | the "Learns:" / "NN SP unlocks:" line shows the whole name ("Disruptive Ripple", not "Disruptive"); "A Dark, Cold Place..."; "Amulet of Cleansing" |
 | Ride Fuse and fusion names (forty-first build) | in battle, Ride on one monster, then Ride on the other and pick "Nochorin Rides"; Ride Fuse; page Fusion Info with L/R; the Tactics menu's fusion settings; Allocate Skill Points, Info (Y) | "Fusion Ability", "Fusion Traits", "Fused From", the name line without 合体; whole ability names on every page; the settings labels inside their boxes; the Info header whole; the Liquid Metal King's bestiary entry in four lines; a new StreetPass profile's comment "Hello there!" |
+| Meaning pass (forty-second build) | Library > Monster > Slime family, the Slime's Info page; Library > Traits, Ultra Body and Dizzying Body; Library > Skill, Material+; Helpful Tips 3 and 5; Tactics & Abilities > Change Tactics, a monster's tactic list | the new wording in each box, inside it: the Slime's entry in four lines, "May inflict confusion on enemies that physically attack you", "Ba-Bounce" on Material+, "Don't use Abilities" in the tactic list |
 | Letter spacing (fourteenth build) | the status screen's AGI and INT labels, the bestiary second page's "Items" pill, a map place name, the StreetPass list | letters no longer run into each other; nothing now too wide for its pill |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives

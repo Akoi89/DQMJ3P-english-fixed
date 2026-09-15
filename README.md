@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,036,096 | efeb7646923d4f2a9acb2920eac7c504da031178cddf0d541827dfdbe8abf685 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,431,296 | 94000864960d71818cc60ca172922cb5baf4c7f90e7c797e25de1aceea81ec2d |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,853,195 | 1b625c08481338f8150865b2ddd15fde3818c59d45a1c5e4a530b7c811405343 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,684,558 | 60bd526232b53c80f2ae338842e181dc47a9237331f98da972c1edb0d46a4cc2 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,023,808 | fcf1ddb69e2539e07e5fb13e0ac66882cd1897fbee68e32bda64aab3d019523d |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | 7111661e573e1451efbf5ba8de5ed21ff8a7b0e893a7291323acca57fffc8a9e |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,681,372 | 41851206f76218d2273b5adeb9c3e8fb03fa6bf9026854b9bb0768bdc6a923f6 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,682,177 | fe4e858d7550f0a5a0fb1899c418a23ab1f795630200fec8fb1f50449bdd7ce7 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -49,6 +49,8 @@ The short version. `FIXES.md` has a paragraph on each.
 The crash is gone. The 2021 patch shipped a broken font that crashed the game for some players at The Core, the cutscene after the Break Archdemon boss; both CIAs now carry the corrected font from Lurpigi's Italian project, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes people reported in 2021 were already fixed in Eiz's 2021-05-30 build, which is what this starts from.
 
 Every text layer was proofread: the help text (3,570 strings), the quest and hint text (1,007 lines, each checked against the Japanese), the dialogue (5,697 strings) and the menus (1,614 strings). Just over a thousand spelling, agreement and wrong-word slips are fixed, 167 untranslated strings are translated, and about 150 lines that said something the Japanese doesn't now say what it says. Names are spelled the same way in dialogue, menus and tables.
+
+Since v2.0 the meaning is checked too. Every translated string that differs from the Japanese, 12,563 of them (the bestiary, the trait, ability, item and help descriptions, the story and field dialogue, and the menus, tips, battle messages, diary and trophies), was read against the Japanese for what it says, and 1,573 that said something else are corrected: a bestiary entry with its story backwards, a trait that claimed to increase Ice damage when it gives Ice resistance, Sizz spells dealing "Fire" damage, Sancho telling the amnesiac hero "Try not to forget" where the Japanese tells him it's fine to leave the past forgotten, trophy conditions one short ("more than 100" for "100 or more"), menu prompts that described the opposite of what the button does.
 
 Layout is back in the Japanese shape. Every dialogue page and description breaks between words at its box edge (the engine wraps by character), page-break codes sit where the Japanese puts them, and no page runs to a third line where the Japanese has two. 101 UI textures and 60 layout text panes that were still Japanese are English, and 135 labels that ran letters together ("Iems") have their spacing fixed.
 
