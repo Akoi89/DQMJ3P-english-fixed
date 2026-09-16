@@ -38,7 +38,7 @@ xdelta3 -d -B 1879048192 -s "<japanese base decrypted>.cci" DQMJ3P-base-fixed-0.
 xdelta3 -d -B 268435456 -s "<japanese update decrypted>.cia" DQMJ3P-update-fixed-3.4.0.xdelta DQMJ3P-update-fixed-3.4.0.cia
 ```
 
-The `-B` values are the source window sizes the patches were made with; the base one needs about 1.8 GB of RAM while decoding. Check the output against the SHA-256 table above. Both patches were verified to decode byte for byte on the machine that made them.
+The `-B` values are the source window sizes the patches were made with; the base one needs about 2 GB of free RAM while decoding. Check the output against the SHA-256 table above. Both patches were verified to decode byte for byte on the machine that made them.
 
 Yes, the base patch turns a `.cci` into a `.cia`. That's deliberate: the decryptor produces a `.cci` for game titles, and a `.cia` is what installs.
 

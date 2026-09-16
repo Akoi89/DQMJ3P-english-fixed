@@ -24,17 +24,19 @@ Seen on the emulator during the builds, from a clean New Game each time:
 - Battle prompts, "Round 1", the title banner and the name-entry footers,
   which are redrawn textures and layout text, all render in English.
 
-## Tier 1: the things nobody has seen yet, ten minutes after the first scout
+## Tier 1: the Library, ten minutes after the first scout
 
-Open the Library from the menu (bottom-left icon of the grid).
+Open the Library from the menu (bottom-left icon of the grid). Four of these five
+were seen on screen on the ninth build and are listed so you can confirm them on
+your own game; the one nobody has seen is a five-line bestiary entry.
 
 | Check | Where | Looking for |
 |---|---|---|
-| Family table | Library > Monster, top screen | nine family names ("Slime", "Dragon" ...) each fitting its cell; no letter wrapped under the table |
-| Bestiary text | Library > Monster > any monster, second page (R) | four lines broken between words, no word split at the edge like "pleasa / nt" |
-| A long entry | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
-| Trait info box | Library > Traits > All > any trait | text broken between words, not mid-word |
-| Item help | Library > Items, or the bag menu | same |
+| Family table (seen on the ninth build) | Library > Monster, top screen | nine family names ("Slime", "Dragon" ...) each fitting its cell; no letter wrapped under the table |
+| Bestiary text (seen on the ninth build) | Library > Monster > any monster, second page (R) | four lines broken between words, no word split at the edge like "pleasa / nt" |
+| A long entry (never seen) | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
+| Trait info box (seen on the ninth build) | Library > Traits > All > any trait | text broken between words, not mid-word |
+| Item help (seen on the ninth build) | Library > Items, or the bag menu | same |
 
 ## Tier 2: the round 9 names, first shop and first skill books
 
