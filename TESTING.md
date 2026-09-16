@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the forty-sixth (2026-09-15). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the fifty-fourth (2026-09-16). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -73,6 +73,12 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The other 18-character screens (thirty-ninth build) | Library > Abilities > All (Combustive Rending Arts, A Dark, Cold, Place...); a monster's status screen, R to its skill pages, and the same pages from the battle Swap screen (Gome-chan: Giga Essence Extractor, Miracle of the Stars); the field ability menu (the wand icon), a spell, Info (Y) and Use | every name whole, nothing over the column divider or the row edge |
 | The skill-point hint, round 31 (fortieth build) | Allocate Skill Points on a skill set with points left to spend; raise the counter a step at a time; Library > Abilities > All; the bag's accessories | the "Learns:" / "NN SP unlocks:" line shows the whole name ("Disruptive Ripple", not "Disruptive"); "A Dark, Cold Place..."; "Amulet of Cleansing" |
 | Ride Fuse and fusion names (forty-first build) | in battle, Ride on one monster, then Ride on the other and pick "Nochorin Rides"; Ride Fuse; page Fusion Info with L/R; the Tactics menu's fusion settings; Allocate Skill Points, Info (Y) | "Fusion Ability", "Fusion Traits", "Fused From", the name line without 合体; whole ability names on every page; the settings labels inside their boxes; the Info header whole; the Liquid Metal King's bestiary entry in four lines; a new StreetPass profile's comment "Hello there!" |
+| Names the game fills in (fifty-fourth build) | a disc prompt in the Disc menu; Don Mogura handing over a reward | the sentences read "Use <disc> and freely roam" and "I will grant you <item>." with a space before the name |
+| Partner order menu (fifty-third build) | field, Order Partner > Go Scout | the four errands read "5 min", "15 min", "30 min" with a space, and nothing is clipped |
+| Library counts (fifty-second build) | Library > Collection, Speed Road, and Records | the Collection counts read as bare numbers ("385", not "385Type"); the Speed Road totals read "880pt" on one line; Records reads "# Stealth Boxes Found" |
+| Species and family wording (fiftieth build) | status screen; Library; the community rules screen | the status screen and Library say "Species" for the monster itself, and the community rules say "family"; the rules panel label is the one to watch, it is 36 px where the Japanese was 30 |
+| One-shot battle reflects (forty-ninth build) | a battle where a one-shot reflect is used, then wears off | the effect reads "x1" where it is the one-shot kind, and the wear-off line matches |
+| Max HP and Max MP Down casing (forty-ninth build) | the status list and the battle log for the same effect | both read "Max HP Down" and "Max MP Down"; neither screen reads "MAX" while the other reads "Max" |
 | Loose ends (forty-sixth build) | Menu > Helpful Tips, 70 and 74 | "70. Manage Favorites"; 74. Training, two paragraphs ("In the Wi-Fi Square you can hold Training Battles...") |
 | The second read (forty-fifth build) | Menu > Helpful Tips > 7. Monster Recovery | two paragraphs with a blank line between; the second reads "When a Monster Levels Up, its HP and MP will also be fully restored." |
 | UI labels (forty-fourth build) | Library > Monster: the second page of an entry, the list header, the Model page | "Foe #1" and "Foe #2" whole in their capsules; the header "Unlocked"; "Left" beside the left arrow and "Right" beside the right, unchanged (pushing left turns the model's face to your left) |

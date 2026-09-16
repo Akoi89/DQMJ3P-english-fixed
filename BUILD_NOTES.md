@@ -1522,3 +1522,363 @@ Seen on screen, shipped forty-sixth build: Helpful Tips "70. Manage
 Favorites" and 74 (Training), its two paragraphs.
 
 Both CIAs change. Pack, verification, install and both xdeltas redone.
+
+## Forty-ninth build, 2026-09-16: rounds 44 to 51, the last of the meaning pass and the name consistency sweep
+
+This build carries eight rounds. The forty-seventh and forty-eighth builds
+(rounds 44 to 47) were packed and verified but never released on their own,
+so v2.3 is this build and the eight rounds ship together.
+
+Round 44 (Gemini: A-i, B-i, C-i, D-i, E-i) is a pass over control codes and
+characters rather than wording. Eighteen field lines whose opening speaker
+code did not match the Japanese are mirrored to it; those have not been seen
+on screen, because the lines sit behind specific NPCs a test save could not
+reach. Twelve strings of literal Japanese punctuation that renders on screen,
+a corner bracket, an ideographic full stop, full-width brackets, are swapped
+for their ASCII equivalents. Fifty-three strings carrying an oversized
+ideographic space where a normal space belongs are narrowed. Four more lines
+naming the Book Shop or its bookseller are brought in line with round 43.
+85 distinct labels, 152 sites, 184 rows across both trees.
+
+Round 45 (Gemini: A-i, B-i, C-i) is the 265 labels the meaning pass had
+flagged but no earlier round had changed, read by six drafters in scene.
+Twelve high severity lines had misled the player about the story or about
+what to do: a boss's altar of sacrifice rewritten as kneeling before a "new
+master", a door needing all three of Bundold's minions' keys turned into
+three separate doors each needing one, a village guide's line dropping the
+instruction to find the Prison Key. 110 medium severity lines soften, drop or
+invent a smaller fact elsewhere. The model viewer's rotation labels, which two
+drafters argued over on the text alone, are left as they are, because round 41
+had already settled them by looking at the screen. 141 labels, 257 sites,
+294 rows.
+
+Round 46 (Gemini: B-i, C-i) finishes the meaning pass: the last 193 low
+severity flags, read leaning toward keep because they had already been called
+minor, plus six lines folded in from outside that pool so one fact does not
+end up worded two ways. Five medium fixes and 51 low severity shades of
+meaning, among them six Incarnus Altar location labels that now all read the
+same way rather than one of the six carrying the fix. 51 labels, 103 sites,
+112 rows.
+
+Round 47 (Gemini: A-i, C-i, B settled by A, D-ii) is the reflect family in the
+battle messages. Ten one-shot reflect effects are marked "x1" so they read
+differently on screen from the kind that lasts, matching a distinction the
+status list already makes. Seven "wore off" lines take the form round 43 had
+settled for that file. D-ii is a ruling not to act: the Scout-Q quiz's two
+askers are written with different voices in the Japanese and are left alone in
+English, because a player only ever meets one of them and telling the two
+apart would mean inventing fifty lines of dialogue. 17 labels, 17 sites,
+34 rows.
+
+Round 48 (Gemini: A-i) is the mirror of round 47: 87 Japanese strings in the
+menus, help text and item and trait descriptions that carried two different
+English wordings with no speaker to excuse it, one wording chosen per group by
+four drafters. A trait's evasion bonus no longer reads "really easy" where the
+Japanese carries no intensifier; an item that is a scroll in nine other item
+names stops being called "documents" in the one label that still had it; and
+"during a match" is dropped from two settings lines that had invented it.
+133 labels, 133 sites, 261 rows.
+
+Round 49 (Gemini: A-i, B-i, with B-ii settled as Shadow Noble, Rhapthorne,
+Malroth and Orgodemir) is what round 48's own twelve-character floor had
+hidden underneath it: the short interface strings, monster names and skill
+names. 133 labels were judged legitimately different by context, ATK in a
+narrow stat column against Attack as a battle command, and kept with a stated
+reason; 36 more are unified. The round's own finding is that the monster table
+lists 89 Japanese species names at two ids each, 77 of which already carry the
+same English at both, so the 12 that did not are drift rather than intent.
+Those were settled by which English form the shipped game actually uses more
+often, with four pairs left to Gemini where no measurement pointed either way.
+36 labels, 36 sites, 67 rows.
+
+Round 50 (Gemini: A-i, B-i) corrects an over-application of round 47's D-ii
+ruling by me. Of the 117 groups D-ii had waved through on the grounds that a
+different character can justify a different wording, sixteen turned out to be
+narration and examine text where nobody is speaking, so the excuse does not
+hold. All sixteen groups are unified. B-i settles the battle tactic round 49
+had pulled out: "Psyche Up" on both the menu and the panel, since the shorter
+Japanese term is rendered "Psyche Up" in twelve other strings against "Tension
+Gather" in this one label alone, and its sibling tactic already agrees across
+both screens. 29 labels, 83 sites, 96 rows.
+
+Round 51 carries no Gemini package and needed no new ruling. It exists so that
+round 49's own casing decision does not create a split. Round 49 had settled,
+measured tree-wide, that this game writes "Max HP" and "Max MP" rather than
+"MAX" (628 against 4, and 857 against 3) and changed four battle messages to
+match. Five labels carrying the same Japanese as those four sat outside round
+49's pool: the two status list entries for the same two effects, and three
+item help lines. Left alone, the battle log would have read "Max HP Down"
+while the status screen read "MAX HP Down" for the identical effect. 5 labels,
+5 sites, 8 rows.
+
+Across the eight rounds 492 distinct labels change over 780 file-and-label
+sites and 1,056 rows. The rows run higher than the labels because they count
+the base and update trees separately and because the game ships duplicate
+Field/ and Script/Field/ copies of the field scripts; five labels are rewritten
+by two different rounds, which is why the per-round label counts add to 497
+rather than 492. By tree: 489 labels over 777 sites in the base title, 269
+over 269 in the update.
+
+The chain's own byte diff against the forty-eighth build, which already held
+rounds 44 to 47, reports 255 labels changed in the base title and 177 in the
+update; that figure covers rounds 48 to 51 only, and is a different
+measurement from the label counts above.
+
+Every round applied with 0 problems, and wrapdialogue planned 0 writes
+afterwards, which is what confirms the two strings round 50 writes out
+literally are not re-wrapped and re-glued. verify_pack verdict OK on both
+trees, xdelta round-trip OK on both patches.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  029c1ebf2d65c54657f6f7e2c4e384e3ff5e71dc917acdf20c0ec70b89368095
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  c795f16f7b60439cc4cf7233dad0aadef03fc3b7cea1abaa80b7e36b0242a2fb
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,787,425  5f8ca48fdd68871d8f10f604090615a1fd7eb738a3a8b0949195b686b65c3608
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,736  1c21222c15d835ba903235e27e4dcca45dc50dd10998b2b61288d56efab1ad60
+
+The executable is unchanged, and its changed-word count is corrected here: 117
+words differ, not the 118 the earlier sections of this file and the README
+carried. 118 is the number of rows in the patch table, one of which writes a
+value the code already held. The md5 49ff105d is unaffected. Both CIAs change, so pack,
+verification and both xdeltas were redone.
+
+## Fiftieth build, 2026-09-16: a species is not a family (round 52)
+
+Round 52 (Gemini: A-i, B-i, C-i, D-i, on GEMINI_DQMJ3PRO_ROUND52B.md). v2.3
+had not been published when this was found, so it ships inside v2.3 rather
+than as a release of its own.
+
+This game keeps two separate ideas that the English had tangled. There are
+nine monster families, MK1001 to MK1009, Slime, Dragon, Beast, Nature, Demon,
+Undead, Material, Break and ???, each written in Japanese with the same
+suffix. There are 1,024 species in MonsterKindMessage.mes. Japanese uses one
+word for the family and a different word for the species. Sixteen labels used
+the wrong one: the status screen, the rules panel and the Reactor's analysis
+called a species a "Type"; the Library heading, the fusion panel and three
+fusion help lines called it a "Family"; and the community rules error said it
+restricted entry by "species" when the Japanese restricts by family.
+
+Two pieces of evidence settle it, either sufficient alone. HelpMessage1129
+carries both Japanese words in one rule and the 2021 patch rendered them
+correctly and distinctly, which is why that string is deliberately left
+untouched. And the Manage Favorites milestone says "over 20" of the species
+word, which is an ordinary target for species and impossible for families.
+
+Also left alone: MenuMessageSameKind, which already read "the same species",
+and the three labels whose Japanese is a third word again and correctly read
+"Type", one of which round 49 filled from blank.
+
+Two of the rewritten lines could not take the longer word in their existing
+line breaks, so they are re-wrapped and measured rather than left to overflow:
+the free-battle warning in a 140 px box and the Manage Favorites milestone in
+a 168 px box. wrapdialogue planned 0 writes after the round, which confirms
+nothing was re-broken behind them.
+
+One label to watch on screen: the rules panel label goes to 36 px where its
+Japanese was 30 px, the only string in the round wider than the Japanese its
+pane was built for. The fit checker passes it, but the checker measures the
+label and not the pane, so it is listed in TESTING rather than called verified.
+
+Round 52 alone: 16 labels, 16 sites, 31 rows (base 16, upd 15). Across rounds
+44 to 52 v2.3 now changes 506 distinct labels over 795 sites and 1,087 rows;
+7 labels are rewritten by two rounds, so the per-round counts sum to 513
+rather than 506. By tree: 503 labels over 792 sites in the base title, 283
+over 283 in the update.
+
+A first package for this round, GEMINI_DQMJ3PRO_ROUND52.md, asked the question
+with the two words the wrong way round and was ruled on that framing. It is
+kept as the record and none of it is applied; the corrected package is
+GEMINI_DQMJ3PRO_ROUND52B.md.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  829f3cf8bc43bdf4b71a911d4e8ace7bd7d67f10298382d8208ff46911b93bf6
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  df3403080c649a9722dbadcc427ee99239bbfa9d7a9d1fba29da79ca97674aef
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,787,564  48dcc88c67cdec077a1ae31496fe28a7eeb7963dec561a5562df9ccb216223c8
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,755  5f388458d32c7ff5dd0fb30ad8ee663d87776d56905ecbcd38d042688b9793f8
+
+The executable is unchanged at 117 words. Both CIAs change, so pack,
+verification and both xdeltas were redone.
+
+## Fifty-first build, 2026-09-16: undo one thing round 49 got wrong (round 53)
+
+Round 53 is a regression fix, not a new ruling, and it was found by playing
+the build rather than by any check in the toolchain.
+
+Round 49 found one layout label blank in English where Japanese retail has
+text, and filled it with "Type". That slot is a counter suffix rather than a
+heading: Japanese writes "385 of these kinds" as one run, and English puts a
+bare number there. The game concatenates its own runtime number straight onto
+our string with no separator, so the Library Collection page came out reading
+"385Type", "308Type", "52Type" in seven places. The 2021 patch was right to
+leave the label blank, and round 53 puts it back.
+
+Nothing static could have caught this. Both halves are individually correct
+and the join only exists at draw time, so the width checker never sees the
+number sitting in front of our text. Every other round from 39 to 52 was
+checked for the same shape: this is the only blank any of them filled.
+
+The two sibling labels carrying the same Japanese, in the sort menu, are
+standalone options where "Type" is the right English and are untouched.
+
+Because one of round 49's 36 unified labels is reverted, the settled short
+string count in the release text moves from 169 to 168.
+
+Round 53 alone: 1 label, 2 rows, one per tree. Across rounds 44 to 53 v2.3
+changes 505 distinct labels over 794 sites and 1,089 rows, counting net change
+per label so a label put back to its shipped value is not counted as changed.
+
+Still present and NOT fixed here, seen on the same screen: the Speed Road
+totals read "880Poi/nt", because the point counter suffix ships as "Point"
+while its sibling ships as "pt". That one is a 2021 defect rather than ours
+and is a wording choice, so it goes to review rather than into this build.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  41817cb1ccf03b65954e2909e8a6c943d04e9c17cb2991b31761d6cbda4c4c01
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  20d975e8f8a73753509a74dc91f73d9dee64868a5e52d5d6e8bca01dde727969
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,774,164  000670fa93d4520d0b3b8360ce8f605aa7aebb347ff2970b717d82d77acce42e
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,761  2af07ccf6eb4fe37fd06d775be53a37feda97e0afc02aa025b263edb9b53097b
+
+The executable is unchanged at 117 words. Both CIAs change, so pack,
+verification and both xdeltas were redone.
+
+## Fifty-second build, 2026-09-16: two counters (round 54)
+
+Round 54 (Gemini: A-i, B-i). Neither defect is ours. Both have been in the
+English patch since 2021, and both were found by playing the fifty-first build
+on the same Library screens that exposed our own round 49 regression.
+
+A. Library > Speed Road rendered "880Poi" with "nt" pushed onto the next line.
+The game writes its runtime number and then the label immediately after it,
+with no separator, and "Point" came to 42 px with the number where the field
+was built for the Japanese at 33 px. The game already answers this itself:
+there are three labels for this counter, and the third, on the race screen,
+already shipped "pt" with its Japanese being literally "pt" rather than a
+Japanese counter. So "pt" follows the title's own convention instead of
+inventing a house style, and lands at 28 px. That third label is untouched,
+and the generator asserts it still reads "pt" in both trees.
+
+B. Library > Records counted "# Stealth Box's Found", an apostrophe in a
+plural. It reads "# Stealth Boxes Found". A tree-wide sweep confirmed it was
+the only label of that shape rather than the first of many.
+
+Left alone on purpose: the Records page mixes "# of Wins" with "# Victories",
+and the Japanese varies between its two counter forms in the same way, so the
+English is arguably following it. Sixteen labels, cosmetic, not worth a sweep.
+
+Round 54 alone: 3 labels, 6 rows. Across rounds 44 to 54 v2.3 changes 508
+distinct labels over 797 sites and 1,095 rows, counting net change per label
+so a label put back to its shipped value is not counted as changed.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  d6c89cf0abe76de186d7147c13930589bff10944436c582a2a9d2f02b8bbca12
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  4416c1b7c9a04e97e027929c8173376beae453a42946959a6dc4f106ac9a22a5
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,774,099  383b00c700ea3f2a50f00e9f55e88df662c22487b6e82a36c9124b3848a8126f
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,767  a05e2537c90316b6d1bb984683e73c6187ba6235e60465c3dd2a3b4cfa184fab
+
+The executable is unchanged at 117 words. Both CIAs change, so pack,
+verification and both xdeltas were redone.
+
+## Fifty-third build, 2026-09-16: a number and its unit (round 55)
+
+Round 55 (Gemini: A-i). One label, and the sweep behind it is the reason it
+exists at all.
+
+The partner's Go Scout menu listed its errands as "5min", "15min", "30min".
+The engine writes the number and our unit lands straight against it. That is
+the same shape as two defects already dealt with in this release, one of ours
+reverted in round 53 and one of the 2021 patch's fixed in round 54, but unlike
+those two this one fitted and did not overflow, so it was a question of style
+rather than a defect and went to review rather than being settled here. It now
+reads "5 min".
+
+A correction to the evidence, because the first version of this section had it
+wrong. "30 min" is 31 px and the Japanese it replaces is 27 px, so the English
+here is 4 px WIDER than the Japanese footprint, not narrower. An earlier draft
+of this section said 33 px, which is the point counter from the round 54
+section above and belongs to a different field. The ruling is unaffected: the
+review package carried the correct 27 px and the decision was taken knowing
+the English would be wider. What makes it safe is the pane rather than the
+Japanese: the value is right aligned in a 120 px box and was seen on screen
+with a wide gap before it.
+
+Two sweeps stand behind it, because the one label was never the point.
+
+The first covers strings where one of our own format slots touches a letter
+with no separator. It was run with a 40 character limit and only over the
+Message tree, and the section as first written claimed it covered everything,
+which it did not. Re-run without either restriction: 70 distinct labels tree
+wide, of which 60 are a unit or marker the Japanese writes flush too ("%lsG"
+for gold, "Lv%ls", "x%ls" for a quantity, "%lsW %lsL" for a record) and are
+left alone. The limit hid two real defects, which round 56 fixes.
+
+The second covers the shape that actually produced all three instances, and
+which no static check can see: the label holds no slot at all, and the engine
+writes a number in front of it at draw time. Nothing in the string says so.
+The best available proxy is a label whose entire Japanese is a bare counter,
+one of the characters that only ever follows a numeral, against an English
+word. Five exist. Two are the point labels round 54 fixed. Two are sort menu
+options that are standalone rather than appended. The fifth already ships with
+a LEADING SPACE and renders correctly, which is what settles the question: the
+2021 patch had already solved this once, and round 55 is finishing a standard
+it set rather than importing a new one.
+
+The proxy is a filter and not a proof. All three real instances were found by
+playing the game, and a label whose Japanese is not a bare counter could still
+be appended to something.
+
+Round 55 alone: 1 label, 2 rows. Across rounds 44 to 55 v2.3 changes 509
+distinct labels over 798 sites and 1,097 rows, counting net change per label
+so a label put back to its shipped value is not counted as changed.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  0fe1cdcbd29ce066c636a6f87667539cddc35c789ed184ea8c3157f5188557e3
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  f9128ee5c654b3d4e9c87f7c6cd8f285b53d54f3569383cc2d470541056a36f3
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,774,081  8b55f093c4be8fe240799aef8ebb2a5f9f6b993a7be835562465e411fbadf9e2
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,704  89bcb651561384c120891e52cd42f3aff80bdcfffa713bc5cdd9a46b6cc6d060
+
+The executable is unchanged at 117 words. Both CIAs change, so pack,
+verification and both xdeltas were redone.
+
+## Fifty-fourth build, 2026-09-16: two words that ran into a name (round 56)
+
+No ruling. These are missing spaces producing broken English rather than
+wording calls, and both have been in the patch since 2021.
+
+A disc prompt read "Use" with the disc name jammed onto it, so a player saw
+"UseSunken Ruins Lv3 and freely roam within the disc world?". And Don Mogura,
+handing over a reward, said "I will grant youGold Ring." In both the engine
+writes the name where our sentence leaves a slot, and the space in front of
+that slot was missing.
+
+How they were found is the point. The round 55 sweep claimed to cover every
+string where one of our slots touches a letter. It did not: it capped strings
+at 40 characters and walked only the Message tree, and both of these are
+longer than 40 characters, one of them in a field script. A reviewer refused
+to accept the figure that sweep produced, which is what sent me back to run it
+properly. Without that, both would have shipped in a release whose own notes
+boast about fixing this exact class of defect.
+
+Re-run over the whole tree with no cap: 70 labels where one of our slots
+touches a letter. 60 are a unit or marker the Japanese writes flush too and
+are left alone. These two are the only places in the whole tree where a WORD
+runs into the value, which a second independent sweep confirmed. An earlier
+draft split the remainder into "eight pure slot joins and two"; that split
+is not reproducible from the rule as stated and has been dropped rather
+than defended.
+
+Both new strings are derived from the tree's own bytes by a targeted replace
+rather than typed out, because both carry speaker and colour codes where a
+transcription slip would be invisible. Neither goes through the drafting
+helper, which re-derives whitespace around control codes from the original and
+would have silently dropped the very space being added; that failure mode cost
+this project a rebuild at round 50. wrapdialogue planned 0 writes afterwards,
+which is the check that the spaces survived.
+
+Round 56 alone: 2 labels over 3 sites, 4 rows. (2 label names; one of
+them exists in the Script/Field and Field copies of the same field script,
+and the other in both trees. An earlier draft of this line said "3 labels",
+which counted sites, not labels.) Across rounds 44 to 56 v2.3 changes 510
+distinct labels over 799 sites and 1,101 rows, counting net change per label
+so a label put back to its shipped value is not counted as changed.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,774,026  1097e174bdefa4677169770753d660d28394d779e52df14de607b1ccfdbf2bb4
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            5,681,789  eafd370cd41bc06e331e229a4f037ca388be3a666a7acf0307991a0684e2f310
+
+The executable is unchanged at 117 words. Both CIAs change, so pack,
+verification and both xdeltas were redone.

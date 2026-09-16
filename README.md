@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (thirty-one builds, in dated sections) and `TESTING.md` is the test route.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty dated sections, up to the fifty-fourth build) and `TESTING.md` is the test route.
 
 ## What you get
 
@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,023,808 | 4900d074b2b436da0a1477ad5d764d55cf438b5d1b1dd16f46085ee75597a6d4 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | 5e4b17d3b530b89d546c7d7cd3f69b6e3cff6fa17c34b5628be6bb575863b6cf |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,865,766 | 9eb26b7794abe4240267a9c4bd8375044613d37d72619424bdfcb80eec44be8a |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,682,511 | 2639d7e0101ebe18b50a216c80a9be606222755c7bf3b663b359a5d46dc741dc |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,774,026 | 1097e174bdefa4677169770753d660d28394d779e52df14de607b1ccfdbf2bb4 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,681,789 | eafd370cd41bc06e331e229a4f037ca388be3a666a7acf0307991a0684e2f310 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -56,7 +56,7 @@ Layout is back in the Japanese shape. Every dialogue page and description breaks
 
 Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
 
-One hundred and eighteen words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars"), and neither do Library > Abilities and a monster's skill pages. The hint under the skill-point counter no longer cuts them at 10 ("Venom Brea" for "Venom Breath"), and the Ride Fuse screen (Fusion Info) and the skill-point Info window show whole names too.
+One hundred and seventeen words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars"), and neither do Library > Abilities and a monster's skill pages. The hint under the skill-point counter no longer cuts them at 10 ("Venom Brea" for "Venom Breath"), and the Ride Fuse screen (Fusion Info) and the skill-point Info window show whole names too.
 
 ## Not fixed, known
 
@@ -64,7 +64,7 @@ See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find 
 
 A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is still cut to 11 when the monster is obtained or renamed. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
 
-Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and eighteen words of the update's code (the keyboard tab, the name buffers, the keyboard limit, one built-in prefix, one default greeting). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and none of the changed words is within 32 bytes of them, so the two should coexist. I haven't run them together.
+Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and seventeen words of the update's code (the keyboard tab, the name buffers, the keyboard limit, one built-in prefix, one default greeting). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and none of the changed words is within 32 bytes of them, so the two should coexist. I haven't run them together.
 
 ## Credits
 
