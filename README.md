@@ -46,17 +46,46 @@ Yes, the base patch turns a `.cci` into a `.cia`. That's deliberate: the decrypt
 
 The short version. `FIXES.md` has a paragraph on each.
 
-The crash is gone. The 2021 patch shipped a broken font that crashed the game for some players at The Core, the cutscene after the Break Archdemon boss; both CIAs now carry the corrected font from Lurpigi's Italian project, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes people reported in 2021 were already fixed in Eiz's 2021-05-30 build, which is what this starts from.
+**Crashes and soft-locks**
 
-Every text layer was proofread: the help text (3,570 strings), the quest and hint text (1,007 lines, each checked against the Japanese), the dialogue (5,697 strings) and the menus (1,614 strings). Just over a thousand spelling, agreement and wrong-word slips are fixed, 167 untranslated strings are translated, and about 150 lines that said something the Japanese doesn't now say what it says. Names are spelled the same way in dialogue, menus and tables.
+- The crash at The Core, the cutscene after the Break Archdemon boss. Both CIAs carry Lurpigi's corrected font, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes from 2021 were already fixed in Eiz's 2021-05-30 build, which this starts from.
+- Five yes/no prompts that had lost their prompt code and closed before you could choose, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm) that locked you out of the later races. Every line's control codes now match the Japanese line's.
 
-Since v2.0 the meaning is checked too. Every translated string that differs from the Japanese, 12,563 of them (the bestiary, the trait, ability, item and help descriptions, the story and field dialogue, and the menus, tips, battle messages, diary and trophies), was read against the Japanese for what it says, and 1,573 that said something else are corrected: a bestiary entry with its story backwards, a trait that claimed to increase Ice damage when it gives Ice resistance, Sizz spells dealing "Fire" damage, Sancho telling the amnesiac hero "Try not to forget" where the Japanese tells him it's fine to leave the past forgotten, trophy conditions one short ("more than 100" for "100 or more"), menu prompts that described the opposite of what the button does.
+**What the text says**
 
-Layout is back in the Japanese shape. Every dialogue page and description breaks between words at its box edge (the engine wraps by character), page-break codes sit where the Japanese puts them, and no page runs to a third line where the Japanese has two. 101 UI textures and 60 layout text panes that were still Japanese are English, and 135 labels that ran letters together ("Iems") have their spacing fixed.
+- Every translated string that differs from the Japanese, 12,563 of them, was read against the Japanese for meaning, and 1,573 that said something else are corrected. A second read of every line that passed caught 261 more, and the last rounds 192 more.
+- Bestiary entries with their story backwards or invented, like the Liquid Metal King's.
+- Descriptions that got the effect wrong: Sizz spells dealing "Fire" damage, a trait that claimed to increase Ice damage when it gives Ice resistance, nineteen counter traits with attacker and target swapped.
+- Story and guidance lines that sent you the wrong way: Sancho telling the amnesiac hero "Try not to forget", a door that needs all three of Bundold's minions' keys turned into three doors, a village guide who dropped the instruction to find the Prison Key.
+- Menu prompts that described the opposite of what the button does, the Gold Bank's Deposit and Pocket labels swapped, and 54 trophy conditions one short ("more than 100" for "100 or more").
+- Every quest instruction, hint, signpost, shop and guidance line (1,007) checked for whether it's true: 125 now say what the Japanese says.
+- 167 untranslated strings translated.
 
-Every line's control codes match the Japanese line's. Five yes/no prompts had lost their prompt code, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm, where the yes/no box never appeared), which closed before you could choose and locked you out of the later races.
+**Spelling and names**
 
-One hundred and seventeen words are changed in the update's executable. The name-entry keyboard opens on the Latin "Aa" tab. Item names aren't cut at 14 characters any more ("Strong Medicin"), monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim"), and the rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name. Three more panels no longer cut at 14: the status screen's Skill panel ("Wisdom Boost EX"), the Library's Basic Info header ("Metal Pearl Slime") and the Monsters list under Library > Skill. The Teaches list of a skill set, under Allocate Skill Points and Library > Skill, no longer cuts action names at 18 ("Miracle of the Sta" for "Miracle of the Stars"), and neither do Library > Abilities and a monster's skill pages. The hint under the skill-point counter no longer cuts them at 10 ("Venom Brea" for "Venom Breath"), and the Ride Fuse screen (Fusion Info) and the skill-point Info window show whole names too.
+- Every text layer proofread: the help text (3,570 strings), the dialogue (5,697), the menus (1,614) and the Helpful Tips. Just over a thousand spelling, agreement and wrong-word slips fixed.
+- One name for one thing, spelled the same in dialogue, menus and tables: skill books named after the skill they teach, Moreheal instead of Fullheal where the Japanese means Moreheal, Terrorceratops and Tyrannoceratops no longer swapped, Ground Zero, the Demon Realm Gate, Madame Rummy.
+- Fusion is "fuse" and "fusion" everywhere, where it had five English names.
+- Species and family kept apart: the status screen called a species a "Type", the Library called it a "Family", and the community rules restricted by "species" when they restrict by family.
+- The same Japanese line reads the same way everywhere: 168 interface strings, monster names and system lines settled, "Psyche Up" on both the menu and its panel, one-shot battle reflects marked "x1".
+
+**Layout and graphics**
+
+- Every dialogue page and description breaks between words at its box edge (the engine wraps by character), page-break codes sit where the Japanese puts them, and no page runs to a third line where the Japanese has two.
+- 101 UI textures and 60 layout text panes that were still Japanese are English, plus the boot notice and the home screen title.
+- 135 labels whose letters ran together ("Iems") have their spacing fixed.
+- The resistance tables, sort-mode headers and family rows no longer overprint or clip.
+- Numbers and names the game writes into a line no longer land glued to the text ("880Poi", "385Type", "I will grant youGold Ring.").
+
+**Names that were cut off (117 words changed in the update's executable)**
+
+- The name-entry keyboard opens on the Latin "Aa" tab.
+- Item names aren't cut at 14 characters any more ("Strong Medicin").
+- Monster names aren't cut at 10 in the Library or the Manage Monsters header ("Metal Slim").
+- Skill and action names aren't cut at 14 on the status screen's Skill panel, the Library's Basic Info header and Library > Skill ("Wisdom Boost EX").
+- Action names aren't cut at 18 in the Teaches list, Library > Abilities, a monster's skill pages, the Ride Fuse screen and the skill-point Info window ("Miracle of the Stars"), or at 10 in the hint under the skill-point counter ("Venom Breath").
+- The rename keyboard takes 11 characters instead of 8, so renaming no longer shortens a name.
+- A fused monster's name no longer carries a Japanese prefix.
 
 ## Not fixed, known
 
