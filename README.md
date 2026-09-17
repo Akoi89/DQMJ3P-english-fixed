@@ -50,7 +50,7 @@ The short version. `FIXES.md` has a paragraph on each.
 
 **Crashes and soft-locks**
 
-- The crash at The Core, the cutscene after the Break Archdemon boss. Both CIAs carry Lurpigi's corrected font, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes from 2021 were already fixed in Eiz's 2021-05-30 build, which this starts from.
+- The crash at The Core, the cutscene after the Break Archdemon boss. Both CIAs carry Lurpigi's corrected font, with the four glyphs the Ver.1.3 update added (three kanji and the crystal icon) appended, so every character the text uses exists in both fonts. The chest and transfer crashes from 2021 were already fixed in the 2021-05-30 build, which this starts from.
 - Five yes/no prompts that had lost their prompt code and closed before you could choose, among them the Rank ★★ and ★★★ Speed Road prompts (the second conduit in the Incarnus realm) that locked you out of the later races. Every line's control codes now match the Japanese line's.
 
 **What the text says**
@@ -99,6 +99,6 @@ Online-only content (the Wi-Fi Square shop, the download monsters and events, St
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project), as compiled and released for Professional by Eiz on the woodus.com forum (the 2021-05-30 build). Eiz's own thread records that the Professional text came from that team without their full consent, so this rebuild credits the team as the authors of every line it didn't write, and Eiz for the patch it started from. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting. Every wording decision was reviewed and every change checked against the shipped files. This rebuild only fixes what was broken; it doesn't claim the translation.
