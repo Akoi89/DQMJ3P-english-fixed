@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty dated sections, up to the fifty-fourth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-one dated sections, up to the fifty-fourth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -12,19 +12,21 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 |---|---:|---|
 | `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2 |
 | `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,774,026 | 1097e174bdefa4677169770753d660d28394d779e52df14de607b1ccfdbf2bb4 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 5,681,789 | eafd370cd41bc06e331e229a4f037ca388be3a666a7acf0307991a0684e2f310 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,586,914 | 171ad8f8d9343a2d05cf81c3f9e175cfc7a6647a146194fdff08b3df11bca326 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,634,988 | d98e95b67936e1eea01333ea8eaec20ccd3e4cf2026ce73749e65ac020061e00 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
 ## Applying the patches
 
-The patches are made against the Japanese retail files AFTER they've been decrypted with Batch CIA 3DS Decryptor (the standard tool; it turns the game CIA into a decrypted `.cci` and the update CIA into a decrypted `.cia`). Feed those two output files straight to xdelta. Don't rebuild, trim or re-pack them with anything else first. They must match these exactly:
+The patches are made against the Japanese retail files AFTER they've been decrypted with Batch CIA 3DS Decryptor (the standard tool; it turns the game CIA into a decrypted `.cci` and the update CIA into a decrypted `.cia`). Feed those two output files straight to xdelta. Don't rebuild, trim or re-pack them with anything else first.
 
-| Source | Size | SHA-256 |
-|---|---:|---|
-| Japanese base, decrypted `.cci` (title 00040000001ACB00, CTR-P-BDQJ) | 1,591,599,104 | 79078f60ebe030693efe3900b9e7d2d7d3e45888b2f1b8e97189ec5e0f744172 |
-| Japanese Ver.1.3 update, decrypted `.cia` (title 0004000E001ACB00, v3.4.0) | 15,725,568 | ec75431825c48507dbba3a9fa6dea57fbb3ef36cf7c4fe1b8791314eb1dde4a1 |
+Your decrypted files won't have the same SHA-256 as mine, and that's fine. The decryptor writes random bytes into every file it makes (a card seed in the `.cci`, ticket bytes in the update `.cia`), and dumps from different places can carry different tickets. Since v2.4 the patches don't depend on any of that; v2.3 and earlier did, which is why the update patch failed with a checksum mismatch for some people. What has to match is the game itself, so check the sizes:
+
+| Source | Size |
+|---|---:|
+| Japanese base, decrypted `.cci` (title 00040000001ACB00, CTR-P-BDQJ) | 1,591,599,104 |
+| Japanese Ver.1.3 update, decrypted `.cia` (title 0004000E001ACB00, v3.4.0) | 15,725,568 |
 
 The easy way: run `patches/apply_patches.bat` with the two decrypted files as its arguments, or drag both onto it. It uses the bundled `xdelta3.exe` (3.2.0, Apache License 2.0) and writes the two CIAs next to the patches.
 
@@ -38,7 +40,7 @@ xdelta3 -d -B 1879048192 -s "<japanese base decrypted>.cci" DQMJ3P-base-fixed-0.
 xdelta3 -d -B 268435456 -s "<japanese update decrypted>.cia" DQMJ3P-update-fixed-3.4.0.xdelta DQMJ3P-update-fixed-3.4.0.cia
 ```
 
-The `-B` values are the source window sizes the patches were made with; the base one needs about 2 GB of free RAM while decoding. Check the output against the SHA-256 table above. Both patches were verified to decode byte for byte on the machine that made them.
+The `-B` values are the source window sizes the patches were made with; the base one needs about 2 GB of free RAM while decoding. Check the output against the SHA-256 table above. Both patches were checked to give exactly those CIAs from a fresh decrypt and from copies whose header bytes (card seed, certificates, ticket, TMD) were overwritten with random data. If you get a checksum mismatch now, the file isn't the Japanese Ver.1.3 update or base; please don't force it with `-n`, since that builds a CIA with the wrong bytes in it.
 
 Yes, the base patch turns a `.cci` into a `.cia`. That's deliberate: the decryptor produces a `.cci` for game titles, and a `.cia` is what installs.
 

@@ -33,6 +33,6 @@ exit /b 0
 :fail
 echo.
 echo xdelta3 reported an error. The usual cause is a source file that is not the decrypted Japanese file
-echo described in README.md (compare its SHA-256), or the two arguments swapped with equal sizes.
+echo described in README.md (compare its size), or not the Japanese Ver.1.3 update.
 pause
 exit /b 1

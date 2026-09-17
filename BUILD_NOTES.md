@@ -1882,3 +1882,29 @@ so a label put back to its shipped value is not counted as changed.
 
 The executable is unchanged at 117 words. Both CIAs change, so pack,
 verification and both xdeltas were redone.
+
+## Patches that take anyone's decrypt, 2026-09-16 (v2.4)
+
+No text or code changed and both CIAs are byte for byte the v2.3 ones. Only the two xdeltas are new.
+
+A romhacking.net review and a Discord user both hit "checksum mismatch" on the update patch with their own
+decrypted update (one from hshop). The v2.3 patches were encoded against my own decrypted files, and xdelta
+had taken bytes for the output from their CIA header area: certificates, ticket and TMD. Those differ between
+dumps, and Batch CIA 3DS Decryptor also writes random bytes every run (the card seed at 0x1010..0x103B of the
+.cci, ticket bytes from 0x2BFF of the update .cia; two fresh runs on the same retail CIA differ only there).
+Overwriting the ticket, the certificates or the TMD of my decrypted update with random bytes made the v2.3
+update patch fail with exactly that error. A fresh decrypt of the same retail CIA happened to still work,
+which is why this went unnoticed.
+
+The new patches are encoded the way the TGAA and Puyo Puyo Tetris patches already were: against a copy of
+the source whose whole header area (0x0..0x3940 of the update, 0x0..0x4000 of the base) is scrambled, so
+those output bytes are stored in the patch instead of copied. Each was then applied to the real source, two
+copies with the volatile bytes re-randomised, one with the whole header area randomised and a brand-new
+decrypt, and every time gave the CIA below. Scripts: _audit/build_xdelta_tolerant.py,
+_audit/header_tolerance_test.py, _audit/fresh_decrypt_test.sh. Secondary compression is now djw instead
+of LZMA.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,586,914  171ad8f8d9343a2d05cf81c3f9e175cfc7a6647a146194fdff08b3df11bca326
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,634,988  d98e95b67936e1eea01333ea8eaec20ccd3e4cf2026ce73749e65ac020061e00
