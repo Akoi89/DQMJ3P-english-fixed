@@ -30,7 +30,7 @@ Your decrypted files won't have the same SHA-256 as mine, and that's fine. The d
 | Japanese base (CTR-P-BDQJ) | 00040000001ACB00 | 0.1.0 (16) | 1,591,612,416 | 1,591,599,104 (`.cci`) |
 | Japanese Ver.1.3 update (CTR-U-BDQJ) | 0004000E001ACB00 | 3.4.0 (3136) | 15,725,568 | 15,725,568 (`.cia`) |
 
-Check the `.cia` sizes before you decrypt anything, since the decrypt takes a while and a wrong file can only fail at the end of it. The base is the one people get wrong. If yours isn't 1,591,612,416 bytes it's a repack, a cartridge dump or a build with the update already merged in, and no patch can bridge that. There's only one correct Japanese base and the numbers above are what hShop lists for it.
+Check the `.cia` sizes before you decrypt anything, since the decrypt takes a while and a wrong file can only fail at the end of it. The base is the one people get wrong. If yours isn't 1,591,612,416 bytes it's a repack, a cartridge dump or a build with the update already merged in, and no patch can bridge that. There's only one correct Japanese base and the numbers above are what hShop lists for it. On hShop and in most dump filenames it's listed as `ドラゴンクエストモンスターズ - Joker 3 PROFESSIONAL`, product code CTR-P-BDQJ. The game's own banner writes that as `ドラゴンクエストモンスターズ` on one line and `Joker 3 PROFESSIONAL` on the next; the hyphen is just how the dump tools flatten the line break.
 
 Which build of the decryptor you use makes no difference to this. The `.cci` it writes is a 16 KiB header followed by the CIA's two contents back to back with no padding, and both of those sizes are recorded inside the CIA, so the same `.cia` always comes out at the same length whatever tool you run.
 
@@ -58,7 +58,7 @@ The section above is the short version for people who already dump and decrypt t
 
 Before you start: your two source files have to be **encrypted** CIA dumps of the Japanese originals that you decrypt on your PC with the tool below. Don't use GodMode9's own decrypt or trim option. That hands you a file of exactly the right size with different bytes inside, and re-running the PC decryptor on it doesn't fix it. A matching file size proves nothing, only the hash does. Nearly every "target window checksum mismatch" report so far has turned out to be this.
 
-1. Get your encrypted game CIA and encrypted update CIA, both Japanese originals.
+1. Get your encrypted game CIA and encrypted update CIA, both Japanese originals. The game is `ドラゴンクエストモンスターズ - Joker 3 PROFESSIONAL` (CTR-P-BDQJ) and the update is its Ver.1.3 patch (CTR-U-BDQJ).
 2. Get Batch CIA 3DS Decryptor from [GBAtemp](https://gbatemp.net/download/batch-cia-3ds-decryptor.35098/download?version=35152).
 3. Extract it to a new folder.
 4. Put the two encrypted CIA files in there, rename the game to `game.cia` and the update to `update.cia`.
@@ -74,6 +74,8 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 14. Open FBI on your 3DS. If your 3DS was modded with the commonly recommended guide, you already have it.
 15. Go to SD, then to whatever folder you copied the two fixed CIAs into.
 16. Install the base first, then the update. Both are needed.
+
+Thanks to oho, who wrote these steps out for someone on Reddit.
 
 ## What's fixed
 
@@ -130,6 +132,6 @@ Online-only content (the Wi-Fi Square shop, the download monsters and events, St
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough above is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting. Every wording decision was reviewed and every change checked against the shipped files. This rebuild only fixes what was broken; it doesn't claim the translation.
