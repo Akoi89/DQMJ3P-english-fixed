@@ -75,7 +75,7 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 15. Go to SD, then to whatever folder you copied the two fixed CIAs into.
 16. Install the base first, then the update. Both are needed.
 
-Thanks to oho, who wrote these steps out for someone on Reddit.
+Thanks to oho, who wrote these steps out on Discord.
 
 ## What's fixed
 
