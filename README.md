@@ -34,6 +34,8 @@ Check the `.cia` sizes before you decrypt anything, since the decrypt takes a wh
 
 Which build of the decryptor you use makes no difference to this. The `.cci` it writes is a 16 KiB header followed by the CIA's two contents back to back with no padding, and both of those sizes are recorded inside the CIA, so the same `.cia` always comes out at the same length whatever tool you run.
 
+Never done this before, or something already went wrong? [Step by step, if you're having trouble](#step-by-step-if-youre-having-trouble) walks through the whole process one click at a time.
+
 The easy way: run `patches/apply_patches.bat` with the two decrypted files as its arguments, or drag both onto it. It uses the bundled `xdelta3.exe` (3.2.0, Apache License 2.0) and writes the two CIAs next to the patches.
 
 By hand, with xdelta3 (3.1 or newer; the patches carry no application header, so you name both files yourself):
@@ -49,6 +51,29 @@ xdelta3 -d -B 268435456 -s "<japanese update decrypted>.cia" DQMJ3P-update-fixed
 The `-B` values are the source window sizes the patches were made with; the base one needs about 2 GB of free RAM while decoding. Check the output against the SHA-256 table above. Both patches were checked to give exactly those CIAs from a fresh decrypt and from copies whose header bytes (card seed, certificates, ticket, TMD) were overwritten with random data. If you get a checksum mismatch now, the file isn't the Japanese Ver.1.3 update or base; please don't force it with `-n`, since that builds a CIA with the wrong bytes in it.
 
 Yes, the base patch turns a `.cci` into a `.cia`. That's deliberate: the decryptor produces a `.cci` for game titles, and a `.cia` is what installs.
+
+## Step by step, if you're having trouble
+
+The section above is the short version for people who already dump and decrypt their own games. If any of it went wrong, or you've never done this before, here's the whole thing click by click.
+
+Before you start: your two source files have to be **encrypted** CIA dumps of the Japanese originals that you decrypt on your PC with the tool below. Don't use GodMode9's own decrypt or trim option. That hands you a file of exactly the right size with different bytes inside, and re-running the PC decryptor on it doesn't fix it. A matching file size proves nothing, only the hash does. Nearly every "target window checksum mismatch" report so far has turned out to be this.
+
+1. Get your encrypted game CIA and encrypted update CIA, both Japanese originals.
+2. Get Batch CIA 3DS Decryptor from [GBAtemp](https://gbatemp.net/download/batch-cia-3ds-decryptor.35098/download?version=35152).
+3. Extract it to a new folder.
+4. Put the two encrypted CIA files in there, rename the game to `game.cia` and the update to `update.cia`.
+5. Run `Batch CIA 3DS Decryptor.bat`. It takes a while on the base.
+6. You should now have `game-decrypted.cci` and `update (Patch)-decrypted.cia` in that folder.
+7. Download [DQMJ3P-english-fixed-patches-v2.4.zip](https://github.com/Akoi89/DQMJ3P-english-fixed/releases/download/v2.4/DQMJ3P-english-fixed-patches-v2.4.zip) from the releases page.
+8. Extract it to another new folder.
+9. Copy `game-decrypted.cci` and `update (Patch)-decrypted.cia` into that patch folder.
+10. Select both of them and drag them onto `apply_patches.bat`.
+11. If this stops with a checksum mismatch, go back to how you dumped the CIAs. They need to be encrypted dumps decrypted on the PC, not decrypted or trimmed by GodMode9. Check the source sizes in the table above too.
+12. You should now have `DQMJ3P-base-fixed-0.1.0.cia` and `DQMJ3P-update-fixed-3.4.0.cia`.
+13. Copy both to your 3DS SD card.
+14. Open FBI on your 3DS. If your 3DS was modded with the commonly recommended guide, you already have it.
+15. Go to SD, then to whatever folder you copied the two fixed CIAs into.
+16. Install the base first, then the update. Both are needed.
 
 ## What's fixed
 
