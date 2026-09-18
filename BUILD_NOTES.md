@@ -1888,7 +1888,7 @@ verification and both xdeltas were redone.
 No text or code changed and both CIAs are byte for byte the v2.3 ones. Only the two xdeltas are new.
 
 A romhacking.net review and a Discord user both hit "checksum mismatch" on the update patch with their own
-decrypted update (one from hshop). The v2.3 patches were encoded against my own decrypted files, and xdelta
+decrypted update. The v2.3 patches were encoded against my own decrypted files, and xdelta
 had taken bytes for the output from their CIA header area: certificates, ticket and TMD. Those differ between
 dumps, and Batch CIA 3DS Decryptor also writes random bytes every run (the card seed at 0x1010..0x103B of the
 .cci, ticket bytes from 0x2BFF of the update .cia; two fresh runs on the same retail CIA differ only there).
