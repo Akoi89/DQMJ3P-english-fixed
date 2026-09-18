@@ -34,7 +34,7 @@ Check the `.cia` sizes before you decrypt anything, since the decrypt takes a wh
 
 Which build of the decryptor you use makes no difference to this. The `.cci` it writes is a 16 KiB header followed by the CIA's two contents back to back with no padding, and both of those sizes are recorded inside the CIA, so the same `.cia` always comes out at the same length whatever tool you run.
 
-Never done this before, or something already went wrong? [Step by step, if you're having trouble](#step-by-step-if-youre-having-trouble) walks through the whole process one click at a time.
+Never done this before, or something already went wrong? [Step by step, if you're having trouble](#step-by-step-if-youre-having-trouble) walks through the whole process one click at a time. On Linux, see [On Linux](#on-linux) instead.
 
 The easy way: run `patches/apply_patches.bat` with the two decrypted files as its arguments, or drag both onto it. It uses the bundled `xdelta3.exe` (3.2.0, Apache License 2.0) and writes the two CIAs next to the patches.
 
@@ -76,6 +76,38 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 16. Install the base first, then the update. Both are needed.
 
 Thanks to oho, who wrote these steps out on Discord.
+
+## On Linux
+
+The walkthrough above leans on two Windows things, Batch CIA 3DS Decryptor and `apply_patches.bat`. Neither is special. All the patches need is the Japanese base decrypted to a `.cci` of exactly 1,591,599,104 bytes, the Japanese update decrypted to a `.cia` of exactly 15,725,568 bytes, and xdelta3. Getting there on Linux is the same job with different tools.
+
+Dumping doesn't change: pull both titles off the 3DS with GodMode9 as **encrypted** CIAs, no decrypt option and no trim option, and copy them to your computer. Everything below happens on the PC.
+
+1. Install xdelta3: `sudo apt install xdelta3` on Debian or Ubuntu, `sudo dnf install xdelta` on Fedora, `sudo pacman -S xdelta3` on Arch. Version 3.1 or newer.
+2. Get [rom-converto](https://github.com/DevYukine/rom-converto/releases/latest), which does the decrypting. Grab the CLI build for your system, `chmod +x` it, rename it to `rom-converto` and put it somewhere on your `PATH`.
+3. Decrypt both files:
+   ```
+   rom-converto ctr decrypt "<japanese base>.cia"
+   rom-converto ctr decrypt "<japanese update>.cia"
+   ```
+4. Turn the decrypted base into a `.cci`, which is the form the base patch expects:
+   ```
+   rom-converto ctr convert "<decrypted base>.cia"
+   ```
+   Run `rom-converto ctr --help` if that doesn't match your build. Its flags have moved between releases and the help output is the authority, not this README.
+5. Check the two sizes before you go any further. The base has to be **1,591,599,104** bytes as a `.cci` and the update **15,725,568** bytes as a `.cia`. If your `.cci` is larger, it's very likely padded out to a card size; the patch needs the untrimmed-but-unpadded layout, which is a 16 KiB header followed by the CIA's two contents back to back.
+6. Apply both patches:
+   ```
+   xdelta3 -d -B 1879048192 -s "<japanese base decrypted>.cci" DQMJ3P-base-fixed-0.1.0.xdelta DQMJ3P-base-fixed-0.1.0.cia
+   ```
+   ```
+   xdelta3 -d -B 268435456 -s "<japanese update decrypted>.cia" DQMJ3P-update-fixed-3.4.0.xdelta DQMJ3P-update-fixed-3.4.0.cia
+   ```
+   The base one wants about 2 GB of free RAM while it decodes.
+7. Check what came out against the hash table near the top: `sha256sum DQMJ3P-base-fixed-0.1.0.cia DQMJ3P-update-fixed-3.4.0.cia`.
+8. Copy both CIAs to the 3DS SD card, open FBI, and install the base first and then the update.
+
+Fair warning on step 4: I've built and checked these patches on Windows, and nobody has yet reported back from the Linux route end to end, so that conversion step is the one I can't vouch for. The size in step 5 is what tells you whether it worked. If rom-converto won't give you a `.cci` of the right length, both Windows tools run under Wine, and that's the same code path everyone else is using.
 
 ## What's fixed
 
