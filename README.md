@@ -21,12 +21,18 @@ Install the base first, then the update. Both are needed: the update carries the
 
 The patches are made against the Japanese retail files AFTER they've been decrypted with Batch CIA 3DS Decryptor (the standard tool; it turns the game CIA into a decrypted `.cci` and the update CIA into a decrypted `.cia`). Feed those two output files straight to xdelta. Don't rebuild, trim or re-pack them with anything else first.
 
+> **Dump both titles as encrypted CIAs and decrypt them on the PC.** If you're pulling them off a 3DS with GodMode9, dump each title to CIA with no decrypt and no trim option, copy those to your computer, and run the decryptor there. GodMode9's own decrypt hands you a file of the **right size** that isn't the same bytes, and the patch will refuse it. That has now caught several people, so a size matching the table below is not proof the file is right. On Linux, [rom-converto](https://github.com/DevYukine/rom-converto) does the same job: decrypt both CIAs, then convert the decrypted game CIA to a trimmed `.3ds`/`.cci`.
+
 Your decrypted files won't have the same SHA-256 as mine, and that's fine. The decryptor writes random bytes into every file it makes (a card seed in the `.cci`, ticket bytes in the update `.cia`), and dumps from different places can carry different tickets. Since v2.4 the patches don't depend on any of that; v2.3 and earlier did, which is why the update patch failed with a checksum mismatch for some people. What has to match is the game itself, so check the sizes:
 
-| Source | Size |
-|---|---:|
-| Japanese base, decrypted `.cci` (title 00040000001ACB00, CTR-P-BDQJ) | 1,591,599,104 |
-| Japanese Ver.1.3 update, decrypted `.cia` (title 0004000E001ACB00, v3.4.0) | 15,725,568 |
+| Source | Title ID | Version | Size as a `.cia` | Size once decrypted |
+|---|---|---|---:|---:|
+| Japanese base (CTR-P-BDQJ) | 00040000001ACB00 | 0.1.0 (16) | 1,591,612,416 | 1,591,599,104 (`.cci`) |
+| Japanese Ver.1.3 update (CTR-U-BDQJ) | 0004000E001ACB00 | 3.4.0 (3136) | 15,725,568 | 15,725,568 (`.cia`) |
+
+Check the `.cia` sizes before you decrypt anything, since the decrypt takes a while and a wrong file can only fail at the end of it. The base is the one people get wrong. If yours isn't 1,591,612,416 bytes it's a repack, a cartridge dump or a build with the update already merged in, and no patch can bridge that. There's only one correct Japanese base and the numbers above are what hShop lists for it.
+
+Which build of the decryptor you use makes no difference to this. The `.cci` it writes is a 16 KiB header followed by the CIA's two contents back to back with no padding, and both of those sizes are recorded inside the CIA, so the same `.cia` always comes out at the same length whatever tool you run.
 
 The easy way: run `patches/apply_patches.bat` with the two decrypted files as its arguments, or drag both onto it. It uses the bundled `xdelta3.exe` (3.2.0, Apache License 2.0) and writes the two CIAs next to the patches.
 
