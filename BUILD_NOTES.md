@@ -2033,9 +2033,11 @@ screen since the service closed, but the words cost nothing.
 **One more, from a question asked while testing.** The naming keyboard after a
 scout pre-filled two letters of the species name, "Ja" for a Jailcat. That is
 the keyboard's own mode-3 path in `menu/name.arc`'s init, `mov r1,#2` at
-`0x22ad9c`, where every other mode pre-fills its whole initial text. It is
-eleven now, which the callee clamps to the keyboard's slot count, so a scouted
-Demon-at-arms is offered "Demon-at-ar".
+`0x22ad9c`, where every other mode pre-fills its whole initial text. It passes
+zero now, which makes the callee use the name's own length, clamped to the
+keyboard's slot count, so a scouted Demon-at-arms is offered "Demon-at-ar". The
+first attempt passed eleven instead and crashed the game; the fifty-seventh
+build section below is that story.
 
 **How it was measured.** Azahar's GDB stub on the shipped v2.5 update code,
 with write watchpoints on an enemy record's name field. Two Halberdsaurus read
@@ -2080,9 +2082,69 @@ character eleven means nothing after the name is ever drawn or compared.
 Both CIAs change. The code words are in the update, and round 58's eight
 suffix strings are in both trees, so `LayoutMessage.mes` differs in each: eight
 labels per CIA and nothing else. The executable is 154 words, md5
-`cd5828a5`.
+`cd5828a5`. That build crashed on the naming keyboard and was replaced the
+same night; the fifty-seventh build section below is the fix, and its md5 is
+`f6b40eef`.
 
   DQMJ3P-base-fixed-0.1.0.cia                     1,596,019,712  55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  746430cdf3050b846d117d0d0779ffdae6182ba1a1fcd6bfc1735a16f5aa76ff
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,656,705  77cdd2816b879942d3c5e5c7f66e76a6f70c99848f5489d3ff9b7ba14b9fca70
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,727,396  020ffec19abd0e1e643d41d70782103740d86aabd45adaa509d99226b65e6a94
+
+## Fifty-seventh build, 2026-09-19: the naming keyboard crashed the game (v2.6.1)
+
+Reported within the hour by famicom, on hardware, with a photograph of the
+crash screen: fusing a monster killed the game when the name entry screen
+opened, and it reproduced on other fusions too. This one was mine, introduced
+by the fifty-sixth build, and it is worth writing down properly because the
+mistake was avoidable and the evidence that would have caught it was in the
+same screenful of disassembly as the change.
+
+**What the crash was.** The exception screen said prefetch abort on svcBreak,
+which is a deliberate panic rather than a wild jump, so something in the game
+chose to stop. The keyboard fills its slots by asking `0x3212ec` for character
+i of the initial text, once per slot, and that function bounds-checks:
+
+    00321340  cmp  r0, r6          ; the string's length against the index asked for
+    00321344  bhs  #0x321360       ; in range, carry on
+    00321348  ldr  r2, [pc, ...]   ; otherwise the assert message
+    0032135c  blx  #0x2ff628       ; and abort
+
+The fifty-sixth build passed a literal eleven as the number of slots to fill,
+so the keyboard asked for characters 0 to 10 of whatever name it was given. Any
+name shorter than eleven characters therefore asked for a character that does
+not exist and hit that abort. A fused monster's name is short. So is nearly
+every monster you scout.
+
+**Why testing missed it.** The one screen it was tested on was a scouted
+Demon-at-arms, thirteen characters, where every index from 0 to 10 happens to
+exist. A Slime would have crashed instantly. That is the whole lesson: the case
+that was checked was the case that could not fail, and the shortest input is
+the one a length change has to be tried on.
+
+**The fix, one word.** `0x22ad9c` passes zero instead of eleven. The callee
+treats zero as "use the initial text's own length":
+
+    0022b2dc  cmp  r1, #0
+    0022b2e8  beq  #0x22b318
+    0022b318  ldr  r0, [r4, #0x64]    ; the initial-text object
+    0022b320  ldr  r5, [r0, #-4]      ; its real length
+    0022b324  b    #0x22b2ec          ; and on into the usual clamp to the slot count
+
+so the count is the smaller of the name's length and the slots, and can never
+name a character that is not there. Zero is also exactly what every other
+keyboard mode passes, at `0x22acc0`, four instructions above the line the
+fifty-sixth build edited. The correct value was on screen at the time.
+
+The advertised behaviour does not change: the whole species name is still
+pre-filled, up to the eleven slots. The executable is still 154 words; one of
+them has a different value. md5 `f6b40eef`.
+
+Only the update changes. Checked on the rig before this was released, on a
+short species name and a long one, which is the check the fifty-sixth build
+should have had.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,019,712  55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  af585a81651a0a625d930733984ede57933e673c411249d3d6adfa070d187067
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,656,678  a375431094bafb2e16662fb860286d978a5110e3f8cd4186515879faa218a542
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,761  d2448699b15b7b221109f4bf2229a266e4b6bd06b0cbda656cd4901a75fecaeb

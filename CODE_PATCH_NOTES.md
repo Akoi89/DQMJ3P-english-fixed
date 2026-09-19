@@ -154,8 +154,12 @@ same 24-byte field with a 24-character bound, so a long name runs over the
 species id. Both are twelve now.
 
 The naming keyboard after a scout pre-fills two characters: `mov r1,#2` at
-`0x22ad9c`, the mode-3 branch of `menu/name.arc`'s init. Eleven now; the
-callee clamps it to the keyboard's slot count.
+`0x22ad9c`, the mode-3 branch of `menu/name.arc`'s init. Pass **zero**, not a
+bigger literal. Zero makes the callee read the initial text's own length and
+clamp that to the slot count; a literal makes it ask for that many characters
+whether they exist or not, and the per-character fetch at `0x3212ec` aborts on
+a short name, which crashes the game on every fusion. We shipped that mistake
+for about an hour. Zero is what every other mode passes, at `0x22acc0`.
 
 Two things that cost a night. `0x15b068` looks unreferenced and is not,
 because `0x15b064` falls through into it, and overwriting it black-screens the
@@ -185,7 +189,7 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-154 changed words in the update's executable, md5 `cd5828a5`. An earlier
+154 changed words in the update's executable, md5 `f6b40eef`. An earlier
 version of this section said 117 words and listed the Library monster lists as
 known and not fixed. Both were stale: that cap was fixed in the thirty-first
 build by raising the row builder's 16-character buffer to 38 (`0x3435d4`,

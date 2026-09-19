@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-two dated sections, up to the fifty-sixth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-three dated sections, up to the fifty-seventh build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -11,9 +11,9 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 | File | Size | SHA-256 |
 |---|---:|---|
 | `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,019,712 | 55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 06f3e331c4684b6a27e72e04227f0d8883ec6abfde02c1f77aaf0add4a9825c8 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | af585a81651a0a625d930733984ede57933e673c411249d3d6adfa070d187067 |
 | `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,656,678 | a375431094bafb2e16662fb860286d978a5110e3f8cd4186515879faa218a542 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,906,331 | 918256f4d13fd8055e87477838b1e853413efe756966943a60f13ac5ef84dd08 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,761 | d2448699b15b7b221109f4bf2229a266e4b6bd06b0cbda656cd4901a75fecaeb |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 

@@ -1,6 +1,6 @@
 # Dragon Quest Monsters: Joker 3 Professional, English fixed build
 
-A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, Ver.1.3) with its defects fixed. The translation is the Joker 3 Translation Team's, as released for Professional in 2021; this build only fixes what was broken in it. Every change is scripted and reproduced from the two 2021 CIAs. The whole record is in `BUILD_NOTES.md` (fifty-two dated sections, up to the fifty-sixth build) and the per-fix list is in `FIXES.md`.
+A rebuild of the 2021 English fan translation of DQM Joker 3 Professional (3DS, Ver.1.3) with its defects fixed. The translation is the Joker 3 Translation Team's, as released for Professional in 2021; this build only fixes what was broken in it. Every change is scripted and reproduced from the two 2021 CIAs. The whole record is in `BUILD_NOTES.md` (fifty-three dated sections, up to the fifty-seventh build) and the per-fix list is in `FIXES.md`.
 
 ## What's fixed
 

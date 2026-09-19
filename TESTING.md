@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the fifty-sixth (2026-09-19). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the fifty-seventh (2026-09-19). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -101,6 +101,8 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
+| The naming keyboard on a SHORT name (fifty-seventh build) | Scout a Slime, or fuse any two monsters, and let the naming keyboard open | it opens and shows the whole name; it must not crash. v2.6 crashed here on any name under eleven characters |
+| The naming keyboard on a SHORT name (fifty-seventh build) | Scout a Slime, or fuse any two monsters, and let the naming keyboard open | it opens and shows the whole name; it must not crash. v2.6 crashed here on any name under eleven characters |
 | The scout keyboard | Scout a monster and let the naming keyboard open | the whole species name is filled in, not its first two letters |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives
