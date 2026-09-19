@@ -2081,7 +2081,7 @@ character eleven means nothing after the name is ever drawn or compared.
 
 Both CIAs change. The code words are in the update, and round 58's eight
 suffix strings are in both trees, so `LayoutMessage.mes` differs in each: eight
-labels per CIA and nothing else. The executable is 154 words, md5
+labels per CIA and nothing else. The executable is 153 words, md5
 `cd5828a5`. That build crashed on the naming keyboard and was replaced the
 same night; the fifty-seventh build section below is the fix, and its md5 is
 `f6b40eef`.
@@ -2137,7 +2137,7 @@ keyboard mode passes, at `0x22acc0`, four instructions above the line the
 fifty-sixth build edited. The correct value was on screen at the time.
 
 The advertised behaviour does not change: the whole species name is still
-pre-filled, up to the eleven slots. The executable is still 154 words; one of
+pre-filled, up to the eleven slots. The executable is still 153 words; one of
 them has a different value. md5 `f6b40eef`.
 
 Only the update changes. Checked on the rig before this was released, on a
@@ -2219,7 +2219,13 @@ description at the real width and exits non-zero listing anything that still
 needs a fifth line. It is wired into `rebuild.py`, so this class of defect stops
 the build instead of shipping.
 
-The executable is untouched at 154 words, md5 `f6b40eef`.
+The executable is untouched at 153 words, md5 `f6b40eef`.
+
+A correction while checking this build: these notes had said 154 words since
+the fifty-sixth build. codepatch.py has 154 entries, but the one at `0x7747a8`
+writes the bytes that are already there, so only 153 words actually differ from
+the Japanese original. The count had been taken from the length of the list
+instead of from the built file. The md5 is unaffected and no binary changes.
 
   DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  9866cf3cacd6e399ca55d97e3024a574d278aadd37e41c416b043cc4b819570a
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  668f331004408ad5ff6252ab82946171f66bdde6b65cd239e863090287ff6628

@@ -189,7 +189,12 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-154 changed words in the update's executable, md5 `f6b40eef`. An earlier
+153 changed words in the update's executable, md5 `f6b40eef`. If you are
+counting against codepatch.py, that file has 154 entries: the one at `0x7747a8`
+writes the bytes already there and changes nothing, so the built file differs
+from the Japanese original in 153 words. These notes said 154 until v2.7,
+because the figure came from the length of the list rather than the artifact.
+An earlier
 version of this section said 117 words and listed the Library monster lists as
 known and not fixed. Both were stale: that cap was fixed in the thirty-first
 build by raising the row builder's 16-character buffer to 38 (`0x3435d4`,
