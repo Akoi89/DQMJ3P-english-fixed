@@ -64,7 +64,7 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 4. Put the two encrypted CIA files in there, rename the game to `game.cia` and the update to `update.cia`.
 5. Run `Batch CIA 3DS Decryptor.bat`. It takes a while on the base.
 6. You should now have `game-decrypted.cci` and `update (Patch)-decrypted.cia` in that folder.
-7. Download [DQMJ3P-english-fixed-patches-v2.4.zip](https://github.com/Akoi89/DQMJ3P-english-fixed/releases/download/v2.4/DQMJ3P-english-fixed-patches-v2.4.zip) from the releases page.
+7. Download the patches zip from the [latest release](https://github.com/Akoi89/DQMJ3P-english-fixed/releases/latest). It's the file named `DQMJ3P-english-fixed-patches-vX.Y.zip`.
 8. Extract it to another new folder.
 9. Copy `game-decrypted.cci` and `update (Patch)-decrypted.cia` into that patch folder.
 10. Select both of them and drag them onto `apply_patches.bat`.
