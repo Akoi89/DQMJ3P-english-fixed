@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the fifty-seventh (2026-09-19). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the fifty-eighth (2026-09-19). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -101,7 +101,9 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
-| The naming keyboard on a SHORT name (fifty-seventh build) | Scout a Slime, or fuse any two monsters, and let the naming keyboard open | it opens and shows the whole name; it must not crash. v2.6 crashed here on any name under eleven characters |
+| A Library description that used to overflow (fifty-eighth build) | Library, then Beastly Baboorood, Kukri, Elder Pipit or Bishop Ladja, and read the Info box | all the text sits inside the box. Before v2.7 a fifth line was drawn below it, over the "Foe #1" row |
+| The Library Fusion panel (fifty-eighth build) | Library, then Golem, Basic Info, and look at the Fusion box | it lists Discombombulator and Lantern Soldier and then "etc.", which says more recipes exist |
+| The renamed pair (fifty-eighth build) | Library, ??? family, after Rigor Mortex | they read "Beastly Baboorood" and "Baboodread", and each one's Skill row says "Baboodread" too |
 | The naming keyboard on a SHORT name (fifty-seventh build) | Scout a Slime, or fuse any two monsters, and let the naming keyboard open | it opens and shows the whole name; it must not crash. v2.6 crashed here on any name under eleven characters |
 | The scout keyboard | Scout a monster and let the naming keyboard open | the whole species name is filled in, not its first two letters |
 

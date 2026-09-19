@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-three dated sections, up to the fifty-seventh build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-four dated sections, up to the fifty-eighth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,019,712 | 55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | af585a81651a0a625d930733984ede57933e673c411249d3d6adfa070d187067 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,656,678 | a375431094bafb2e16662fb860286d978a5110e3f8cd4186515879faa218a542 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,761 | d2448699b15b7b221109f4bf2229a266e4b6bd06b0cbda656cd4901a75fecaeb |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 9866cf3cacd6e399ca55d97e3024a574d278aadd37e41c416b043cc4b819570a |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 668f331004408ad5ff6252ab82946171f66bdde6b65cd239e863090287ff6628 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,671,156 | b3604207dd6d49d11dc383efae3c7f684bceff355d31cc1543b1ca1f5fd9e7ae |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,486 | c5756cbab3d2b332fbf828c46c6b75da9085c24861c94a0a7ffd05e5f1510a09 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -75,6 +75,16 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 15. Go to SD, then to whatever folder you copied the two fixed CIAs into.
 16. Install the base first, then the update. Both are needed.
 17. Check that the base really went on. Start a battle and look at the top of the screen: it should say "Round 1". If it says ラウンド, or a monster's Info page shows an orange 固定 tag, only the update installed. Those screens live in the base game, so go back and install the base CIA too.
+
+If you play on an emulator and the names still look old after installing both
+CIAs, check for a mods folder. Right click the game in Azahar or Citra and pick
+Open Mods Location. If there's a `romfs` folder in there, it is overriding the
+game's data files with whatever it contains, and it wins over anything you
+install as a CIA, so reinstalling will never help. Rename it to `romfs_off` and
+boot again. It replaces data files only, not the executable, so you can end up
+running this patch's code with the old translation's text, which looks very
+confusing: monster names appear in battle the way this build added, but they're
+the old names. Found by Retho on Discord.
 
 Thanks to oho, who wrote these steps out on Discord.
 
@@ -161,9 +171,12 @@ The short version. `FIXES.md` has a paragraph on each.
 
 See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find something, note the exact text and the screen.
 
-A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is cut to 11 when the monster is obtained or renamed, and a wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of the same kind are on the field. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
+A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is cut to 11 when the monster is obtained or renamed, and a wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of the same kind are on the field. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed. The
+name is written onto the monster once, when you scout or fuse it, so monsters
+already in your party keep whatever name they were given under your old build;
+only ones you get from now on use the corrected names.
 
-Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and seventeen words of the update's code (the keyboard tab, the name buffers, the keyboard limit, one built-in prefix, one default greeting). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and none of the changed words is within 32 bytes of them, so the two should coexist. I haven't run them together.
+Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and fifty-four words of the update's code (the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, and the routines that write a wild monster's name for battle). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and the nearest changed word is over three kilobytes away from any of them, so the two should coexist. I haven't run them together.
 
 ## Credits
 

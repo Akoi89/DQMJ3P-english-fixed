@@ -2148,3 +2148,80 @@ should have had.
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  af585a81651a0a625d930733984ede57933e673c411249d3d6adfa070d187067
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,656,678  a375431094bafb2e16662fb860286d978a5110e3f8cd4186515879faa218a542
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,761  d2448699b15b7b221109f4bf2229a266e4b6bd06b0cbda656cd4901a75fecaeb
+
+## Fifty-eighth build, 2026-09-19: the Library descriptions did not fit (v2.7)
+
+Three things, all reported or prompted by Retho on Discord in one afternoon.
+
+**The names.** v2.5 renamed ヒヒュドラード to "Hihyudorado" and 邪獣ヒヒュルデ to
+"Evil Beast Hihyurude", taking both from dragon-quest.org, which carries only a
+romanisation for these because Joker 2 Professional was never officially
+localised. The Joker 2 Professional fan translation has its own English names,
+and reading its name table (`_audit/j2pro_names.py`, which decodes the ROM's own
+text encoding) gives "Baboodread" and "Baboorood". "Baboodread" is what the 2021
+J3 patch already used, so v2.5 replaced an established name with a
+transliteration. Both go back, and 邪獣ヒヒュルデ is "Beastly Baboorood", keeping
+the 邪獣 prefix that Joker 2 has no name for. Fourteen labels move, not two: the
+skill-set header in ItemHelpMessage, the speaker name tag, the Library
+description that names the earlier form, and a note in the demo917 script.
+`SkillMessage.mes` SkillName0341 still read "Baboodread" all along, which v2.5
+missed, so this also puts the monster and the skill named after it back in
+agreement.
+
+Checked against the same table: six more names we changed and J2 Professional
+also uses are all defensible, each backed by this game's own wiki bestiary
+(Lord of the Dragovians, Picuda, Quayhorse, Leonyx the Divine Battler, Wyrmhole
+Dragon, Bishop Ladja). The cross-check found nothing else.
+
+**The Fusion panel's "etc.".** LayoutMessage's `nado` (など) was blank. The
+Library's Fusion panel uses it to say a monster has more recipes than the two it
+shows, so blanking it deleted the only sign those recipes exist. It was blanked
+on purpose, in `latefixes.py`, but as part of the wrong group: `ato` and
+`kaisuu` are particles the engine wraps around a number where English word order
+cannot follow, and this one is not that. It reads "etc." now. Seen on the rig on
+Golem, whose panel now reads Discombombulator, Lantern Soldier, etc.
+
+**The descriptions that did not fit.** 49 of the 737 Library descriptions
+overflowed their box, and it had been shipping since v2.5.
+
+The box is the pane `tb_trivia_01` in `lib_monster_trivia.bflyt`: 182 px wide,
+four lines of 18. Both limits are hard, and the way they interact is the part
+worth writing down. The game does not word wrap and does not shrink text to fit.
+It hard cuts at the pane width in the middle of a word. On Bishop Ladja's page a
+stored line rendered as "Slon the Rook and Kon the Knight at h" and then
+"is command" on the line below, splitting "his". So a stored line over 182 px
+silently costs an extra rendered line, and the fifth line is drawn BELOW the
+box, over the "Foe #1" row.
+
+That also calibrates the measuring: a line of 182 px fitted and one of 184 px
+did not, so `wrapdialogue.measure` is exact for this font.
+
+Why it happened: `rewrap.py` is the pass that wraps this file, and it was never
+wired into `rebuild.py`. It ran once by hand, at 216 px, and only touched
+strings with no line break at all, so everything the meaning and rename passes
+rewrote afterwards was never re-wrapped. 37 entries ran to five lines and 12 had
+a line too wide. The base tree was worse: 114 of its descriptions were still
+single unbroken runs.
+
+8 of the 49 fit once re-wrapped. The other 41 needed shorter English, and that
+is mostly our own doing: these were strings the 2021 patch left untranslated, so
+we wrote them, and wrote them long. Every rewrite was measured before it was
+accepted. Several turned out to be corrections as well: 0375 had invented
+"camouflaged by its onyx frame" and "a night stroll" that are not in the
+Japanese, 0538 had fur "corrupted and bloodied" where the Japanese says dyed the
+colour of darkness, and 0785 had a demon lord making a "super villain" where the
+Japanese says he built a force to defeat the hero. Five wording calls went to
+Gemini, which agreed with all five and improved two; the package and the verdict
+are `GEMINI_DQMJ3PRO_TRIVIA_FIT.md`.
+
+The fix that matters for next time is `trivfit.py`, which wraps every
+description at the real width and exits non-zero listing anything that still
+needs a fifth line. It is wired into `rebuild.py`, so this class of defect stops
+the build instead of shipping.
+
+The executable is untouched at 154 words, md5 `f6b40eef`.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  9866cf3cacd6e399ca55d97e3024a574d278aadd37e41c416b043cc4b819570a
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  668f331004408ad5ff6252ab82946171f66bdde6b65cd239e863090287ff6628
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,671,156  b3604207dd6d49d11dc383efae3c7f684bceff355d31cc1543b1ca1f5fd9e7ae
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,486  c5756cbab3d2b332fbf828c46c6b75da9085c24861c94a0a7ffd05e5f1510a09
