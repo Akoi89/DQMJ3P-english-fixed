@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-six dated sections, up to the fifty-fifth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-two dated sections, up to the fifty-sixth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,019,712 | 8bd0f030cf0ba44c41a19f1e0cfa62d8dfa2c0afd2364ab5b57e1c755807fbb9 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | e9d796613bcc6e0c7bc1087ea8f725324bd1d45637ff60603b3fb63bc72a6389 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,641,657 | 400fae207a82ff474e92cc02d517a7979d94845de58103f82a12e9a8f13dd86d |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,635,307 | e49b6e6847c38bb800272aff5199f4a15b210cb5cf2815269aaf9bb66fd4287b |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,019,712 | 55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 746430cdf3050b846d117d0d0779ffdae6182ba1a1fcd6bfc1735a16f5aa76ff |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,656,705 | 77cdd2816b879942d3c5e5c7f66e76a6f70c99848f5489d3ff9b7ba14b9fca70 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,727,396 | 020ffec19abd0e1e643d41d70782103740d86aabd45adaa509d99226b65e6a94 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -74,6 +74,7 @@ Before you start: your two source files have to be **encrypted** CIA dumps of th
 14. Open FBI on your 3DS. If your 3DS was modded with the commonly recommended guide, you already have it.
 15. Go to SD, then to whatever folder you copied the two fixed CIAs into.
 16. Install the base first, then the update. Both are needed.
+17. Check that the base really went on. Start a battle and look at the top of the screen: it should say "Round 1". If it says ラウンド, or a monster's Info page shows an orange 固定 tag, only the update installed. Those screens live in the base game, so go back and install the base CIA too.
 
 Thanks to oho, who wrote these steps out on Discord.
 
@@ -160,7 +161,7 @@ The short version. `FIXES.md` has a paragraph on each.
 
 See "Tier 3" in `TESTING.md`: a few screens nobody has checked yet. If you find something, note the exact text and the screen.
 
-A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is still cut to 11 when the monster is obtained or renamed. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
+A monster's stored name holds 11 characters, so a species name longer than that ("Metal Pearl Slime") is cut to 11 when the monster is obtained or renamed, and a wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of the same kind are on the field. The record field is 24 bytes and changing it would change the save format. Names already cut to 8 in an existing save stay as they are until renamed.
 
 Online-only content (the Wi-Fi Square shop, the download monsters and events, StreetPass and SpotPass exclusives, the transfers) isn't this patch's business. Anthony's plugin at https://github.com/Anthcny144/DQMJ3P-unobtainable-content restores it on a modded 3DS with the Luma plugin loader or on Azahar. Its README asks for a game whose code is untouched; this build changes one hundred and seventeen words of the update's code (the keyboard tab, the name buffers, the keyboard limit, one built-in prefix, one default greeting). I checked the five Ver.1.3 code addresses the plugin hooks, and the four words it probes to recognise the version, against this build's executable: all nine still hold the stock instructions, and none of the changed words is within 32 bytes of them, so the two should coexist. I haven't run them together.
 

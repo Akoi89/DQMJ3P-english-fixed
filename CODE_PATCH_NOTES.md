@@ -112,6 +112,49 @@ name may still cut at 18 somewhere we did not find. If you go looking, a
 one-shot breakpoint logger that records the caller address per screen is the
 fastest way to map them.
 
+## 4b. Wild monsters had no name in battle at all (33 words)
+
+If your species names run past eleven characters, your wild monsters have no
+name in battle. This one is worth checking in any translation of this game.
+
+A monster record's display name is a 24-byte field at +4, eleven UTF-16
+characters and a terminator, with the species id at +0x1c. The battle window's
+`tb_mnsname_N_MM` panes and the enemy Status header draw that field. Two spawn
+writers fill it and both skipped rather than cut:
+
+| function | what it did | words |
+|---|---|---|
+| `0x1d068c` (one record) | `wcslen(name)+1 > 12 ? skip : wcscpy(rec+4, name)` | 7 at `0x1d06f0` |
+| `0x1d1a70` (a range) | the same | 7 at `0x1d1adc` |
+
+Each seven-word run becomes `mov r2,#0x16; mov r1,<name>; add r0,<rec>,#4;
+bl 0x301a9c; mov r3,#0; strh r3,[<rec>,#0x1a]; nop`, where `0x301a9c` is the
+ARM `memcpy` this file already uses. It copies a fixed 22 bytes, so a short
+name is read past its terminator; that is a read of loaded text and the
+terminator written at character eleven keeps the extra out of everything.
+
+The duplicate labeler `0x1d003c` appends `LayoutMessage`'s `suffixA` to
+`suffixH` with `wcscat` and skipped when the result would not fit. Its skip
+(`bhi` at `0x1d02cc`) becomes a nop, both `blx wcscat` (`0x1d02fc` and
+`0x1d0318`) become `bl 0x1d00e4`, and `0x1d00e4` to `0x1d011c`, which held the
+function's two impossible-length exception throws, holds a routine that cuts
+the name at nine characters and appends the suffix. Pair that with a space in
+your suffix strings, or change the nine: it is `add r2,r0,#0x12` at
+`0x1d00e4`, an immediate in bytes, two per character.
+
+Two StreetPass opponent writers (`0x292078` and `0x293960`) format into the
+same 24-byte field with a 24-character bound, so a long name runs over the
+species id. Both are twelve now.
+
+The naming keyboard after a scout pre-fills two characters: `mov r1,#2` at
+`0x22ad9c`, the mode-3 branch of `menu/name.arc`'s init. Eleven now; the
+callee clamps it to the keyboard's slot count.
+
+Two things that cost a night. `0x15b068` looks unreferenced and is not,
+because `0x15b064` falls through into it, and overwriting it black-screens the
+game. And there is no free padding at the end of the text segment, which is
+why the routine above had to go inside the function that needed it.
+
 ## 5. How these were actually found, which matters more than the addresses
 
 Every one of these caps was first attributed to the wrong code by a static
@@ -135,10 +178,12 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-117 changed words in the update's executable, md5 `49ff105d`. Known and not
-fixed: the Library monster lists still cut at 10, because a row builder uses a
-16-character buffer in which the family icon costs 5 units rather than 1. We
-judged that one not worth the risk for the gain.
+151 changed words in the update's executable, md5 `483a67f0`. An earlier
+version of this section said 117 words and listed the Library monster lists as
+known and not fixed. Both were stale: that cap was fixed in the thirty-first
+build by raising the row builder's 16-character buffer to 38 (`0x3435d4`,
+with the frame grown to hold it), and the word count had not been updated
+since. Nothing in the name family is known-broken now.
 
 The base title's executable is untouched.
 

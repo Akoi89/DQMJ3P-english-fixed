@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the fifty-fourth (2026-09-16). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the fifty-sixth (2026-09-19). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -94,6 +94,14 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Monster names | the Library, a party list, synthesis | the series names: Pocus Poppet, Thriller Wave, Picuda, Wharfhorse, Evil Slime rather than a delta |
 | Resistance traits | a monster's trait list | "... Crafty" on the break traits, "... Ward" still on the guard traits |
 | The forfeit button | a boss fight you cannot win | it reads "Give up" |
+
+## Tier 3c: the fifty-sixth build (v2.6)
+
+| Check | Where | Looking for |
+|---|---|---|
+| Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
+| Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
+| The scout keyboard | Scout a monster and let the naming keyboard open | the whole species name is filled in, not its first two letters |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives
 

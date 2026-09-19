@@ -1974,3 +1974,97 @@ identical, both verdict OK. The xdeltas were regenerated with
 `build_xdelta_tolerant.py` and each proved four ways, against the real source,
 two copies with the volatile bytes re-randomised and one with the whole scrub
 area randomised.
+
+## Fifty-sixth build, 2026-09-19: the wild monsters' names in battle (GitHub issue #1)
+
+Reported on GitHub by are-gar about an hour before v2.6's predecessor went up,
+and older than any of this: some monsters have no name in battle, only the
+letter that marks one of a pair. They don't, and they didn't in the 2021 patch
+either. Nobody had looked at a battle screen with a long-named monster in it.
+
+**Where a battle name comes from.** A monster record is 0xf0 bytes and its
+display name is a 24-byte field at +4, eleven UTF-16 characters and a
+terminator, with the species id immediately after it at +0x1c. The battle
+window's name panes (`battle_windows.bflyt`, `tb_mnsname_N_MM`) and the enemy
+Status header draw that field, not the species table. Two writers fill it when
+wild monsters spawn, `0x1d068c` for one record and `0x1d1a70` for a range, and
+both measured the species name and, if it would not fit, skipped the copy and
+left the field empty. Japanese species names fit. 438 of our 880 don't, so
+every one of those drew nothing. The duplicate labeler `0x1d003c` then appends
+`suffixA` to `suffixH` from `LayoutMessage.mes` to each record whose name
+matches another's, and skipped for the same reason; empty plus "A" is "A",
+which is exactly what the report's screenshots show.
+
+**The fix, 33 words in the update's executable.** The two spawn writers copy
+the first eleven characters and terminate, through the ARM `memcpy` at
+`0x301a9c` that the labeler already calls. The labeler's length skip becomes a
+nop and both its `wcscat` calls go to a thirteen-word routine written into the
+two dead exception paths inside that same function, `0x1d00e4` to `0x1d011c`,
+each of which sits behind a branch that cannot be taken: walk the name to its
+end or to character nine, whichever comes first, then copy the suffix. The
+eight suffix strings gain a leading space (round 58, both trees), so a pair
+reads "Slime A" and a long pair "Halberdsa A", and nine plus two plus the
+terminator is the twelve the field holds.
+
+Two more writers of the same field turned up in the survey that followed, both
+for StreetPass opponents (`0x291f88` and `0x29388c`), both formatting with a
+24-character bound into a field that holds 24 bytes. A long name there would
+have run over the species id. Their bound is twelve now. Nobody can reach that
+screen since the service closed, but the words cost nothing.
+
+**One more, from a question asked while testing.** The naming keyboard after a
+scout pre-filled two letters of the species name, "Ja" for a Jailcat. That is
+the keyboard's own mode-3 path in `menu/name.arc`'s init, `mov r1,#2` at
+`0x22ad9c`, where every other mode pre-fills its whole initial text. It is
+eleven now, which the callee clamps to the keyboard's slot count, so a scouted
+Demon-at-arms is offered "Demon-at-ar".
+
+**How it was measured.** Azahar's GDB stub on the shipped v2.5 update code,
+with write watchpoints on an enemy record's name field. Two Halberdsaurus read
+"A" and "B" (`_audit/tex/rig_bn32_s.png`). With the words poked into memory
+they read "HalberdsauA" and "HalberdsauB" under the ten-character cut used
+during the hunt (`rig_bn58w_s.png`), a Jailcat pair read "JailcatA" and
+"JailcatB" (`rig_bn56w_s.png`), and a scouted Demon-at-arms was offered
+"Demon-at-ar" (`rig_bn119w_s.png`) with no letter in the caught record, which
+is the check that a letter never follows a monster you keep. The space and the
+nine-character cut were settled after those captures, so they are first seen on
+the built CIA. Seen there from a fresh boot on the built CIAs: a wild pair south of the Wood Park zoom point reads "Halberdsa A" and "Halberdsa B", with the space, under a "Round 1" header in English (`_audit/tex/rig_battle_halberdsa_finalw.png`).
+
+Every battle-start path was traced to one enemy-team builder, `0x1d0cdc`,
+which calls both fixed writers: the wild path reaches it through `0x2f4f1c`
+and the scripted one through a vtable slot at `0x81dd88`, so boss fights take
+the same route. A survey of all 45 callers of the species-name getter found no
+other writer of a record's name besides capture, which was already bounded at
+eleven, and the two StreetPass ones.
+
+Two traps for whoever reads this code next. `0x15b068` looks unreferenced and
+is not: `0x15b064` falls through into it, and using it as a cave black-screened
+the game. And there is no free padding at the end of the text segment; code
+runs to `0x7b7458` of a `0x7b8000` segment and the tail is not zeroes. That is
+why the new routine lives inside the function it serves.
+
+Eleven pairs of species are identical for their first eleven characters (Great
+Sabrecat and Great Sabrecub, Killing Machine and Killing Machine Light, Metal
+Slime and Metal Slime Knight, and eight more), so a mixed group of those is
+lettered as though they were the same species. That is the letter doing its
+job rather than a defect: without it the two would print the same name and
+there would be no way to tell which is which, and the Status page still gives
+the full species name.
+
+An independent review of the 33 words re-derived every old byte, decoded every
+new one, traced the thirteen-word routine by hand, scanned the whole image for
+any other branch into it and reproduced the patched md5. It returned no
+must-fix on the code. One note worth keeping: the copy takes a fixed 22 bytes,
+so for a short name it reads past that name's terminator into the message data
+behind it. That is a read, never a write, and the terminator written at
+character eleven means nothing after the name is ever drawn or compared.
+
+Both CIAs change. The code words are in the update, and round 58's eight
+suffix strings are in both trees, so `LayoutMessage.mes` differs in each: eight
+labels per CIA and nothing else. The executable is 151 words, md5
+`483a67f0`.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,019,712  55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  746430cdf3050b846d117d0d0779ffdae6182ba1a1fcd6bfc1735a16f5aa76ff
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,656,705  77cdd2816b879942d3c5e5c7f66e76a6f70c99848f5489d3ff9b7ba14b9fca70
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,727,396  020ffec19abd0e1e643d41d70782103740d86aabd45adaa509d99226b65e6a94
