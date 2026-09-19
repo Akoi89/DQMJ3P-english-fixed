@@ -24,19 +24,17 @@ Seen on the emulator during the builds, from a clean New Game each time:
 - Battle prompts, "Round 1", the title banner and the name-entry footers,
   which are redrawn textures and layout text, all render in English.
 
-## Tier 1: the Library, ten minutes after the first scout
+## Tier 1: the things nobody has seen yet, ten minutes after the first scout
 
-Open the Library from the menu (bottom-left icon of the grid). Four of these five
-were seen on screen on the ninth build and are listed so you can confirm them on
-your own game; the one nobody has seen is a five-line bestiary entry.
+Open the Library from the menu (bottom-left icon of the grid).
 
 | Check | Where | Looking for |
 |---|---|---|
-| Family table (seen on the ninth build) | Library > Monster, top screen | nine family names ("Slime", "Dragon" ...) each fitting its cell; no letter wrapped under the table |
-| Bestiary text (seen on the ninth build) | Library > Monster > any monster, second page (R) | four lines broken between words, no word split at the edge like "pleasa / nt" |
-| A long entry (never seen) | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
-| Trait info box (seen on the ninth build) | Library > Traits > All > any trait | text broken between words, not mid-word |
-| Item help (seen on the ninth build) | Library > Items, or the bag menu | same |
+| Family table | Library > Monster, top screen | nine family names ("Slime", "Dragon" ...) each fitting its cell; no letter wrapped under the table |
+| Bestiary text | Library > Monster > any monster, second page (R) | four lines broken between words, no word split at the edge like "pleasa / nt" |
+| A long entry | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
+| Trait info box | Library > Traits > All > any trait | text broken between words, not mid-word |
+| Item help | Library > Items, or the bag menu | same |
 
 ## Tier 2: the round 9 names, first shop and first skill books
 
@@ -87,6 +85,15 @@ your own game; the one nobody has seen is a five-line bestiary entry.
 | Meaning pass leftovers (forty-third build) | the top screen's Nochorin Ally page (R from the menu); Library > Summary, Fiery Volcano and Demon Realm, all three pages; Library > Skill, the ward trees | "Rabble Rouser a gogo!" and "Wound healing a gogo!" whole; the diary one bullet per line, "Leapt from the peak of Mt. Elpis", the 《Demon Realm》 header; "Dumb Ward" then "Dumb Ward+" |
 | Meaning pass (forty-second build) | Library > Monster > Slime family, the Slime's Info page; Library > Traits, Ultra Body and Dizzying Body; Library > Skill, Material+; Helpful Tips 3 and 5; Tactics & Abilities > Change Tactics, a monster's tactic list | the new wording in each box, inside it: the Slime's entry in four lines, "May inflict confusion on enemies that physically attack you", "Ba-Bounce" on Material+, "Don't use Abilities" in the tactic list |
 | Letter spacing (fourteenth build) | the status screen's AGI and INT labels, the bestiary second page's "Items" pill, a map place name, the StreetPass list | letters no longer run into each other; nothing now too wide for its pill |
+
+## Tier 3b: the fifty-fifth build (v2.5)
+
+| Check | Where | Looking for |
+|---|---|---|
+| The player's name in dialogue | any story scene that addresses you by name; the king's line after demo 108 is a good one | the line breaks between words, never mid-word, with a long name in the save |
+| Monster names | the Library, a party list, synthesis | the series names: Pocus Poppet, Thriller Wave, Picuda, Wharfhorse, Evil Slime rather than a delta |
+| Resistance traits | a monster's trait list | "... Crafty" on the break traits, "... Ward" still on the guard traits |
+| The forfeit button | a boss fight you cannot win | it reads "Give up" |
 
 ## Tier 4: the Ver.1.3 content, where the new writing lives
 

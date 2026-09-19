@@ -1883,28 +1883,94 @@ so a label put back to its shipped value is not counted as changed.
 The executable is unchanged at 117 words. Both CIAs change, so pack,
 verification and both xdeltas were redone.
 
-## Patches that take anyone's decrypt, 2026-09-16 (v2.4)
+## Fifty-fifth build, 2026-09-18: the player's name has a width, and the names are the series' own (round 57)
 
-No text or code changed and both CIAs are byte for byte the v2.3 ones. Only the two xdeltas are new.
+Three things, all measured rather than argued, and one of them is a bug in the
+tool that was supposed to prevent exactly this.
 
-A romhacking.net review and a Discord user both hit "checksum mismatch" on the update patch with their own
-decrypted update. The v2.3 patches were encoded against my own decrypted files, and xdelta
-had taken bytes for the output from their CIA header area: certificates, ticket and TMD. Those differ between
-dumps, and Batch CIA 3DS Decryptor also writes random bytes every run (the card seed at 0x1010..0x103B of the
-.cci, ticket bytes from 0x2BFF of the update .cia; two fresh runs on the same retail CIA differ only there).
-Overwriting the ticket, the certificates or the TMD of my decrypted update with random bytes made the v2.3
-update patch fail with exactly that error. A fresh decrypt of the same retail CIA happened to still work,
-which is why this went unnoticed.
+**The player's name was measured as zero pixels.** `wrapdialogue.py` strips
+every control pair before measuring, and the name token `\x01\u0201` is a
+control pair. So every dialogue line carrying the name was wrapped one
+name-width short, and at runtime the engine chopped it mid-word at the box
+edge. Reported on Discord by isanthraxbayad, whose name is `Jesus`: the line
+`Hmmm... [NAME] and Ace. You have both done an excellent job, as usual.`
+measures 320 px empty and 347 px with the name, one pixel over the 346 px box.
+695 deduplicated pages carry the token, and none of them was over the box with
+an empty name, which is the proof that the measurement was the fault and not
+the text.
 
-The new patches are encoded the way the TGAA and Puyo Puyo Tetris patches already were: against a copy of
-the source whose whole header area (0x0..0x3940 of the update, 0x0..0x4000 of the base) is scrambled, so
-those output bytes are stored in the patch instead of copied. Each was then applied to the real source, two
-copies with the volatile bytes re-randomised, one with the whole header area randomised and a brand-new
-decrypt, and every time gave the CIA below. Scripts: _audit/build_xdelta_tolerant.py,
-_audit/header_tolerance_test.py, _audit/fresh_decrypt_test.sh. Secondary compression is now djw instead
-of LZMA.
+The fix is `--name-reserve=adaptive`: each page is charged the widest reserve
+it can take without gaining a rendered line. Three things had to be right, and
+two of them were wrong first.
 
-  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2
-  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490
-  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,586,914  171ad8f8d9343a2d05cf81c3f9e175cfc7a6647a146194fdff08b3df11bca326
-  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,634,988  d98e95b67936e1eea01333ea8eaec20ccd3e4cf2026ce73749e65ac020061e00
+  1. The name holds 11 characters and the widest enterable glyph is `W` at
+     11 px, so the worst case is 121 px. An earlier note assumed `M` at 8 px
+     and would have reserved 88, which is 33 px short.
+  2. The ceiling is the box, `LINES_PER_PAGE = 2`, not the page's current line
+     count. Using the current count meant a one-line page could never become
+     two, which silently refused to fix the reported line.
+  3. `wrap_page` re-wrapped each existing line where it stood, so a page
+     already broken in two could never rebalance: charging the name overflowed
+     line 1, which split into a third line, and the search rejected the
+     reserve. It now re-flows the whole page when keeping the existing breaks
+     fails, and only then, so hand-placed breaks survive where they can. This
+     one change took the failures from 104 pages to 2.
+
+Measured on the built trees with `_audit/verify_namefit.py`, which counts the
+lines as the file breaks them rather than re-wrapping them (an earlier version
+re-wrapped, and reported the fix as having changed nothing):
+
+| name substituted | v2.4 | v2.5 |
+|---|---:|---:|
+| 5 ordinary letters | 54 | 0 |
+| 5 widest letters | 99 | 0 |
+| 8 widest letters | 136 | 0 |
+| 11 widest letters | 233 | 2 |
+
+The two left (`DEMO_034_MSG_110`, `MSG_DEMO123_AFTER_KING`) take 114 px, ten
+widest letters. Christopher is 56 px, Bartholomew 62, Maximillian 50, and even
+eleven capital Ms is 88; only eleven capital Ws overflows them. Left alone.
+
+**The monster names are the series' names now.** The authority is this game's
+own bestiary list on the Dragon Quest Wiki, at the user's instruction: a name
+not on that page does not go in the game. `bestiary_map.py` builds the pairs
+from that page's own links, 709 of them. It has to read both `|japanese =` and
+`|Japanese name =`; reading only the first silently dropped 91 monsters,
+including Zoma, Estark and Pruslas. `mk_names_r57.py` then writes
+`names_r57.json` and `rename57.py` applies it with `rename8.py`'s engine, which
+only rewrites a mention in body text where the Japanese of that same label
+proves which name is meant.
+
+363 monster names changed. Eight were skipped as capitalisation churn, so
+`She-Slime` is not rewritten as `She-slime`. 152 monsters have no entry on that
+page and keep the name the 2021 translation gave them, which is unavoidable.
+Four had been crossed with a different monster entirely: `Cavorting Column` is
+the series name for ミステリピラー while ours is ミステリードール, which is Pocus
+Poppet, and `Killer Wave` belongs to マッドウェーブ while ours is キラーウェーブ,
+Thriller Wave. Barracuda and Quayhorse were the same mistake.
+
+**The traits, and a reporter who was right about the word and wrong about the
+target.** The report asked for "ward to crafty". Crafty is the series' English
+for the katakana BREAK, not for GUARD: the wiki's "Crafty Breather" is break
+breath. Measured in the shipped build, 42 traits are BREAK and were called
+"... Break", and 58 are GUARD and were called "... Ward". So the 42 became
+Crafty and the 58 were left, which is the opposite of what was asked for and
+what the Japanese supports. Doing as asked would have introduced the defect.
+
+**One more string.** `zenmetu` in `LayoutMessage.mes` read "Defeat All". The
+Japanese 全滅する is intransitive, and the button is how you give up a boss
+fight, so the English read as close to the opposite of what it does. It says
+"Give up".
+
+Scope of the rebuild against v2.4: 274 files differ in the base and 13 in the
+update, nothing missing and nothing extra. Every one is a `.mes` under
+`Message/`, `Script/Field/` or the `Field/` duplicate copies. No layout
+archive, texture or executable byte changed, so nothing in this build can move
+a pane.
+
+Packed with `build.py`, then `smdhfix.py`, then `codepatch.py` on the update,
+then `verify_pack.py`: base 13,955 files identical to its tree, update 127
+identical, both verdict OK. The xdeltas were regenerated with
+`build_xdelta_tolerant.py` and each proved four ways, against the real source,
+two copies with the volatile bytes re-randomised and one with the whole scrub
+area randomised.

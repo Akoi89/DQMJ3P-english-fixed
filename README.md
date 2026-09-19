@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-one dated sections, up to the fifty-fourth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-six dated sections, up to the fifty-fifth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 8a8b585a70c8780f0bf18eb7bcf6f07fa93357856ffaf223de6c19a4140c24d2 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 5deec263ed182da42a2c8213220b1c3aa35e10d40413fb1b028a8d904099c490 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,586,914 | 171ad8f8d9343a2d05cf81c3f9e175cfc7a6647a146194fdff08b3df11bca326 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,634,988 | d98e95b67936e1eea01333ea8eaec20ccd3e4cf2026ce73749e65ac020061e00 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,019,712 | 8bd0f030cf0ba44c41a19f1e0cfa62d8dfa2c0afd2364ab5b57e1c755807fbb9 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | e9d796613bcc6e0c7bc1087ea8f725324bd1d45637ff60603b3fb63bc72a6389 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,641,657 | 400fae207a82ff474e92cc02d517a7979d94845de58103f82a12e9a8f13dd86d |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,635,307 | e49b6e6847c38bb800272aff5199f4a15b210cb5cf2815269aaf9bb66fd4287b |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -95,6 +95,8 @@ Dumping doesn't change: pull both titles off the 3DS with GodMode9 as **encrypte
    rom-converto ctr convert "<decrypted base>.cia"
    ```
    Run `rom-converto ctr --help` if that doesn't match your build. Its flags have moved between releases and the help output is the authority, not this README.
+
+   Turn trimming ON for this step. Without it the output comes out around 2.1 GB instead of the 1,591,599,104 bytes the patch wants. oho, who walked through this whole route on Fedora 44 and reproduced both hashes in the table above, used the GUI AppImage build rather than the CLI and had to tick the trim option there.
 5. Check the two sizes before you go any further. The base has to be **1,591,599,104** bytes as a `.cci` and the update **15,725,568** bytes as a `.cia`. If your `.cci` is larger, it's very likely padded out to a card size; the patch needs the untrimmed-but-unpadded layout, which is a 16 KiB header followed by the CIA's two contents back to back.
 6. Apply both patches:
    ```
