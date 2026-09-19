@@ -32,8 +32,8 @@ Useful constants for the update's code:
 * Virtual address = file offset in the decompressed code + `0x100000`.
 * The compressed `.code` as shipped is 4,477,028 bytes. The ExeFS entry after
   `.code` starts at data offset `0x445200`, so there are only about 400 bytes
-  of slack. Our patched code compresses 28 bytes larger, to 4,477,056, which leaves
-  384 bytes spare. Check yours rather than assume.
+  of slack. Our patched code compresses 20 bytes larger, to 4,477,048, which
+  leaves 392 bytes spare. Check yours rather than assume.
 * 3dstool round-trips the compression exactly: recompressing the untouched
   decompressed code reproduces the shipped bytes byte for byte. That is worth
   verifying once on your own copy before you trust a rebuild.
@@ -112,7 +112,7 @@ name may still cut at 18 somewhere we did not find. If you go looking, a
 one-shot breakpoint logger that records the caller address per screen is the
 fastest way to map them.
 
-## 4b. Wild monsters had no name in battle at all (33 words)
+## 4b. Wild monsters had no name in battle at all (36 words)
 
 If your species names run past eleven characters, your wild monsters have no
 name in battle. This one is worth checking in any translation of this game.
@@ -141,6 +141,13 @@ function's two impossible-length exception throws, holds a routine that cuts
 the name at nine characters and appends the suffix. Pair that with a space in
 your suffix strings, or change the nine: it is `add r2,r0,#0x12` at
 `0x1d00e4`, an immediate in bytes, two per character.
+
+Trim a trailing space before you append, or names whose cut lands on a space
+render with two of them ("Mandrake  A"). 63 of this game's 880 species do. The
+three words for it came from retiring the guard pair at `0x1d0100`
+(`cmp fp,sl; bls 0x1d0120`), which is always taken because `fp <= sl` is
+established just above it, so the branch feeding it at `0x1d00e0` can go
+straight to `0x1d0120` and the whole region becomes fifteen contiguous words.
 
 Two StreetPass opponent writers (`0x292078` and `0x293960`) format into the
 same 24-byte field with a 24-character bound, so a long name runs over the
@@ -178,7 +185,7 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-151 changed words in the update's executable, md5 `483a67f0`. An earlier
+154 changed words in the update's executable, md5 `cd5828a5`. An earlier
 version of this section said 117 words and listed the Library monster lists as
 known and not fixed. Both were stale: that cap was fixed in the thirty-first
 build by raising the row builder's 16-character buffer to 38 (`0x3435d4`,

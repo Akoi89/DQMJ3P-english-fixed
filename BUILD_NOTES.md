@@ -1977,10 +1977,10 @@ area randomised.
 
 ## Fifty-sixth build, 2026-09-19: the wild monsters' names in battle (GitHub issue #1)
 
-Reported on GitHub by are-gar about an hour before v2.6's predecessor went up,
-and older than any of this: some monsters have no name in battle, only the
-letter that marks one of a pair. They don't, and they didn't in the 2021 patch
-either. Nobody had looked at a battle screen with a long-named monster in it.
+Reported on GitHub by are-gar about an hour before v2.5 went up, and older
+than any of this: some monsters have no name in battle, only the letter that
+marks one of a pair. The report was right, and the 2021 patch did it too.
+Nobody had ever looked at a battle screen with a long-named monster in it.
 
 **Where a battle name comes from.** A monster record is 0xf0 bytes and its
 display name is a 24-byte field at +4, eleven UTF-16 characters and a
@@ -1995,7 +1995,7 @@ every one of those drew nothing. The duplicate labeler `0x1d003c` then appends
 matches another's, and skipped for the same reason; empty plus "A" is "A",
 which is exactly what the report's screenshots show.
 
-**The fix, 33 words in the update's executable.** The two spawn writers copy
+**The fix, 36 words in the update's executable.** The two spawn writers copy
 the first eleven characters and terminate, through the ARM `memcpy` at
 `0x301a9c` that the labeler already calls. The labeler's length skip becomes a
 nop and both its `wcscat` calls go to a thirteen-word routine written into the
@@ -2005,6 +2005,24 @@ end or to character nine, whichever comes first, then copy the suffix. The
 eight suffix strings gain a leading space (round 58, both trees), so a pair
 reads "Slime A" and a long pair "Halberdsa A", and nine plus two plus the
 terminator is the twelve the field holds.
+
+**Six of those words are a second pass, and the screen is what caught it.**
+The cut keeps exactly nine characters, and 63 of the 880 species names have a
+space as their ninth. A pair of them therefore rendered with two spaces,
+"Mandrake  A", which reads as a typo rather than a label. The routine now backs
+up over one trailing space before it appends the suffix, so it is "Mandrake A"
+and "Deep Sea A" while "Halberdsa A" is untouched. The three extra words that
+needed came from retiring the guard pair at `0x1d0100`, which the review had
+already proved is always taken: the branch that fed it (`0x1d00e0`) now goes
+straight to its destination, the region becomes fifteen contiguous words, and
+the loop no longer needs its jump-over. The trim reads the halfword before the
+field only if a name were empty, and no species name in the shipped data is
+(144 are "-", the shortest real one is three characters), so the loop always
+advances at least once first. Seen on the rebuilt discs: three Mandrakes
+read "Mandrake A", "Mandrake B" and "Mandrake C", one space each
+(`_audit/tex/rig_userthere2w.png`), where the first pass had read
+"Mandrake  A" (`rig_usertherew.png`). That screen also answered the one
+question the pair captures could not: a third of a kind is lettered C.
 
 Two more writers of the same field turned up in the survey that followed, both
 for StreetPass opponents (`0x291f88` and `0x29388c`), both formatting with a
@@ -2051,7 +2069,7 @@ job rather than a defect: without it the two would print the same name and
 there would be no way to tell which is which, and the Status page still gives
 the full species name.
 
-An independent review of the 33 words re-derived every old byte, decoded every
+An independent review of the words re-derived every old byte, decoded every
 new one, traced the thirteen-word routine by hand, scanned the whole image for
 any other branch into it and reproduced the patched md5. It returned no
 must-fix on the code. One note worth keeping: the copy takes a fixed 22 bytes,
@@ -2061,8 +2079,8 @@ character eleven means nothing after the name is ever drawn or compared.
 
 Both CIAs change. The code words are in the update, and round 58's eight
 suffix strings are in both trees, so `LayoutMessage.mes` differs in each: eight
-labels per CIA and nothing else. The executable is 151 words, md5
-`483a67f0`.
+labels per CIA and nothing else. The executable is 154 words, md5
+`cd5828a5`.
 
   DQMJ3P-base-fixed-0.1.0.cia                     1,596,019,712  55584e1db1cd40189cc7f0c63a3202ff131b3edd781d66a8c2443e5e31fbdd93
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  746430cdf3050b846d117d0d0779ffdae6182ba1a1fcd6bfc1735a16f5aa76ff
