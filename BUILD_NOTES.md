@@ -2231,3 +2231,102 @@ instead of from the built file. The md5 is unaffected and no binary changes.
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  668f331004408ad5ff6252ab82946171f66bdde6b65cd239e863090287ff6628
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,671,156  b3604207dd6d49d11dc383efae3c7f684bceff355d31cc1543b1ca1f5fd9e7ae
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,486  c5756cbab3d2b332fbf828c46c6b75da9085c24861c94a0a7ffd05e5f1510a09
+
+## Fifty-ninth build, 2026-09-19: names that are in no name table, and a guard (v2.8)
+
+v2.7 shipped and then two audits were run against the published CIAs rather than
+against a working tree. Everything below came out of those, plus one refuter
+pass over a new tool. Nothing here was reported by a player.
+
+**Three descriptions named monsters that do not exist.** `MonsterTrivia0786`,
+`0840` and `0875` spoke of "Slamen Rider", "Slamen Dark" and "Slamen Rider
+Girl". None of those is a name in this game. The Japanese is スライダーヒーロー,
+which is `MK0785` Ultra Slime, 死神スライダーク, which is `MK0786` Nemeslime, and
+スライダーガール, which is `MK0840` Slider Girl, so the name table settles it and
+there was no wording call to make. Two are the 2021 wording. `0840` is ours and
+went backwards: `rename57.py` had corrected it, and the v2.7 rewrite put the old
+name back.
+
+It survived v2.7 because the check for it was a grep for the two-word phrase
+"Slamen Rider" in text that is stored hard wrapped, so every occurrence split
+across a line break was invisible. A scan of both shipped CIAs with the line
+breaks collapsed finds three, which is the three fixed, and nothing else
+anywhere in the game.
+
+**Text that the screen cannot hold.** The 3DS top screen is 400 px and the
+engine neither wraps nor shrinks, so anything past that edge is not drawn.
+`MenuMessageLoadNotVersionWarning`, the warning about starting a new game over
+a save, was one stored line of 478 px; `rewrap.py` has had a rule for that exact
+label since it was written, 235 px over three lines, and the rule never ran
+because `rewrap.py` was never wired into `rebuild.py`. Same root cause as the
+bestiary overflow in the fifty-eighth build. `TakeOverDataCheatMonster_Whale`
+was 639 px and `CaughtOut_Crack` 416 px; each has a twin string that says the
+same thing and is broken correctly, so each is broken the same way as its twin.
+
+**The Fondude speeches.** All seven rescue speeches are drawn in the field
+dialogue window, 346 px by two lines, but they live in
+`Message/StealthBoxMessage.mes` and `wrapdialogue.py` only ever looked at the
+field script, so nothing had ever measured them. One page was stored as a single
+482 px line. They are re-wrapped, the words untouched. The scope was not simply
+widened to everything carrying a page-break tag, because ten of those labels are
+the diary, which is drawn in a 378 by 180 pane and fits it today; widening would
+have broken the diary.
+
+Five field dialogue pages also ran to a third line, which is drawn below the
+window, including one that left a lone "a" on a line of its own. None needed
+shorter English. `wrapdialogue.py` keeps an authored line break and wraps under
+it, which is right for script broken on purpose and useless when the break
+itself is the problem. A page is only reflowed when the retail Japanese page for
+the same label fits two lines, which is what keeps the pass off the six pages
+that are long in Japanese too and are therefore drawn somewhere else.
+
+**The skill and trait pages, found by a refuter.** The new guard described below
+was written to check, among other things, the Library's skill and trait boxes.
+Its first draft counted a stored line wider than a box as costing an extra
+rendered row that a four line box could absorb, and so reported both files
+clean. It cannot be absorbed: the cut in the middle of the word is the defect.
+With the width test restored, thirteen entries in `FeatHelpMessage.mes` and
+`ActionHelpMessage.mes` are over their 234 px box, up to 256 px. All thirteen
+fit once re-wrapped, so no English is rewritten. The same mistake is why the
+audit itself had called those two files clean.
+
+That the box is 234 px is not a guess. The pane declares it, and every entry in
+both files measures at or under 234 px in the retail Japanese font except the
+`_Short` labels, which run to 303 px. A label whose retail Japanese does not fit
+the box is not drawn in that box, so the twelve `_Short` labels are left alone.
+
+**The guard.** `_audit/boxfit.py` is what `trivfit.py` was for one pane. It
+measures every label in every message file and field script against the 400 px
+screen, and the three boxes the audit resolved to their message file, and exits
+non-zero. It runs last in `rebuild.py`, so this class of defect stops the build.
+It deliberately does not guard the 36 single-line label panes or the 33 ItemHelp
+labels: nobody has shown the engine clips those at all, and retail Japanese
+itself overflows 21 of them, so guarding them would fail the build on something
+that is not a defect. On this build it reports 32,365 labels checked, 0 over the
+screen and 0 over a pane.
+
+**The rest of the name sweep.** The Slider family was found by reading one
+description. Sweeping all 737 for capitalised words that match no name in any
+of the game's tables returns 58 phrases, 54 of which are fine: plurals of real
+names (Exploads, Tuskateers, Nochoros), series lore (Rhapthorne, Loto, Dai) and
+place names. Two more looked wrong and are not: "Exploads" is the correct plural
+of `MK0409` Expload, and `0272`'s "Galba" and "Golba" are two different monsters,
+ガルバ and ゴルバ. One was wrong: `MonsterTrivia0465` called him "Negel", where the
+monster is `MK0465` 冥獣王ネルゲル, "Nelgel the Netherfiend", printed two lines above
+on the same page, and the Japanese line does not name him at all. Two others are
+spacing and case rather than naming: `0273` wrote "Blueeater" and "Redeater" as
+one word each where the Japanese has two, and `0906` wrote "Dermlin island".
+`0374`, `0433` and `0536` also ended without a full stop, `0374` on a comma,
+where all three Japanese lines end with 。
+
+**One spelling.** `MonsterTrivia0538` read "colour", which v2.7 introduced and
+which was the only British spelling in a file whose descriptions use color 23
+times, armor 14, favor 6 and rumor 18. The monster names stay British, which is
+official Dragon Quest style.
+
+The executable is untouched at 153 words, md5 `f6b40eef`.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  07a815e950fb4d6c071b11001b3e97f8ab88200746c8123de466dc363b406041
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  b35eab67669da9bf97fa7f2fc22854c525962b3dae55a2d9620c6c6be00bc54e
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,641,125  e5a88b9f50e1cceb1e8c93ca330e97d68eb8b60df401d65e8d881387157ec2f7
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,287  9b93aadb5012b1f276282212ba12740425ee5303056935f3db791cc37019056a
