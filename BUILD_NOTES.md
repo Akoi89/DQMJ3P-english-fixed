@@ -2330,3 +2330,54 @@ The executable is untouched at 153 words, md5 `f6b40eef`.
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  b35eab67669da9bf97fa7f2fc22854c525962b3dae55a2d9620c6c6be00bc54e
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,641,125  e5a88b9f50e1cceb1e8c93ca330e97d68eb8b60df401d65e8d881387157ec2f7
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,287  9b93aadb5012b1f276282212ba12740425ee5303056935f3db791cc37019056a
+
+## Sixtieth build, 2026-09-19: the one title that did not fit (v2.8.1)
+
+Found by looking at the game rather than by measuring it, which is the part
+worth keeping.
+
+The main menu status panel draws the player's title, and on the emulator it read
+"Legendary Scou". The Library's own Title list, a completely different panel,
+read "Legendary Scou" as well. Two unrelated panels cutting at the same point is
+what rules out any one pane's width being the cause.
+
+`TrophyName.mes` holds 256 titles and exactly one of them is longer than 14
+characters: `TrophyName006` "Legendary Scout", at 15 characters and 80 px. The
+other half of the proof is in the same list: `TrophyName005` "Monster Doctor" is
+14 characters and 74 px and is drawn complete three rows above the cut one.
+
+What is NOT settled, and is written down here rather than guessed at: whether
+the cut is a 14-character cap of the kind `NAMECAP_14_LIVE.md` documents in
+three other panels, or a pixel clip somewhere between 76 and 79 px. Both fit
+every observation, because no title in the game is 14 characters or fewer AND
+wider than 74 px, so no string exists that could tell the two apart. It does not
+change the fix: a replacement inside both limits is safe under either
+explanation, and "Monster Doctor" shows that 14 characters at 74 px is inside
+both.
+
+The title is now "Legend Master", 13 characters and 71 px. The Japanese is
+伝説のマスター, literally the legendary master, and the title belongs to a family
+that already reads Fledgling, Able Master, Skilled Master, Grand Master and
+Monster Doctor. All thirteen occurrences change together, including the four
+StreetPass strings that name it in prose, so the game does not call it two
+things. Every affected line gets narrower, and the pass asserts that for each
+one before writing.
+
+A note on the method. The box-fit audit mapped 698 text panes through the
+message-ID tail each one carries, and this pane carries none, so the audit could
+never have seen it. Measuring everything that can be measured is not the same as
+having looked.
+
+This build also repairs the documents. The docs pass that wrote the fifty-ninth
+build's notes had a faulty "already applied" check: it asked whether the marker
+was still present, and the marker sits inside the replacement, so running the
+pass twice inserted its block twice. v2.8 shipped with one RELEASE_NOTES
+paragraph and four TESTING rows duplicated. Both are collapsed here and the
+check now asks only whether the replacement is already present.
+
+The executable is untouched at 153 words, md5 `f6b40eef`.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  8af7690a60ec150b8372bbc9abf555b5ba6629e55ccb8ee05ad130c8b7f76941
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  5ac42726a8b45f1bc643abaa09c9e723e176168b65f331e82d7a642928378d35
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,663,804  d962a10b9a165bba4300534507619a38562c952f228f0b0b9c69ee49e47a2d9a
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,541  0a620055626c473ad079f6760ecb508ed8fc71f19c21d6e51ffe7b8a949c74db

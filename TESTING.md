@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the fifty-ninth (2026-09-19). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the sixtieth (2026-09-19). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -101,10 +101,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
-| A Library skill page that used to overflow (fifty-ninth build) | Library, then any monster, Skills, and read a skill description | every line sits inside the box. Before v2.8 thirteen of them were cut in the middle of a word |
-| The Slider family descriptions (fifty-ninth build) | Library, then Ultra Slime, Nemeslime, Slider Girl or Slider Kids, and read the Info box | they name Ultra Slime, Nemeslime and Slider Girl. Before v2.8 they named "Slamen Rider", which is not a monster in this game |
-| The new game warning (fifty-ninth build) | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
-| A rescued Fondude (fifty-ninth build) | Free any Fondude from a Stealth Box and read what they say | no line is cut in the middle of a word and nothing is drawn below the message window |
+| The top player title (sixtieth build) | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | A Library skill page that used to overflow (fifty-ninth build) | Library, then any monster, Skills, and read a skill description | every line sits inside the box. Before v2.8 thirteen of them were cut in the middle of a word |
 | The Slider family descriptions (fifty-ninth build) | Library, then Ultra Slime, Nemeslime, Slider Girl or Slider Kids, and read the Info box | they name Ultra Slime, Nemeslime and Slider Girl. Before v2.8 they named "Slamen Rider", which is not a monster in this game |
 | The new game warning (fifty-ninth build) | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |

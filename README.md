@@ -2,7 +2,7 @@
 
 This is the 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. It's released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
-Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-five dated sections, up to the fifty-ninth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
+Where to look: `RELEASE_NOTES.md` is the short summary, `FIXES.md` lists every fix, `BUILD_NOTES.md` is the full record (fifty-six dated sections, up to the sixtieth build) and `TESTING.md` is the test route. `CODE_PATCH_NOTES.md` is for anyone porting the code patch to another language: the addresses, the traps and how they were actually found.
 
 ## What you get
 
@@ -10,10 +10,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs th
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | f9163cff163a8dcf43e1c6c5f54ddea905ada7e31698bd225805bb76a8eb1804 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | d576112f292b0afe1a1e8790fa45141f4431c01ac8a49ea6e68a57da4ca08931 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,655,639 | 3f7414053a981055fa1227012722903c766862b70ab6af227b03c3893c9524ae |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,501 | f2db624a750f710f0aa23c9c2e0a61a5e5cdedd4ae24596ed01a8f2b6df580ab |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 8af7690a60ec150b8372bbc9abf555b5ba6629e55ccb8ee05ad130c8b7f76941 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 5ac42726a8b45f1bc643abaa09c9e723e176168b65f331e82d7a642928378d35 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,663,804 | d962a10b9a165bba4300534507619a38562c952f228f0b0b9c69ee49e47a2d9a |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,541 | 0a620055626c473ad079f6760ecb508ed8fc71f19c21d6e51ffe7b8a949c74db |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
