@@ -22,7 +22,7 @@ Newest first.
 - **v2.7** - 49 Library descriptions spilled a line out over the row below. Two monsters got the names the Joker 2 Professional translation uses, and the fusion list shows "etc." again when a monster has more recipes than it can list.
 - **v2.6.1** - fixes a crash v2.6 introduced in the naming keyboard. If you installed v2.6, replace it.
 - **v2.6** - wild monsters have their names back in battle, and scouting one stops asking you to retype it.
-- **v2.5** - 356 monster names changed to the ones the series uses, and dialogue lines that include your name are measured with the name in them.
+- **v2.5** - 356 monster names changed to match the ones the series uses, taken from this game's bestiary list on the Dragon Quest Wiki and from dragon-quest.org rather than from anything official, and dialogue lines that include your name are measured with the name in them.
 - **v2.4** - the patches were rebuilt so any correctly decrypted dump works, not just mine.
 - **v2.3** - the meaning pass finished, and the game says the same thing the same way everywhere.
 - **v2.2** - the interface text, a second read of the meaning pass, and the partner's lines.

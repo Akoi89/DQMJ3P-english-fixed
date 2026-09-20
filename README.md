@@ -118,7 +118,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 - **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
   - It asks for a game whose code is untouched. This build changes 153 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, and the routines that write a wild monster's name for battle.
   - I checked all nine addresses it uses (five hooks, four version probes). Every one still holds the stock instructions and the nearest changed word is over three kilobytes away, so the two should coexist. I haven't run them together.
-- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen.
+- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen, and tell me in the [issues tab](../../issues). Don't worry about whether it's already known. I'd much rather read the same report twice than miss one.
 
 ## Credits
 
