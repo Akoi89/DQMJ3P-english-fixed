@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the sixtieth (2026-09-19). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the sixty-first (2026-09-19). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -101,6 +101,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
+| The race stat labels (sixty-first build) | Colosseum reception, pick a monster for a race, read the stat list | the rows read "Pwr" and "Acc". Before v2.9 they read "Hors" and "Accel", cut mid-word |
 | The top player title (sixtieth build) | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | A Library skill page that used to overflow (fifty-ninth build) | Library, then any monster, Skills, and read a skill description | every line sits inside the box. Before v2.8 thirteen of them were cut in the middle of a word |
 | The Slider family descriptions (fifty-ninth build) | Library, then Ultra Slime, Nemeslime, Slider Girl or Slider Kids, and read the Info box | they name Ultra Slime, Nemeslime and Slider Girl. Before v2.8 they named "Slamen Rider", which is not a monster in this game |

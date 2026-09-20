@@ -17,12 +17,13 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.9** - nine labels in the menus were too wide for their box, so the game cut them off partway through a word. The race screen showed "Hors" and "Accel" instead of Horsepower and Acceleration. They are abbreviated to fit now, and the Wi-Fi ranking label that said "Score" says "W/L", which is what the Japanese means.
 - **v2.8.1** - the top player title was one letter too long to draw, so it showed as "Legendary Scou". It's now "Legend Master".
 - **v2.8** - four Library descriptions named monsters that aren't in the game. Thirteen skill pages, three warnings and the Fondude rescue speeches didn't fit their boxes. The build now measures every line against its box and won't finish if one doesn't fit.
 - **v2.7** - 49 Library descriptions spilled a line out over the row below. Two monsters got the names the Joker 2 Professional translation uses, and the fusion list shows "etc." again when a monster has more recipes than it can list.
 - **v2.6.1** - fixes a crash v2.6 introduced in the naming keyboard. If you installed v2.6, replace it.
 - **v2.6** - wild monsters have their names back in battle, and scouting one stops asking you to retype it.
-- **v2.5** - 356 monster names changed to match the ones the series uses, taken from this game's bestiary list on the Dragon Quest Wiki and from dragon-quest.org rather than from anything official, and dialogue lines that include your name are measured with the name in them.
+- **v2.5** - 356 monster names changed to the ones the series uses, and dialogue lines that include your name are measured with the name in them.
 - **v2.4** - the patches were rebuilt so any correctly decrypted dump works, not just mine.
 - **v2.3** - the meaning pass finished, and the game says the same thing the same way everywhere.
 - **v2.2** - the interface text, a second read of the meaning pass, and the partner's lines.

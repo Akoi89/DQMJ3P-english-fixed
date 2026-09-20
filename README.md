@@ -14,10 +14,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 8af7690a60ec150b8372bbc9abf555b5ba6629e55ccb8ee05ad130c8b7f76941 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 5ac42726a8b45f1bc643abaa09c9e723e176168b65f331e82d7a642928378d35 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,663,804 | d962a10b9a165bba4300534507619a38562c952f228f0b0b9c69ee49e47a2d9a |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,541 | 0a620055626c473ad079f6760ecb508ed8fc71f19c21d6e51ffe7b8a949c74db |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 30d4a1d31cac2d0d347dddc4cf617ea82e206abba893223e82b62860dab7acc1 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 87f762f2ae0e590f494fcbe1e6fcf57d712cf7387d89489ebbdda7e60011df5d |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,661,052 | 0aa44da8b8f6677a65783582bd921d3224812b9d22097e3bdebcaf66bf33e3e7 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,596 | c92b4495beb1afd08f5ded25d957bc9d62e175b7aff6d497b593048fd5b622d8 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -118,7 +118,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 - **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
   - It asks for a game whose code is untouched. This build changes 153 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, and the routines that write a wild monster's name for battle.
   - I checked all nine addresses it uses (five hooks, four version probes). Every one still holds the stock instructions and the nearest changed word is over three kilobytes away, so the two should coexist. I haven't run them together.
-- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen, and tell me in the [issues tab](../../issues). Don't worry about whether it's already known. I'd much rather read the same report twice than miss one.
+- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen.
 
 ## Credits
 

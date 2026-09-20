@@ -2381,3 +2381,76 @@ The executable is untouched at 153 words, md5 `f6b40eef`.
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  5ac42726a8b45f1bc643abaa09c9e723e176168b65f331e82d7a642928378d35
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,663,804  d962a10b9a165bba4300534507619a38562c952f228f0b0b9c69ee49e47a2d9a
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,541  0a620055626c473ad079f6760ecb508ed8fc71f19c21d6e51ffe7b8a949c74db
+
+## Sixty-first build, 2026-09-19: the labels the game was cutting in half (v2.9)
+
+Nine UI labels were wider than the box that draws them, so the game cut each one
+dead, in the middle of a word.
+
+**This is also where the engine's behaviour was finally settled.** The box-fit
+audit had flagged 36 single-line panes and doubted every one of them, because
+retail Japanese itself overflows 21 of those boxes by up to 6 px, which looked
+like evidence that the engine tolerates overflow. It does not. The colosseum
+race screen draws its two stat labels as "Hors" and "Accel". Both boxes are
+26 px. "Horsepower" is 58 px and the longest prefix that fits 26 px is "Hors"
+at 22; "Acceleration" is 59 px and the longest is "Accel" at 25. The
+measurement predicts the pixels exactly. Retail simply tolerates a few px of
+clip on its own labels; the engine clips all the same.
+
+25 of those 36 were false alarms of a different kind, and they stay cleared.
+They are the status screen's `tb_*_evaluate_*` panes, whose layout text reads
+"Evaluation" but is never drawn: the game writes Vuln, Norm, Half, Res+, Null
+or Heal there at runtime, all inside 26 px. Seen on the Resistances page.
+
+The nine, with what each was rendering:
+
+| Japanese | was | rendered | now |
+|---|---|---|---|
+| 馬力 | Horsepower | Hors | Pwr |
+| 加速 | Acceleration | Accel | Acc |
+| 作戦 | Tactics | Tacti | Plan |
+| 勝敗 | Score | Scor | W/L |
+| 戦闘速度 | Battle Speed | Battle Spe | Speed |
+| 特性数 | # Chosen | # Chos | # Traits |
+| 種族 | Species | Speci | Sp. |
+| 報酬 | Reward | Rew | Rwd |
+| 特性 | Traits | Trait | Trait |
+
+`rankbattle_11` was a mistranslation as well as a cut: 勝敗 is a win and loss
+record, not a score.
+
+**The wording went to Gemini**, which approved all nine picks and argued one of
+them better than the alternative left open: Acc rather than Accel, since a three
+letter Pwr beside a five letter Accel makes Pwr look like a mistake. Three were
+then changed against that verdict, on something neither of us knew when the
+question was asked. A LABEL IS SHARED BY PANES OF DIFFERENT WIDTHS and holds one
+value, so the narrowest pane decides the word everywhere it is drawn: `species`
+is used by a 26 px pane and a 78 px one, `Disc_27` by 26 px and 100 px. Gemini
+had picked "Kind" and "Prize", which would have renamed roomy panes to a
+different word while a separate label, `syuzoku`, still read "Species" on a pane
+that fits it. "Sp." and "Rwd" abbreviate the same word instead. The package and
+the verdict are `GEMINI_DQMJ3PRO_PANE_LABELS.md`.
+
+**The guard now covers this class.** `_audit/boxfit.py` checked the 400 px screen
+bound and three multi-line boxes; it now also checks 294 single-line panes
+against their narrowest box, from a table `mksinglelinetable.py` builds. Two
+traps are documented there because both were hit while building it: the shared
+label above, and that a pane's message-ID tail must be resolved to one file,
+since `exp`, `gold` and `item` exist in both LayoutMessage and FieldAuraMessage
+with different values, which makes three labels look 40 to 70 px over when they
+are fine.
+
+**Five known overflows are deliberately not fixed** and are named in the guard's
+skip list with a reason each. Four are place names: Power Plant appears in 5
+other strings and Secret Base in 14, so shortening the map label alone would
+contradict every other mention, and they need the pane widened instead. The
+fifth is `gattai`, "Ride Fuse" at 47 px in a 26 px pane, which is very narrow
+for a screen title and may be resized at runtime; it has not been seen on a
+screen yet.
+
+The executable is untouched at 153 words, md5 `f6b40eef`.
+
+  DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  30d4a1d31cac2d0d347dddc4cf617ea82e206abba893223e82b62860dab7acc1
+  DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  87f762f2ae0e590f494fcbe1e6fcf57d712cf7387d89489ebbdda7e60011df5d
+  patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,661,052  0aa44da8b8f6677a65783582bd921d3224812b9d22097e3bdebcaf66bf33e3e7
+  patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,596  c92b4495beb1afd08f5ded25d957bc9d62e175b7aff6d497b593048fd5b622d8
