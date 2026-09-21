@@ -14,10 +14,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 30d4a1d31cac2d0d347dddc4cf617ea82e206abba893223e82b62860dab7acc1 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 87f762f2ae0e590f494fcbe1e6fcf57d712cf7387d89489ebbdda7e60011df5d |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,661,052 | 0aa44da8b8f6677a65783582bd921d3224812b9d22097e3bdebcaf66bf33e3e7 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,596 | c92b4495beb1afd08f5ded25d957bc9d62e175b7aff6d497b593048fd5b622d8 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | fd6153f4ea14a4d4616a5da71c311adb80af6f7cfc79d49d70ae227e2721b6a2 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | f6f072c924d35164655ff4e28d89c6ef1a52d1a595a0baf67b5699cfd2a325c8 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,669,737 | 10b1d89cc0a4e38a4306082b3b08d994e3550cfca8a14038d720c28e0a92bbca |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,939,902 | 399bd23459b5c4723fe1cc16b636509c70913630b11d8777564259be5e85adb1 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -128,6 +128,6 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including the monster name this release corrects and the skill set whose name sent us back to check every other one against the official releases.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting. Every wording decision was reviewed and every change checked against the shipped files. This rebuild only fixes what was broken; it doesn't claim the translation.

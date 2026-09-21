@@ -17,6 +17,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.10** - names checked against the series. Around sixty spells, skills, traits and one monster now use the name the official English releases use, and the Courage skill set is Cleric again.
 - **v2.9** - nine labels in the menus were too wide for their box, so the game cut them off partway through a word. The race screen showed "Hors" and "Accel" instead of Horsepower and Acceleration. They are abbreviated to fit now, and the Wi-Fi ranking label that said "Score" says "W/L", which is what the Japanese means.
 - **v2.8.1** - the top player title was one letter too long to draw, so it showed as "Legendary Scou". It's now "Legend Master".
 - **v2.8** - four Library descriptions named monsters that aren't in the game. Thirteen skill pages, three warnings and the Fondude rescue speeches didn't fit their boxes. The build now measures every line against its box and won't finish if one doesn't fit.
@@ -53,6 +54,6 @@ Two xdelta patches, one for the Japanese base and one for the Japanese Ver.1.3 u
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. The click by click instructions in the README, and the Linux route beside them, are oho's.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including the monster name this release corrects and the skill set whose name sent us back to check every other one against the official releases. The click by click instructions in the README, and the Linux route beside them, are oho's.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting, with every wording decision reviewed and every change checked against the shipped files.

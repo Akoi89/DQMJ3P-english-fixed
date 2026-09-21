@@ -2454,3 +2454,46 @@ The executable is untouched at 153 words, md5 `f6b40eef`.
   DQMJ3P-update-fixed-3.4.0.cia                      21,423,104  87f762f2ae0e590f494fcbe1e6fcf57d712cf7387d89489ebbdda7e60011df5d
   patches/DQMJ3P-base-fixed-0.1.0.xdelta             13,661,052  0aa44da8b8f6677a65783582bd921d3224812b9d22097e3bdebcaf66bf33e3e7
   patches/DQMJ3P-update-fixed-3.4.0.xdelta            4,941,596  c92b4495beb1afd08f5ded25d957bc9d62e175b7aff6d497b593048fd5b622d8
+
+## Sixty-second build, 2026-09-20: the names the series already had (v2.10)
+
+Sixty-six rename rows in `names_r57.json`, sections 70A to 70G, carrying into
+625 changed strings across 25 files. The round started from two Discord reports
+and grew into a sweep of every name against the official-name map.
+
+What went in: MK0188 Great Empyrea to Great Godbird, from Joker 2's English
+bestiary, which lists Empyrea at #236 and Great godbird at #298 as separate
+monsters. The skill set ゆうき back to Cleric, reverting round 8, because Joker 2
+called it Cleric and its book had always said Courage Book. Cold Sleep,
+Aquapothecary and Canzar with their books. Acceleratle and Deceleratle, where
+the name belonging to ピオリム had been sitting on ピオラ's traits while ピオリム
+itself carried an invented one. Twenty-three ability renames verified one at a
+time against the wiki, including Gigagash, Reheal, Remidheal and the murta line.
+Twenty-nine trait renames putting spell-derived traits back on their spell's own
+name, with the standard trait taking the clean name and the rarer 小 variant
+taking "Rare". Giga Crosscut.
+
+What was deliberately left out, and why it matters more than what went in:
+
+THE MIST FAMILY, ten skill sets and ten books. rename57.py matches Japanese
+literally and the skill table writes full-width ＳＰ where the help text writes
+half-width SP, so the mention never carries. Renaming them would have shipped
+help reading "Skill: Black Mister SP" under a skill called "Black Mist Master
+SP". 76 skills are exposed and 75 help strings affected; the bug is dormant
+until such a skill is renamed. See BUG_rename57_fullwidth_SP.md.
+
+THE GRAVITY LINE, three rows. Official English is Donk, Kadonk, Kadonkle for
+ベタン, ベタドロン, ベタロール, and our line was a tier out. Renaming it is a CHAIN,
+where one row's new name is another row's old name, and step 2's sense map then
+holds two Japanese for one English, fails its count check and skips. Seven
+SkillHelp labels per tree printed the same spell twice. The engine had written
+all fourteen out as skipped rows and nobody read them. chaincheck.py now catches
+this class and was proved against the defect before it was trusted.
+
+Checks run on this build beyond the usual guards: control codes and line-break
+counts identical across all changed strings; a/an agreement unbroken, which
+matters because articles.py runs at rebuild.py:146 and rename57.py at :227;
+widths measured against the panes that actually draw the names, after finding
+that boxfit's single-line guard resolves labels only from LayoutMessage,
+FieldAuraMessage and ReactorFndMessage and therefore checks none of the renamed
+tables.
