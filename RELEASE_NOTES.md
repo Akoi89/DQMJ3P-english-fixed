@@ -17,7 +17,8 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
-- **v2.10** - names checked against the series. Around sixty spells, skills, traits and one monster now use the name the official English releases use, and the Courage skill set is Cleric again.
+- **v2.11** - your name no longer runs into the next word, the roaming boss prompts read as sentences, and the mist skill sets and gravity spells held back from v2.10 are renamed.
+- **v2.10** - names checked against the series. About fifty spells, skills, traits and one monster now use the name the official English releases use, and the Courage skill set is Cleric again.
 - **v2.9** - nine labels in the menus were too wide for their box, so the game cut them off partway through a word. The race screen showed "Hors" and "Accel" instead of Horsepower and Acceleration. They are abbreviated to fit now, and the Wi-Fi ranking label that said "Score" says "W/L", which is what the Japanese means.
 - **v2.8.1** - the top player title was one letter too long to draw, so it showed as "Legendary Scou". It's now "Legend Master".
 - **v2.8** - four Library descriptions named monsters that aren't in the game. Thirteen skill pages, three warnings and the Fondude rescue speeches didn't fit their boxes. The build now measures every line against its box and won't finish if one doesn't fit.

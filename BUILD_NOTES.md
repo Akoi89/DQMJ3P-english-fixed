@@ -2497,3 +2497,50 @@ widths measured against the panes that actually draw the names, after finding
 that boxfit's single-line guard resolves labels only from LayoutMessage,
 FieldAuraMessage and ReactorFndMessage and therefore checks none of the renamed
 tables.
+
+## Sixty-third build, 2026-09-23: text glued to a runtime value, and the held-back renames (v2.11)
+
+Measured against the tree v2.10 was packed from (`_audit/build_round70`), not `build/`,
+which still holds v2.9. 172 label copies changed, 85 distinct (file, label, old, new)
+changes; control-code sequences identical in all 172; 12 intended line-break changes;
+no non-text file differs. Code patch unchanged (153 edits, md5 f6b40eef).
+
+Round 73 (`proof_terms/round73.jsonl`, 44 rows, built by `mkround73.py`). A Discord
+report showed "Please give Jokesmanthe final test". A whole-tree sweep
+(`_gluesweep.py`: the player-name code, %ls slots and colour codes against a letter,
+every copy, no length cap) found six labels where the player name touched a word and
+four where a value slot did. Four of the name sites were ours: round39 (three) and
+round42 (one) dropped a space the 2021 text had. The three roaming-boss prompts in
+W00_00 were reworded per GEMINI_DQMJ3PRO_ROUND73.md. Widths are charged at 121 px for
+the player name and 149 px per %ls (widest monster or item name); four strings gained a
+line break to fit. Two pre-existing 2021 overflows are left alone and recorded: the
+pedestal intro line (name and item on one line, all six pedestal files) and
+COLORFONDUE_GREEN_202 (item and count on one line).
+
+Round 73B (GEMINI_DQMJ3PRO_ROUND73B.md): five names wider than their pane, found by the
+new name-table guard. "Chance Miracle of Stars", the three "Quake/Gravity Ward" books,
+"Psaro, Demon Clan Book". "Stamp of Essence Drain Ward" (one pixel over) is kept by
+ruling and sits on the guard's skip list. None of the five had been seen cut on screen;
+an earlier claim that two had was checked and was wrong.
+
+Two mentions an older chain rename never carried, found in the pre-release gap check:
+EventCommon ADD_FELLOW_V00_00 said "Cavorting Column became your ally!" where the Japanese
+names ミステリードール, now Pocus Poppet; and MonsterTrivia0761 called Killer Wave "a subspecies
+of Killer Wave" where the Japanese names キラーウェーブ, now Thriller Wave. Both corrected in
+round 73. The other two chains (Barracuda, Quayhorse) were checked and carry correctly.
+
+The mist family (section 70H, ten skill sets and ten books). rename57.py now folds
+full-width ASCII (U+FF01 to U+FF5E) on the Japanese side of step 2, so ＳＰ in the skill
+table matches SP in help text. Folding makes three name pairs identical (JESTER and its
+full-width form, WORLD likewise, and (なし)); harmless today, and the engine now stops if
+a future row maps such a pair to different English.
+
+The gravity line (section 70E). The sense map for X used to take in the Japanese of any
+row whose NEW name was X, which in a chain gives one English name two Japanese owners
+and a skipped rename. That block is gone; every row resolves from the frozen pre-round
+snapshot. Reviewed: none of the 487 rows needed it, reruns stay a no-op, and all 2,676
+v2.10 rename report rows are unchanged. The four older chains in 57A carry as before.
+
+boxfit.py now checks the rename engine's name tables (trait 130 px, ability 150, skill
+130, item 142; monster names excluded, no single pane width). Skip list: A371 (retail
+marks it deleted), FeatFndMessage521 (flavour text in the trait table), I0337 (above).
