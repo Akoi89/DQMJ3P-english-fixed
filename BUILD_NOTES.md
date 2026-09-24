@@ -122,11 +122,11 @@ keyboard tables and the single character icon glyphs. Three were entries in the
 fragment table in `LayoutMessage.mes`, which was otherwise fully translated, and
 one was a line of cutscene dialogue in demo980. That scan now returns zero.
 
-The fifteen French files were checked before use: every one matches ours exactly
+The fifteen French files were checked before use: every one matches the file it replaces exactly
 in width, height, format and byte length, so nothing in the layout had to move.
 Two more were rejected. The French drew COPPER on the copper coin banners, but
-the Japanese is ブロンズ and our own text says "Bronze Network Coin", so using
-their file would have contradicted the text we ship.
+the Japanese is ブロンズ and my own text says "Bronze Network Coin", so using
+their file would have contradicted the text I ship.
 
 ### Verified from the packed CIAs, not the working tree
 
@@ -223,7 +223,7 @@ out of the finished file.
 ## Fourth build, 2026-09-10: spelling regressions undone
 
 A change audit read the packed CIAs against the 2021 patch and found 20 places
-where our spelling pass made the text worse: it picked the most common word
+where my spelling pass made the text worse: it picked the most common word
 one letter away rather than the right one (`usless` became `unless`), saw only
 half of hyphenated words (`trans-dimensional` became `trains-dimensional`), and
 flattened deliberate accents and Spanish. `_audit/spellfix.py` puts all 20
@@ -566,11 +566,11 @@ found an emulator running and left the installed titles alone.
 
 The Silent Meadows navi map drew "NOW_PRINTING" on its destination
 marker. It had been parked as an engine fallback inherited from the game.
-It was ours. A BFLYT text pane can carry, after its default text, an
+It was mine. A BFLYT text pane can carry, after its default text, an
 ASCII message ID (the offset at +44 of the text-box fields points at it);
 the game fills the pane from that label in LayoutMessage.mes. The marker
 pane `tb_plc_H01` in `NaviMap/H00_00.arc` carries "PlaceName_H01_00",
-which our LayoutMessage translates as "Wood Park". When the second build
+which my LayoutMessage translates as "Wood Park". When the second build
 wrote the English default text into that pane, `lyttext.replace` grew the
 section and dropped everything after the text, so the ID offset pointed
 at padding; the game looked up an empty label and drew its fallback. One
@@ -585,7 +585,7 @@ shifts the ID offset when it grows a section, and a last step
 layout (the reference for both titles, since the 2021 patch built its
 base layouts from the Ver.1.3 files). The refuter (Opus) caught that the
 first draft compared against the 1.0 Japanese layouts, which would have
-pointed eight name-entry tabs at labels our message file does not have;
+pointed eight name-entry tabs at labels my message file does not have;
 against the right reference exactly two panes change. Only those two
 archives differ from the sixteenth build; the update CIA and its patch are
 unchanged. Rebuild from the 2021 CIAs replaces `build/`; pack, keyboard
@@ -648,12 +648,12 @@ icon with "♦", which exists in no font, so the icon drew as glyph 0 in
 "Not enough [icon]." and in front of crystal items. `_audit/fontglyph.py`
 (spec `SPEC_fontglyph.md`, builder Sonnet, refuter Opus ACCEPT with an
 independent parse of the output) appends the four cells from the Japanese
-update fonts to both of our fonts (3,842 to 3,846 glyphs, one CMAP block
+update fonts to both of my fonts (3,842 to 3,846 glyphs, one CMAP block
 added, every original glyph byte-identical), and `round16.py` puts 鴒 back
 in the three labels. The fonts were tried through the emulator's mod
 folder first: boot, save load, menus and lists render as before. The
 chest crashes themselves are the 2021-05-30 changelog's "fix crash when
-opening some chests"; our base is that release. Both titles change;
+opening some chests"; my base is that release. Both titles change;
 rebuild, pack, keyboard patch, verification, install (checkinstall OK) and
 both xdelta patches redone.
 
@@ -1705,13 +1705,13 @@ Round 49 found one layout label blank in English where Japanese retail has
 text, and filled it with "Type". That slot is a counter suffix rather than a
 heading: Japanese writes "385 of these kinds" as one run, and English puts a
 bare number there. The game concatenates its own runtime number straight onto
-our string with no separator, so the Library Collection page came out reading
+my string with no separator, so the Library Collection page came out reading
 "385Type", "308Type", "52Type" in seven places. The 2021 patch was right to
 leave the label blank, and round 53 puts it back.
 
 Nothing static could have caught this. Both halves are individually correct
 and the join only exists at draw time, so the width checker never sees the
-number sitting in front of our text. Every other round from 39 to 52 was
+number sitting in front of my text. Every other round from 39 to 52 was
 checked for the same shape: this is the only blank any of them filled.
 
 The two sibling labels carrying the same Japanese, in the sort menu, are
@@ -1726,7 +1726,7 @@ per label so a label put back to its shipped value is not counted as changed.
 
 Still present and NOT fixed here, seen on the same screen: the Speed Road
 totals read "880Poi/nt", because the point counter suffix ships as "Point"
-while its sibling ships as "pt". That one is a 2021 defect rather than ours
+while its sibling ships as "pt". That one is a 2021 defect rather than mine
 and is a wording choice, so it goes to review rather than into this build.
 
   DQMJ3P-base-fixed-0.1.0.cia                     1,596,015,616  41817cb1ccf03b65954e2909e8a6c943d04e9c17cb2991b31761d6cbda4c4c01
@@ -1739,9 +1739,9 @@ verification and both xdeltas were redone.
 
 ## Fifty-second build, 2026-09-16: two counters (round 54)
 
-Round 54 (Gemini: A-i, B-i). Neither defect is ours. Both have been in the
+Round 54 (Gemini: A-i, B-i). Neither defect is mine. Both have been in the
 English patch since 2021, and both were found by playing the fifty-first build
-on the same Library screens that exposed our own round 49 regression.
+on the same Library screens that exposed my own round 49 regression.
 
 A. Library > Speed Road rendered "880Poi" with "nt" pushed onto the next line.
 The game writes its runtime number and then the label immediately after it,
@@ -1779,8 +1779,8 @@ Round 55 (Gemini: A-i). One label, and the sweep behind it is the reason it
 exists at all.
 
 The partner's Go Scout menu listed its errands as "5min", "15min", "30min".
-The engine writes the number and our unit lands straight against it. That is
-the same shape as two defects already dealt with in this release, one of ours
+The engine writes the number and my unit lands straight against it. That is
+the same shape as two defects already dealt with in this release, one of mine
 reverted in round 53 and one of the 2021 patch's fixed in round 54, but unlike
 those two this one fitted and did not overflow, so it was a question of style
 rather than a defect and went to review rather than being settled here. It now
@@ -1798,7 +1798,7 @@ with a wide gap before it.
 
 Two sweeps stand behind it, because the one label was never the point.
 
-The first covers strings where one of our own format slots touches a letter
+The first covers strings where one of my own format slots touches a letter
 with no separator. It was run with a 40 character limit and only over the
 Message tree, and the section as first written claimed it covered everything,
 which it did not. Re-run without either restriction: 70 distinct labels tree
@@ -1841,18 +1841,18 @@ wording calls, and both have been in the patch since 2021.
 A disc prompt read "Use" with the disc name jammed onto it, so a player saw
 "UseSunken Ruins Lv3 and freely roam within the disc world?". And Don Mogura,
 handing over a reward, said "I will grant youGold Ring." In both the engine
-writes the name where our sentence leaves a slot, and the space in front of
+writes the name where my sentence leaves a slot, and the space in front of
 that slot was missing.
 
 How they were found is the point. The round 55 sweep claimed to cover every
-string where one of our slots touches a letter. It did not: it capped strings
+string where one of my slots touches a letter. It did not: it capped strings
 at 40 characters and walked only the Message tree, and both of these are
 longer than 40 characters, one of them in a field script. A reviewer refused
 to accept the figure that sweep produced, which is what sent me back to run it
 properly. Without that, both would have shipped in a release whose own notes
 boast about fixing this exact class of defect.
 
-Re-run over the whole tree with no cap: 70 labels where one of our slots
+Re-run over the whole tree with no cap: 70 labels where one of my slots
 touches a letter. 60 are a unit or marker the Japanese writes flush too and
 are left alone. These two are the only places in the whole tree where a WORD
 runs into the value, which a second independent sweep confirmed. An earlier
@@ -1945,8 +1945,8 @@ proves which name is meant.
 `She-Slime` is not rewritten as `She-slime`. 152 monsters have no entry on that
 page and keep the name the 2021 translation gave them, which is unavoidable.
 Four had been crossed with a different monster entirely: `Cavorting Column` is
-the series name for ミステリピラー while ours is ミステリードール, which is Pocus
-Poppet, and `Killer Wave` belongs to マッドウェーブ while ours is キラーウェーブ,
+the series name for ミステリピラー while the Japanese here is ミステリードール, which is Pocus
+Poppet, and `Killer Wave` belongs to マッドウェーブ while the Japanese here is キラーウェーブ,
 Thriller Wave. Barracuda and Quayhorse were the same mistake.
 
 **The traits, and a reporter who was right about the word and wrong about the
@@ -1989,7 +1989,7 @@ window's name panes (`battle_windows.bflyt`, `tb_mnsname_N_MM`) and the enemy
 Status header draw that field, not the species table. Two writers fill it when
 wild monsters spawn, `0x1d068c` for one record and `0x1d1a70` for a range, and
 both measured the species name and, if it would not fit, skipped the copy and
-left the field empty. Japanese species names fit. 438 of our 880 don't, so
+left the field empty. Japanese species names fit. 438 of the 880 don't, so
 every one of those drew nothing. The duplicate labeler `0x1d003c` then appends
 `suffixA` to `suffixH` from `LayoutMessage.mes` to each record whose name
 matches another's, and skipped for the same reason; empty plus "A" is "A",
@@ -2168,7 +2168,7 @@ description that names the earlier form, and a note in the demo917 script.
 missed, so this also puts the monster and the skill named after it back in
 agreement.
 
-Checked against the same table: six more names we changed and J2 Professional
+Checked against the same table: six more names I changed and J2 Professional
 also uses are all defensible, each backed by this game's own wiki bestiary
 (Lord of the Dragovians, Picuda, Quayhorse, Leonyx the Divine Battler, Wyrmhole
 Dragon, Bishop Ladja). The cross-check found nothing else.
@@ -2204,8 +2204,8 @@ a line too wide. The base tree was worse: 114 of its descriptions were still
 single unbroken runs.
 
 8 of the 49 fit once re-wrapped. The other 41 needed shorter English, and that
-is mostly our own doing: these were strings the 2021 patch left untranslated, so
-we wrote them, and wrote them long. Every rewrite was measured before it was
+is mostly my own doing: these were strings the 2021 patch left untranslated, so
+I wrote them, and wrote them long. Every rewrite was measured before it was
 accepted. Several turned out to be corrections as well: 0375 had invented
 "camouflaged by its onyx frame" and "a night stroll" that are not in the
 Japanese, 0538 had fur "corrupted and bloodied" where the Japanese says dyed the
@@ -2243,7 +2243,7 @@ pass over a new tool. Nothing here was reported by a player.
 Girl". None of those is a name in this game. The Japanese is スライダーヒーロー,
 which is `MK0785` Ultra Slime, 死神スライダーク, which is `MK0786` Nemeslime, and
 スライダーガール, which is `MK0840` Slider Girl, so the name table settles it and
-there was no wording call to make. Two are the 2021 wording. `0840` is ours and
+there was no wording call to make. Two are the 2021 wording. `0840` is mine and
 went backwards: `rename57.py` had corrected it, and the v2.7 rewrite put the old
 name back.
 
@@ -2422,7 +2422,7 @@ record, not a score.
 **The wording went to Gemini**, which approved all nine picks and argued one of
 them better than the alternative left open: Acc rather than Accel, since a three
 letter Pwr beside a five letter Accel makes Pwr look like a mistake. Three were
-then changed against that verdict, on something neither of us knew when the
+then changed against that verdict, on something neither Gemini nor I knew when the
 question was asked. A LABEL IS SHARED BY PANES OF DIFFERENT WIDTHS and holds one
 value, so the narrowest pane decides the word everywhere it is drawn: `species`
 is used by a 26 px pane and a 78 px one, `Disc_27` by 26 px and 100 px. Gemini
@@ -2483,7 +2483,7 @@ SP". 76 skills are exposed and 75 help strings affected; the bug is dormant
 until such a skill is renamed. See BUG_rename57_fullwidth_SP.md.
 
 THE GRAVITY LINE, three rows. Official English is Donk, Kadonk, Kadonkle for
-ベタン, ベタドロン, ベタロール, and our line was a tier out. Renaming it is a CHAIN,
+ベタン, ベタドロン, ベタロール, and my line was a tier out. Renaming it is a CHAIN,
 where one row's new name is another row's old name, and step 2's sense map then
 holds two Japanese for one English, fails its count check and skips. Seven
 SkillHelp labels per tree printed the same spell twice. The engine had written
@@ -2509,7 +2509,7 @@ Round 73 (`proof_terms/round73.jsonl`, 44 rows, built by `mkround73.py`). A Disc
 report showed "Please give Jokesmanthe final test". A whole-tree sweep
 (`_gluesweep.py`: the player-name code, %ls slots and colour codes against a letter,
 every copy, no length cap) found six labels where the player name touched a word and
-four where a value slot did. Four of the name sites were ours: round39 (three) and
+four where a value slot did. Four of the name sites were mine: round39 (three) and
 round42 (one) dropped a space the 2021 text had. The three roaming-boss prompts in
 W00_00 were reworded per GEMINI_DQMJ3PRO_ROUND73.md. Widths are charged at 121 px for
 the player name and 149 px per %ls (widest monster or item name); four strings gained a

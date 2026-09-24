@@ -7,11 +7,11 @@ language other than English.
 The text work in this project does not transfer, because it is English. The
 code patch does, because every fix below is about buffer sizes and a default
 tab index, not about words. If your translation has longer names than the
-Japanese, you will hit the same walls we did.
+Japanese, you will hit the same walls I did.
 
 Everything here was measured on the running game. Where a number appears, it
 came from a debugger or a byte comparison, not from reading a disassembly and
-guessing. That distinction cost us several days, and section 5 is the reason.
+guessing. That distinction cost me several days, and section 5 is the reason.
 
 ## 1. Which executable, and the trap that will cost you an evening
 
@@ -23,7 +23,7 @@ The trap: on Azahar or Citra, an ExeFS code override for this game has to go
 under the **base** title id,
 `AzaharPlus/load/mods/00040000001ACB00/exefs/code.bin`, even though the
 update's code is the code that runs. Putting it under the update's title id
-does nothing at all, silently. We lost an evening to that.
+does nothing at all, silently. I lost an evening to that.
 
 Useful constants for the update's code:
 
@@ -32,7 +32,7 @@ Useful constants for the update's code:
 * Virtual address = file offset in the decompressed code + `0x100000`.
 * The compressed `.code` as shipped is 4,477,028 bytes. The ExeFS entry after
   `.code` starts at data offset `0x445200`, so there are only about 400 bytes
-  of slack. Our patched code compresses 20 bytes larger, to 4,477,048, which
+  of slack. My patched code compresses 20 bytes larger, to 4,477,048, which
   leaves 392 bytes spare. Check yours rather than assume.
 * 3dstool round-trips the compression exactly: recompressing the untouched
   decompressed code reproduces the shipped bytes byte for byte. That is worth
@@ -106,9 +106,9 @@ show you the loop at all.
   icons, whose colour codes eat 10 of the 21. Five words give it a
   40-character buffer in a grown frame.
 
-`0x22f818` has thirteen other callers that also pass 21. We placed some of
+`0x22f818` has thirteen other callers that also pass 21. I placed some of
 them and left the rest: their screens were never identified, so an action
-name may still cut at 18 somewhere we did not find. If you go looking, a
+name may still cut at 18 somewhere I did not find. If you go looking, a
 one-shot breakpoint logger that records the caller address per screen is the
 fastest way to map them.
 
@@ -158,7 +158,7 @@ The naming keyboard after a scout pre-fills two characters: `mov r1,#2` at
 bigger literal. Zero makes the callee read the initial text's own length and
 clamp that to the slot count; a literal makes it ask for that many characters
 whether they exist or not, and the per-character fetch at `0x3212ec` aborts on
-a short name, which crashes the game on every fusion. We shipped that mistake
+a short name, which crashes the game on every fusion. I shipped that mistake
 for about an hour. Zero is what every other mode passes, at `0x22acc0`.
 
 Two things that cost a night. `0x15b068` looks unreferenced and is not,
@@ -205,6 +205,6 @@ The base title's executable is untouched.
 
 ## 7. Licensing, so it is not a question
 
-Nothing here is claimed as ours to license. The offsets are facts about
+Nothing here is claimed as mine to license. The offsets are facts about
 someone else's binary. Use them however you like, with no attribution
 required. If it helps your players, that is the point.
