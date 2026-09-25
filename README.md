@@ -14,12 +14,14 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 9dafd387dab58db8b2fe8a603634c6da75b8fbe16bf45044895c579cea298426 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | b6a13a43860b5513b009e2afcc65f89960d5f7a3000bc1842b2303efbd4b7f76 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,481,879 | 9341f3f7f4c3989fe94b84ddaf7126fb4cc4ef6a5fbe795aef3377906650c896 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,540,167 | 585f3ca754b3cea0dd428017516fea7cc3f3d3662f3874539d83a43656b37863 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,032,000 | 33d3823e2921a2371f2f6047028eee5fd7b765a3556f02731f448a3180e4b2e3 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | 2072cb18193419ded98653dedf49a42cd662e6eb3a7274b32402e7780ad72370 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,637,373 | f124f4303760370aae45e781bfb318d322f4667334fd252d741f5e9ab2dc0ed2 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,178,110 | ce51475a16a5a64cf3fafba3172a85fbe8fa2f6e961284026472db5abf7b5625 |
 
-Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
+Install **both CIAs**, the base first and then the update. The update carries the Ver.1.3 content and the executable, including the keyboard fix; the base carries the rest of the game's data. With only one of them installed you get a mix of old and new text.
+
+**Back up your save before updating from an older build.** Installing a new build over the old one keeps your save, so there's no need to delete the game first, and deleting it in FBI or the Home Menu can take the save with it. On a 3DS, Checkpoint or JKSM makes the backup. In Azahar or Citra, right click the game, pick Open Save Data Location, and copy that folder somewhere safe.
 
 ## Applying the patches
 
@@ -65,7 +67,7 @@ Never done this before, or something already went wrong? Start again from here. 
 8. If it stops with a checksum mismatch, go back to **how you dumped**. They must be encrypted dumps decrypted on the PC, not decrypted or trimmed by GodMode9. Check the source sizes above too.
 9. You should now have `DQMJ3P-base-fixed-0.1.0.cia` and `DQMJ3P-update-fixed-3.4.0.cia`. Copy both to your SD card.
 10. Open FBI on your 3DS (you have it if you followed the usual modding guide), go to SD, and install **the base first, then the update**.
-11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.12" (the update patch) and the bottom right corner says "base EN 2.12" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
+11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.13" (the update patch) and the bottom right corner says "base EN 2.13" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
 
 Thanks to oho, who wrote these steps out on Discord.
 
@@ -79,6 +81,8 @@ Thanks to oho, who wrote these steps out on Discord.
 - **Finding the right dump:** in most filenames it's `ドラゴンクエストモンスターズ - Joker 3 PROFESSIONAL`, product code CTR-P-BDQJ. The game's banner writes that on two lines; the hyphen is just how dump tools flatten the line break.
 
 **On an emulator, if the names still look old after installing both CIAs:** right click the game in Azahar or Citra and pick Open Mods Location. A `romfs` folder in there overrides the game's data files with whatever it contains, and it beats anything you install as a CIA, so reinstalling will never help. Rename it to `romfs_off` and boot again. It replaces data files only, not the executable, so you can end up running this patch's code with the old translation's text: monster names appear in battle the way this build added them, but they're the old names. Found by Retho on Discord.
+
+**The same override exists elsewhere.** On Android, Azahar keeps it in its user folder under `load/mods/00040000001ACB00/`. On a real 3DS with Luma, it's `/luma/titles/00040000001ACB00/romfs` on the SD card, and Luma loads it whenever game patching is on. If an old translation's files are in either place, rename the folder the same way. The title menu tells you which is happening: if the box and the corner say this build's version but the text is still old, something is overriding it.
 
 ## On Linux
 

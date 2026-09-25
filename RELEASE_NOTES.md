@@ -10,6 +10,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 - **Text that didn't fit its box.** The game won't shrink text or move a word to the next line. Too wide, and it chops the line off partway through a word; one line too many, and the extra is drawn outside the box on top of whatever's there. Fixed across descriptions, warnings and conversations.
 - **Names cut short.** In menus, in the Library, on the naming keyboard, and under wild monsters in battle, where 438 species used to show nothing at all.
 - **Japanese that was never translated.** 167 lines, plus menus, tips, textures and signs.
+- **Characters that all sounded the same.** In Japanese the Nochoros end their sentences with a little "cho", the King speaks like royalty, Toto like an old gang boss and Azamook with oily politeness. The 2021 English flattened most of that, and it's back.
 
 `FIXES.md` has a paragraph on each. `BUILD_NOTES.md` is the full record.
 
@@ -17,6 +18,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.13** - characters talk the way they do in Japanese again (the Nochoros' "cho", Chomach's speed talk, the Queen's airs, Toto, Azamook, the King and others), about a hundred lines that said something the Japanese doesn't are corrected (the King no longer calls Lucia "he", and Tiko and Kukuri are girls again), the harsh swearing and made-up laughs the 2021 English added are gone, and MAP Disc quest rewards no longer read "found 1000 xGold."
 - **v2.12** - lines that put a name or number in the wrong place (a trader asking for "Red Gem of your 4") read the right way round, the Red Colour Fondude's trade menu offers its own rewards, the six pedestal texts fit their box, a few names lose their typos, the Set AI list shows ability names in full, skill sets and books named after a monster use that monster's name, and the title screen shows which version of each patch you have.
 - **v2.11** - your name no longer runs into the next word, the roaming boss prompts read as sentences, and the mist skill sets and gravity spells held back from v2.10 are renamed.
 - **v2.10** - names checked against the series. About fifty spells, skills, traits and one monster now use the name the official English releases use, and the Courage skill set is Cleric again.

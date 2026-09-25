@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the sixty-fourth (2026-09-24). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the sixty-fifth (2026-09-24). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -108,8 +108,13 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The Set AI list (sixty-fourth build) | a party monster's Tactics & Abilities, then Set AI, on a monster that knows Giga Essence Extractor | the row and its Y: Info window both say "Giga Essence Extractor". Before v2.12 both cut it to "Giga Essence Extra" |
 | A Colour Fondude trade (sixty-fourth build) | Wood Park, the Red Fondude, once rescued | "If you have them, could we exchange / Red Gem (x4) for my treasure?", and the menu lists Werebeast Leather, Saint's Ashes, Essence of Labor and Temporal Crystal. Before v2.12 it asked for "Red Gem of your 4" and listed the Yellow trader's rewards |
 | A pedestal (sixty-fourth build) | one of the six Incarnus-area devices that reacts to the Light Orb | "Bring (title), (monster), and power will dwell in the Light Orb.", every line inside the box. Before v2.12 three of the six swapped the monster and the Light Orb |
-| The version stamps (sixty-fourth build) | the title menu, after Press Start | the box above Continue says "EN 2.12" and the bottom right corner "base EN 2.12". An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps (sixty-fourth build) | the title menu, after Press Start | the box above Continue says "EN 2.13" and the bottom right corner "base EN 2.13" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | A skill book named after a monster (sixty-fourth build) | the bag's book pages, or Library > Skill | the book, its "Skill:" line and the skill set all use the monster's name, e.g. "Zenith Dragon Book" and "Skill: Zenith Dragon". Before v2.12 many books and skill sets kept the 2021 name while the help line used the new one |
+| A Nochoro inn (sixty-fifth build) | talk to the innkeeper at the Wood Park inn | "Welcome to the Inn! Here, weary travelers can rest / and recover, cho.", then a page with the yes/no question and no "cho" on it. Before v2.13 there was no "cho" |
+| A StreetPass greeting (sixty-fifth build) | a StreetPass arrival on the menu | the Nochorin's bubble ends in "cho!" ("came to play, cho!") and every word is inside the bubble. Not yet seen on screen |
+| The King on Lucia (sixty-fifth build) | the King, after you meet Lucia in the prison | "So she is doing well, then...". Before v2.13 he said "he" |
+| A MAP Disc quest reward (sixty-fifth build) | finish a MAP Disc quest that pays Gold or Exp. | "For successfully completing this, you / received 1000 Gold." (or "received Exp. 300."). Before v2.13 it read "found 1000 xGold." Not yet seen on screen |
+| Tiko in the Reactor (sixty-fifth build) | the Reactor record for Tiko | "A hard-working member of the Pipit tribe who fights with luck as her / weapon. She is no amateur." Before v2.13 it said "his" and "He". Not yet seen on screen |
 | The race stat labels (sixty-first build) | Colosseum reception, pick a monster for a race, read the stat list | the rows read "Pwr" and "Acc". Before v2.9 they read "Hors" and "Accel", cut mid-word |
 | The top player title (sixtieth build) | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | A Library skill page that used to overflow (fifty-ninth build) | Library, then any monster, Skills, and read a skill description | every line sits inside the box. Before v2.8 thirteen of them were cut in the middle of a word |

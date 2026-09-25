@@ -2604,3 +2604,65 @@ gets a new text pane `tb_enbase` in `Layout/title/lower/title_menu.arc` reading
 
 Checked and closed: the SMDH "drift" noted in the v2.11 audit is not real; the icon file
 is byte-identical from v2.4 to v2.11 (`_audit/SMDH_DRIFT.md`).
+
+## Sixty-fifth build, 2026-09-24: character voices, meaning fixes, swearing (v2.13)
+
+Measured against the shipped v2.12 tree (`_audit/build`, labeldiff `_v213_labeldiff.txt`).
+2,349 label copies changed, 1,010 distinct; 0 control-code sequences changed; 161 copies
+re-break a line inside their page (no page grows past two lines). 290 files differ: 289 `.mes` files and the base's
+`title_menu.arc` (the corner stamp). ctrlcodes 0 of 20,579 against the Japanese, boxfit 0, skillheader_check 0, gluesweep
+counts equal to v2.12's except one site fewer (the quest reward's "x%ls", round 78).
+
+Round 76, the voice round (GEMINI_DQMJ3PRO_ROUND76_VOICE.md: N-A, C-A, T-A, Q-A, Z-A, the
+Nochoro "cho" once per page on the last sentence and never on a yes/no page, the second-tier
+voices in this release). Voice cards in `_audit/VOICE_guide.md`; drafts in
+`_audit/voice76/*.jsonl` (rows by group: Nochoro 469, King 73, Madullajah 59, Queen 42,
+Ace 38, Chomach 29, Toto 29, NochorinPartner 26, Itaburu 25, Azamook 20, Elder 17, Hogan 17,
+Sancho 17, Lucia 14, R77 21). `mkround76.py` validates every row (old text equal in every
+copy, control codes and value slots identical in order, no page past two lines, widths
+with the name at 121 px and each slot at 149 px, Message/ files capped at their own widest
+line) and writes `proof_terms/round76.jsonl`; `round76.py` applies it in rebuild.py after
+round 75. Speakers come from the event scripts (SetTalkName_), including labels reached
+through MakeMassege2 and message_key variables, which the first inventory missed (306 lines,
+found by the refuter). Three refuter passes; meaning stayed frozen, and an English-only laugh
+on a voiced line was dropped.
+
+Round 77 (GEMINI_DQMJ3PRO_ROUND77_MEANING.md, `_audit/round77_draft.tsv`): 20 lines whose
+English contradicted the Japanese, all as proposed except items 2 and 5b (alternatives).
+In the same verdict Gemini asked for the harsh swearing to go. `voice77_apply.py` folds both
+into the round 76 drafts: 17 rows edited, 21 added (group R77). A whole-tree scan for
+damn/bastard/crap/piss/shit/bloody/arse/bitch/fuck/"the hell" found 24 hits in v2.12 and 4
+in v2.13, all literal (the Bloody Hand, "damned by evil spirits", a trivia line's "bloody,
+pulpy walrus chum", the Hell Genes item). The mild words the game already uses ("heck",
+"jerk", "sucks") stay.
+
+Round 78 (GEMINI_DQMJ3PRO_ROUND78_LAUGHS.md: all groups approved, items 3 and 25 reworded).
+`laughscan.py` compares every English page with a laugh against its Japanese page (laugh forms
+incl. ふぉっふぉ, フォッ, ファッファ, ふっふ); 27 pages laughed where the Japanese does not, a broad
+sweep found only names. `voice78_apply.py`: 15 laughs removed, 5 scoffs (ふん/フッ) as
+"Hmph"/"Heh", a roar, 4 interjections, Toto's ワハハ moved back to page 2. The ride line
+(RideInSmallMap, seen on the emulator with a nicknamed monster) drops "the". The MAP Disc reward
+(DiscQuestResultMessage Result_Success): the function at 0x612500 pushes amount then "Gold" on
+the gold path and "Exp." then amount on the exp path (`_audit/DISCQUEST_RE.md`), so "found %ls
+x%ls." showed "found 1000 xGold."; now "received %ls %ls.". mkround76.py gained a per-row
+`slot_px` for slots known to be narrow, and now rejects "cho" on a yes/no page.
+Item 29, asked after the rest (same thread, approved): the Nochoro master
+O00_03 DISC_NPCMSG_003_ASK_BATTLE said "What a strange place to bump into one" and
+"I'd rather not waste this opportunity" for 同業者に 会えるなんて カンゲキ and 何かの縁; now
+"What a thrill to meet a fellow master, cho!" and "It must be fate that we met here!".
+
+Round 79 (GEMINI_DQMJ3PRO_ROUND79_MEANING.md: approve all 80). The 5,468 Script/Field dialogue
+labels that no voice76 row covered (`meaning79_batches.py`, 14 batches) were read page by page
+against the Japanese by 14 reviewers (brief `_audit/SPEC_round79_meaning.md`), flagging meaning
+only: 80 flags, 7 clear, merged by `meaning79_collect.py` into `meaning79/ALL_flags.tsv`. The
+primary kept all 80, with three wording overrides taken from the game's own names ("Specialist"
+is the RaSearchMessage menu title for ミヤブリスト; "Power Ward" is RulerPointName019's name for
+動力区; one wording for the three copies of Tiko's record), and added the Center Building copy
+of Kukuri's record. Tiko and Kukuri are girls: MonsterTrivia0741 and 0843 both read
+ピピット族の女の子. `voice76/Round79.jsonl`, 78 rows, plus `voice76/Round79_twins.jsonl`, 10 rows
+(`twins79.py`: labels elsewhere with byte-identical Japanese, e.g. the Center Building and
+U00/Z00 copies of Tiko's record). Left for later, not meaning: the stray
+speaker code in NPC_KANDATA_035 and colour spans on the wrong words in NPC_CROW_050/210 and the
+Don Mole prize lines.
+
+codepatch: the same 171 words; the version literal reads "EN 2.13", md5 `2289c67b`.
