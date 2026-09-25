@@ -2544,3 +2544,63 @@ v2.10 rename report rows are unchanged. The four older chains in 57A carry as be
 boxfit.py now checks the rename engine's name tables (trait 130 px, ability 150, skill
 130, item 142; monster names excluded, no single pane width). Skip list: A371 (retail
 marks it deleted), FeatFndMessage521 (flavour text in the trait table), I0337 (above).
+
+## Sixty-fourth build, 2026-09-24: values in the wrong slot, the pedestal texts, Set AI (v2.12)
+
+Measured against the shipped v2.11 tree (`_audit/build`) with `labeldiff.py build
+build_v212`: 423 label copies changed, 211 distinct, in 43 text files; the one non-text
+file that differs is the base's `Layout/title/lower/title_menu.arc` (the version stamp
+below). Round 74 alone is 120 copies, 60 distinct. Six copies change their
+control codes, each now matching the Japanese: A04 MINE_PEDESTAL_030 gains the closing
+page break, S03 MINE_PEDESTAL_030 loses an extra page, COLORFONDUE_RED_005's choice-list
+code goes from 0x0123 to 0x0124 (each in Script/ and its Field/ copy).
+
+How values are filled. The event scripts are plain Squirrel source (`.nut` beside each
+`.mes`). A line's values are set with SetExchangeItemName_ / MonsterKindName_ / Number_
+and then ShowMsg_; the engine fills `%ls` strictly left to right. Seen on the emulator on
+v2.11: the Red Fondude said "...for Red Gem of your 4?" (`_audit/tex/rig_redtalk5.png`).
+`_audit/slotorder.py` lists every line whose values have mixed types (58); ten had English
+that reordered them: MINE_PEDESTAL_020/030 in A04, I03, S03, COLORFONDUE_BLUE/RED/YELLOW_005,
+NPCMSG_GB_WIN_REWORD_ITEM.
+
+Round 74 (`proof_terms/round74.jsonl`, 120 rows, `mkround74.py`), ruled in
+GEMINI_DQMJ3PRO_ROUND74.md: A1-i, A2-i, B1-R1, B2, B3-i, C, C2-i, D1-i, D2-i, D3-i, D4 leave.
+The pedestal family (020, 030, 040, 050, 060_2, 070 in six areas) is one template with the
+values in script order and measured with the real ones (item 956 Light Orb, each area's
+MISSION_MONSTER_ID and hint monsters, the player name at 121 px): `pedwidth.py` found 17
+lines over 346 px before and 0 after. The Red trader's choice code was the only
+functional-code mismatch in 20,579 labels (`ctrlcodes.py`, new). Name tables had never been
+spell-checked (spell.py skips them on purpose); `nametypos.py` (new) found the seven typos (C2's "Comeback Criter" included).
+Trait renames carry their ability twin (A486) and three ItemHelp "Feat:" quotes.
+
+Set AI. `_audit/NAMECAP_13_CALLERS.md`: the icon+name formatter `0x22f818` has 14 callers;
+12 already passed 32 or 40, and the two left (`0x3c1394` rows, `0x3c1584` info) are the Set
+AI list. Eight words (SPEC_v212_setai_guard.md); refuter ACCEPT after a docstring fix, with
+the frames checked by disassembly. codepatch 161 applied + 1 already present, md5
+`37741bfe`, 388 bytes of compressed slack.
+
+boxfit.py now also checks monster species names (`_audit/MONSTERNAME_panes.md`): the full
+name against 144 px (the Library > Skill monster list, the one pane that draws it whole)
+and the first 11 characters against 92 px (the narrowest pane that draws an owned
+monster's stored name). 1,760 more checks, 0 over.
+
+Round 75 (GEMINI_DQMJ3PRO_ROUND75.md; A all minus four, A1-3 i, B, C1-3 i, D-i):
+skill sets named after a monster, and their books, follow the monster table.
+`names_r57.json` gains section 75 (109 rows) and loses eight v2.5 section-57A rows, which
+reverts Bad Bird, Sludgeball, Grudge Sludge, Injury Vortex, Grand Estark, Hawkhart Ace and
+Cluboon Ace to Δ Hraesvelgr, Mammon, Poison Petey, Mucky Eddy, Gran Estark, Hawkhart Queen
+and Cluboon Jack in every mention, including the demo906 card-suit deduction line.
+`round75.py` (37 rows) sets the help headers the engine cannot reach and drops "the war god"
+from two scroll descriptions. New `skillheader_check.py`: every book's "Skill:" line equals
+its skill set, 0 mismatches.
+
+Title-screen version stamps (SPEC_v212_watermark.md, WATERMARK_RE.md). `patchversion.py`
+holds the version. The update's code writes the title pill (pane `tb_version`) with the
+format u"Ver.1.%d"; codepatch now rewrites that literal to u"EN 2.12" in both copies of
+the writer and nops a never-taken branch (10 words, generated from patchversion). The base
+gets a new text pane `tb_enbase` in `Layout/title/lower/title_menu.arc` reading
+"base EN 2.12" (`watermark_step.py`, in rebuild.py after round75). codepatch: 172 entries,
+171 changed words, md5 `e86f960a`, 392 bytes of slack.
+
+Checked and closed: the SMDH "drift" noted in the v2.11 audit is not real; the icon file
+is byte-identical from v2.4 to v2.11 (`_audit/SMDH_DRIFT.md`).

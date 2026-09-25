@@ -14,10 +14,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 451bf1280d7821e153078a5e7bb624c5384b97179508e980198adf77c4b71db8 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | 44e39be1c89a809f102873f05bb6576b047520d26a7beeaeba28e9e024e3236f |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,642,148 | 3c4cfcd3ff0ca278bf3bc3481e0245631d491bfc17f20d5268f113e9d546d28e |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,941,174 | 25edaa81707ebdd6fd9df1fc6428bc7797f1b0eb028832c68e98ebdbadb2b455 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,015,616 | 9dafd387dab58db8b2fe8a603634c6da75b8fbe16bf45044895c579cea298426 |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,423,104 | b6a13a43860b5513b009e2afcc65f89960d5f7a3000bc1842b2303efbd4b7f76 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,481,879 | 9341f3f7f4c3989fe94b84ddaf7126fb4cc4ef6a5fbe795aef3377906650c896 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,540,167 | 585f3ca754b3cea0dd428017516fea7cc3f3d3662f3874539d83a43656b37863 |
 
 Install the base first, then the update. Both are needed: the update carries the Ver.1.3 content and the executable, including the keyboard fix.
 
@@ -65,7 +65,7 @@ Never done this before, or something already went wrong? Start again from here. 
 8. If it stops with a checksum mismatch, go back to **how you dumped**. They must be encrypted dumps decrypted on the PC, not decrypted or trimmed by GodMode9. Check the source sizes above too.
 9. You should now have `DQMJ3P-base-fixed-0.1.0.cia` and `DQMJ3P-update-fixed-3.4.0.cia`. Copy both to your SD card.
 10. Open FBI on your 3DS (you have it if you followed the usual modding guide), go to SD, and install **the base first, then the update**.
-11. **Check the base really went on.** Start a battle and look at the top of the screen: it should say "Round 1". If it says ラウンド, or a monster's Info page shows an orange 固定 tag, only the update installed. Those screens live in the base game, so install the base CIA too.
+11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.12" (the update patch) and the bottom right corner says "base EN 2.12" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
 
 Thanks to oho, who wrote these steps out on Discord.
 
@@ -116,7 +116,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 - **Long monster names get shortened.** A stored name holds 11 characters, so "Metal Pearl Slime" is cut to 11 when you obtain or rename it. A wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of a kind are on the field. The record field is 24 bytes; widening it would change the save format.
 - **Names already in your save don't change.** The name is written onto the monster once, when you scout or fuse it, so monsters already in your party keep whatever your old build gave them. Only ones you get from now on use the corrected names. Names already cut to 8 stay until renamed.
 - **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
-  - It asks for a game whose code is untouched. This build changes 153 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, and the routines that write a wild monster's name for battle.
+  - It asks for a game whose code is untouched. This build changes 171 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, the routines that write a wild monster's name for battle, the Set AI list, and the title menu's version box.
   - I checked all nine addresses it uses (five hooks, four version probes). Every one still holds the stock instructions and the nearest changed word is over three kilobytes away, so the two should coexist. I haven't run them together.
 - **Text that lands against a number or a name the game prints.** The game writes some
   values in at the moment it draws the line, a monster's name, a count, a place. Where a

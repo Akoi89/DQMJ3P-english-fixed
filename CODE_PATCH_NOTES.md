@@ -106,11 +106,14 @@ show you the loop at all.
   icons, whose colour codes eat 10 of the 21. Five words give it a
   40-character buffer in a grown frame.
 
-`0x22f818` has thirteen other callers that also pass 21. I placed some of
-them and left the rest: their screens were never identified, so an action
-name may still cut at 18 somewhere I did not find. If you go looking, a
-one-shot breakpoint logger that records the caller address per screen is the
-fastest way to map them.
+`0x22f818` had thirteen other callers that also passed 21. Later builds
+placed and widened eleven of them. The last two, found in v2.12 by listing
+every caller in the shipped executable and reading which ones still load
+`mov r1,#0x15`, are both on one screen: Tactics & Abilities > Set AI. The row
+builder `0x3c12f4` gets a frame grown from 0x44 to 0x84 bytes with the buffer
+moved to `sp+0x44` (five words), and the highlighted-row info `0x3c1510` a
+frame grown from 0x30 to 0x40 (three words); both now pass 32. All fourteen
+callers pass 32 or 40, so no action name is cut at 18 anywhere.
 
 ## 4b. Wild monsters had no name in battle at all (36 words)
 
@@ -189,10 +192,12 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-153 changed words in the update's executable, md5 `f6b40eef`. If you are
-counting against codepatch.py, that file has 154 entries: the one at `0x7747a8`
+171 changed words in the update's executable, md5 `e86f960a`. If you are
+counting against codepatch.py, that file has 172 entries: the one at `0x7747a8`
 writes the bytes already there and changes nothing, so the built file differs
-from the Japanese original in 153 words. These notes said 154 until v2.7,
+from the Japanese original in 171 words. Ten of them, new in v2.12, change the
+title menu's version box from "Ver.1.3" to "EN 2.12" (the format literal in the
+two copies of its writer, and a never-taken branch nopped). These notes said 154 until v2.7,
 because the figure came from the length of the list rather than the artifact.
 An earlier
 version of this section said 117 words and listed the Library monster lists as

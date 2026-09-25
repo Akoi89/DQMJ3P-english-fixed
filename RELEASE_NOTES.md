@@ -17,6 +17,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.12** - lines that put a name or number in the wrong place (a trader asking for "Red Gem of your 4") read the right way round, the Red Colour Fondude's trade menu offers its own rewards, the six pedestal texts fit their box, a few names lose their typos, the Set AI list shows ability names in full, skill sets and books named after a monster use that monster's name, and the title screen shows which version of each patch you have.
 - **v2.11** - your name no longer runs into the next word, the roaming boss prompts read as sentences, and the mist skill sets and gravity spells held back from v2.10 are renamed.
 - **v2.10** - names checked against the series. About fifty spells, skills, traits and one monster now use the name the official English releases use, and the Courage skill set is Cleric again.
 - **v2.9** - nine labels in the menus were too wide for their box, so the game cut them off partway through a word. The race screen showed "Hors" and "Accel" instead of Horsepower and Acceleration. They are abbreviated to fit now, and the Wi-Fi ranking label that said "Score" says "W/L", which is what the Japanese means.

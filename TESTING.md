@@ -1,6 +1,6 @@
 # Test route for the fixed DQMJ3 Professional build
 
-Written for the tenth build (2026-09-12) and kept current through the sixty-third (2026-09-23). Earlier versions of this file
+Written for the tenth build (2026-09-12) and kept current through the sixty-fourth (2026-09-24). Earlier versions of this file
 described the first build only. Nothing here needs a full playthrough; the
 tiers are ordered so the checks that prove the most come first.
 
@@ -105,6 +105,11 @@ Open the Library from the menu (bottom-left icon of the grid).
 | A roaming boss (sixty-third build) | walk up to a roaming boss on the field | it asks "Challenge (name) to a fight?". Before v2.11 the name ran straight into "Do you challenge to a fight?" |
 | The mist skill sets (sixty-third build) | Library, then Skill, and find Black Mist Master SP | the skill list says "Black Mist Master SP", its book in the bag is "Black Mist SP Book", and the book's help starts "Skill: Black Mist Master SP". Before v2.11 these said "Black Mister SP" and "Black Mister SP Book" |
 | The gravity spells (sixty-third build) | Library, then Skill: Gravity, Gravity+ and Gravity SP | the last spell on each page is Kadonk, Kadonkle and Donkrumble in that order, and the first spell of each page matches the last of the page before. Before v2.11 they read Donkle, Kadonk and Kadonkle |
+| The Set AI list (sixty-fourth build) | a party monster's Tactics & Abilities, then Set AI, on a monster that knows Giga Essence Extractor | the row and its Y: Info window both say "Giga Essence Extractor". Before v2.12 both cut it to "Giga Essence Extra" |
+| A Colour Fondude trade (sixty-fourth build) | Wood Park, the Red Fondude, once rescued | "If you have them, could we exchange / Red Gem (x4) for my treasure?", and the menu lists Werebeast Leather, Saint's Ashes, Essence of Labor and Temporal Crystal. Before v2.12 it asked for "Red Gem of your 4" and listed the Yellow trader's rewards |
+| A pedestal (sixty-fourth build) | one of the six Incarnus-area devices that reacts to the Light Orb | "Bring (title), (monster), and power will dwell in the Light Orb.", every line inside the box. Before v2.12 three of the six swapped the monster and the Light Orb |
+| The version stamps (sixty-fourth build) | the title menu, after Press Start | the box above Continue says "EN 2.12" and the bottom right corner "base EN 2.12". An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| A skill book named after a monster (sixty-fourth build) | the bag's book pages, or Library > Skill | the book, its "Skill:" line and the skill set all use the monster's name, e.g. "Zenith Dragon Book" and "Skill: Zenith Dragon". Before v2.12 many books and skill sets kept the 2021 name while the help line used the new one |
 | The race stat labels (sixty-first build) | Colosseum reception, pick a monster for a race, read the stat list | the rows read "Pwr" and "Acc". Before v2.9 they read "Hors" and "Accel", cut mid-word |
 | The top player title (sixtieth build) | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | A Library skill page that used to overflow (fifty-ninth build) | Library, then any monster, Skills, and read a skill description | every line sits inside the box. Before v2.8 thirteen of them were cut in the middle of a word |
