@@ -988,7 +988,7 @@ by a stored copy of the name whose writer could not be found. That was
 wrong, and the emulator's GDB stub showed why. A write watchpoint on a
 monster record's name field, breakpoints on the name builders, and a few
 pokes (`_audit/NAMECAP_LIVE.md`) gave the real picture: the record holds
-11 characters and the capture-time writer stores 11 (the user's own save
+11 characters and the capture-time writer stores 11 (my own save
 still carries the tails of 11-letter defaults behind the 2-letter names
 they gave their monsters); the Library lists cut at 10 because their row
 builder formats each name into a 16-character buffer behind a family icon
@@ -1931,7 +1931,7 @@ widest letters. Christopher is 56 px, Bartholomew 62, Maximillian 50, and even
 eleven capital Ms is 88; only eleven capital Ws overflows them. Left alone.
 
 **The monster names are the series' names now.** The authority is this game's
-own bestiary list on the Dragon Quest Wiki, at the user's instruction: a name
+own bestiary list on the Dragon Quest Wiki, as I decided: a name
 not on that page does not go in the game. `bestiary_map.py` builds the pairs
 from that page's own links, 709 of them. It has to read both `|japanese =` and
 `|Japanese name =`; reading only the first silently dropped 91 monsters,
@@ -2666,7 +2666,7 @@ Don Mole prize lines.
 
 codepatch: the same 171 words; the version literal reads "EN 2.13", md5 `2289c67b`.
 
-## Sixty-sixth build, 2026-09-26: text that overflows once the game fills it in, the Library item box (v2.14)
+## Sixty-sixth build, 2026-09-27: text that overflows once the game fills it in, the Library item box (v2.14)
 
 Measured against the shipped v2.13 tree (`_audit/build`, labeldiff `_v214_labeldiff.txt`):
 270 label copies changed, 154 distinct; 0 control-code sequences changed; 69 copies change their
@@ -2719,7 +2719,7 @@ trailing space the 2021 patch gave them (38 of them 18 letters plus the space; n
 has one): 82 copies. The space printed as a double space when the name filled a slot, e.g.
 MSG_006_1 `Fusing the Δ Chimaera's Heart  with`.
 
-The naming round the user folded into this build (GEMINI_DQMJ3PRO_ROUND80_NAMES.md, three new chats):
+The naming round I folded into this build (GEMINI_DQMJ3PRO_ROUND80_NAMES.md, three new chats):
 iyashi no fue, "Requiem of Restoration" (113 px in the 106 px battle status list, where the widest
 Japanese status name is 104; and a requiem in name only, since reku-iemu no fue is Dire Dirge), is
 "Hymn of Healing" (77 px) in all 20 labels that named it (Gemini Q1, option A). chousei haigou and its
