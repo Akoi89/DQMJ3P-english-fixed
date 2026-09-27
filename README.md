@@ -3,7 +3,7 @@
 The 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with its defects fixed. Released as two xdelta patches for the Japanese game. The translation is the Joker 3 Translation Team's; this build only fixes what was broken in it.
 
 - `RELEASE_NOTES.md` - what each version fixed
-- `FIXES.md` - a paragraph on every fix
+- `FIXES.md` - every fix in detail, grouped by what you'd notice
 - `TESTING.md` - the test route, and what nobody has checked yet
 - `BUILD_NOTES.md` - the full record
 - `CODE_PATCH_NOTES.md` - addresses and traps, for anyone porting the code patch to another language
@@ -113,7 +113,7 @@ Fair warning on step 4: these patches were built and checked on Windows and nobo
 
 ## What's fixed
 
-Crashes, soft-locks, text that said the wrong thing, spelling, names cut short in menus and battle, text that didn't fit its box, and Japanese that was never translated. `RELEASE_NOTES.md` has the summary and `FIXES.md` has a paragraph on each.
+Crashes, soft-locks, text that said the wrong thing, spelling, names cut short in menus and battle, text that didn't fit its box, and Japanese that was never translated. `RELEASE_NOTES.md` has the summary and `FIXES.md` has the detail.
 
 ## Not fixed, known
 

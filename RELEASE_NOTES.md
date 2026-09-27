@@ -12,7 +12,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 - **Japanese that was never translated.** 167 lines, plus menus, tips, textures and signs.
 - **Characters that all sounded the same.** In Japanese the Nochoros end their sentences with a little "cho", the King speaks like royalty, Toto like an old gang boss and Azamook with oily politeness. The 2021 English flattened most of that, and it's back.
 
-`FIXES.md` has a paragraph on each. `BUILD_NOTES.md` is the full record.
+`FIXES.md` has the detail under the same headings. `BUILD_NOTES.md` is the full record.
 
 ## Version history
 
