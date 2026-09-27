@@ -128,7 +128,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
   toolchain can see it, because in the stored text the two halves are separate. Every one
   found so far was found by somebody playing. If a line reads like two things run together,
   that is this, and I want it.
-- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen, and post it in [the reports thread](https://github.com/Akoi89/DQMJ3P-english-fixed/issues/3). Don't worry about whether it's already known, I'd much rather read the same report twice than miss one.
+- **Unchecked screens** are listed in `TESTING.md`, grouped by where they are in the game. Found something? Note the exact text and which screen, and post it in [the reports thread](https://github.com/Akoi89/DQMJ3P-english-fixed/issues/3). Don't worry about whether it's already known, I'd much rather read the same report twice than miss one.
 
 ## Credits
 
