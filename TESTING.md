@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.13" and the bottom right corner "base EN 2.13" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.14" and the bottom right corner "base EN 2.14" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -37,8 +37,9 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Family table (seen on the ninth build) | Library > Monster, top screen | nine family names ("Slime", "Dragon" ...) each fitting its cell; no letter wrapped under the table |
 | Bestiary text (seen on the ninth build) | Library > Monster > any monster, second page (R) | four lines broken between words, no word split at the edge like "pleasa / nt" |
 | A long entry (never seen) | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
+| Item descriptions (not yet seen on screen) | Library > Items > any crafting material, e.g. Sunstone or Strange Seaweed | every line breaks between words. Before v2.14 the Sunstone line read "shines bri" / "lliantly with" |
 | Trait info box (seen on the ninth build) | Library > Traits > All > any trait | text broken between words, not mid-word |
-| Item help (seen on the ninth build) | Library > Items, or the bag menu | same |
+| Item help in the bag (seen on the ninth build) | the bag menu | same |
 | Skill books in a shop | any item shop that sells books | names read "<skill> Book" matching the skill list: "Quake Ward Book", "HP Boost SP Book" |
 | A book's help line | select a book | "Skill: X" names a skill that exists in the skill list |
 | Crack family | any monster with the Crack skill set, skill list | Crack, Crack+, Crack SP, Crack EX |
@@ -92,6 +93,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 
 | Check | Where | Looking for |
 |---|---|---|
+| The healing flute (not yet seen on screen) | in battle, use Hymn of Healing, then check the status panel | "Hymn of Healing" whole in the condition list; "Hymn of Healing has faded!" when it ends |
 | Ride Fuse and fusion names | in battle, Ride on one monster, then Ride on the other and pick "Nochorin Rides"; Ride Fuse; page Fusion Info with L/R; the Tactics menu's fusion settings; Allocate Skill Points, Info (Y) | "Fusion Ability", "Fusion Traits", "Fused From", the name line without 合体; whole ability names on every page; the settings labels inside their boxes; the Info header whole; the Liquid Metal King's bestiary entry in four lines; a new StreetPass profile's comment "Hello there!" |
 | One-shot battle reflects | a battle where a one-shot reflect is used, then wears off | the effect reads "x1" where it is the one-shot kind, and the wear-off line matches |
 | Max HP and Max MP Down casing | the status list and the battle log for the same effect | both read "Max HP Down" and "Max MP Down"; neither screen reads "MAX" while the other reads "Max" |
@@ -107,6 +109,10 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Map marker | the Silent Meadows navi map, the marker with the NEXT icon | its pill reads "Wood Park", not "NOW_PRINTING" |
 | Quest hints | the Silent Meadows scout-quest board, the Shiny Sap and mine puzzle hints | the hint names the same place, container and count as the Japanese; the mine hints say clockwise / counterclockwise |
 | Dialogue | any town, the Aroma quest board, the crystal-cave boulders | no line runs past the box, no page needs a third line, no name insert or highlight looks out of place |
+| Lines with an item or your name in them (not yet seen on screen) | Ace's break-monster fusion at the Center Building ("handed over the ... and ..."), Kandata handing over an item, the scroll-pair quests, the ruin keys | each line breaks between words; nothing runs past the box |
+| Super Synthesis names (not yet seen on screen) | Ace and Hogan in the Center Building, the Helpful Tips, Scout-Q missions 13 and 16, the trait choice after a Super Synthesis | only "Super Synthesis" and "Super Synthesis+"; no Super Fusion or Ultra Reincarnation |
+| Help and tutorial lines (not yet seen on screen) | the shortcut help from the field menu, the battle speed tutorial, the Slime race tutorial | every line inside its window, broken between words |
+| Fusion guide menu (not yet seen on screen) | the advice board on the fusion machine, About Fusion | the topics read "Super Synthesis" and "Super Synthesis+" and fit their rows |
 | Reactor analyze panes (not yet seen on screen) | outdoors, reactor on, the two item lines in the analyze readout | item names longer than 10 characters drawn in full; nothing wider than its line |
 | Page layout | any multi-page dialogue, the Aroma contact call, the summoning shrine | no page opens with a blank line or a leading space; no page needs a third line except the results and instruction panels |
 | Term fixes | the Darkiron Bastille dialogue, the Snapped family lines, the chapter 7 hint | "Break Remodeling Device" or "Remodeling Device" for the machine; Snapped-off / Snapped-Almighty by name; the chapter 7 hint says you beat the minions and reached the boss |

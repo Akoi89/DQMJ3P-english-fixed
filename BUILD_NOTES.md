@@ -2665,3 +2665,71 @@ speaker code in NPC_KANDATA_035 and colour spans on the wrong words in NPC_CROW_
 Don Mole prize lines.
 
 codepatch: the same 171 words; the version literal reads "EN 2.13", md5 `2289c67b`.
+
+## Sixty-sixth build, 2026-09-26: text that overflows once the game fills it in, the Library item box (v2.14)
+
+Measured against the shipped v2.13 tree (`_audit/build`, labeldiff `_v214_labeldiff.txt`):
+270 label copies changed, 154 distinct; 0 control-code sequences changed; 69 copies change their
+line-break count, and no page grows past its window. 35 files differ: 34 `.mes` files and the
+base's `title_menu.arc` (the corner stamp now reads "base EN 2.14"). ctrlcodes 0 of 20,579
+against the Japanese, boxfit 0, skillheader_check 0, gluesweep identical to v2.13. The update's
+code changes only in the two words of the title box's version number (md5 1ba695b9, was 2289c67b).
+
+Where it came from: a gap audit of every box that draws text (`sweep_textbox/SWEEP.md`), run on the
+shipped v2.13 CIAs. The earlier guards measured a value slot (`%ls`) and the player name as zero
+px wide. `sweep_textbox/tools/s7_slots.py` fills every slot of every dialogue page with the values
+its event script actually passes (SetExchange*_ calls resolved to the exact item or species,
+otherwise typed from the Japanese counter word) and measures the page against the 346 px window.
+
+Round 80 (`_audit/mkround80.py` -> `proof_terms/round80.jsonl`, `round80.py` after round 76). Four
+lines over 346 px with a real value: A01_00 ACE_MAKE_BREAK_MONSTER_MSG_002 (349 px with an
+8-letter name and the Prism Peacock pair, 364 with "Bartholomew"; its twin
+HOUGAN_MAKE_BREAK_MONSTER_MSG_002 already broke after "the"), Z00_00 NPC_KANDATA_035 (353 with
+"Phantom Scroll - Vol 2"), A01_01 MSG_RAQ_CLEAR_020 (350 with the Misfortune Scroll pair), and
+EventCommon MASTERS_LOAD_SYSTEM_MSG_030 (351 with "Desperation Conduit"); plus
+MenuMessageVirtualColosseumMessageCollaboBattleLimit, one stored line of 369 px where no other
+English menu line passes 300 and the Japanese is two lines. Each turns one space into a line
+break inside its page, where the Japanese breaks (Ace's line after "the", as its Hogan twin); the maker checks every copy against the
+shipped CIA and every filled line against 346 px with an 11-letter all-W name. Also in round 80,
+ruled by Gemini (GEMINI_DQMJ3PRO_ROUND80_FUSIONMENU.md, option A): the fusion advice board's
+options message_query_4_7_2 / 5_0_2 / 5_0_3 read "Super Synthesis" / "Super Synthesis+", the
+names their pages use; "Ultra Reincarnation Fusion Revision" was 168 px in a 150 px choice row.
+
+`_audit/itemfit.py` (after round 80). Seen on the emulator (`_audit/tex/rig_sweep_92_sunstone3w.png`,
+Library > Items > Sunstone): "Crafting Material - A sacred stone that shines bri" / "lliantly
+with" / "the light of the sun.". "...shines bri" is 233 px and "...shines bril" 235, so this box
+breaks by character at 234 px, the same 234 x 4 box as the trait and ability help. The
+2026-09-19 note that item help word-wraps came from a different, wider window. Every item
+description whose Japanese fits that box measures at most 231 px in the Japanese font.
+itemfit re-wraps only entries with a line over 234 px, at 231 px, asserting the words and
+control codes unchanged: 90 copies (28 in the update, the copy the game shows; 62 in the base),
+all within 4 lines, no break inside a name. A simulation of the shipped text breaks exactly where
+the capture does.
+
+Round 80 also carries the at-risk lines that need no capture: each is wider than the widest
+retail Japanese line of its window (the proof the Collab notice rests on) and the Japanese puts at
+least as many lines in that window (HelpMessage0933 itself is two lines in Japanese and four now,
+in a help window the Japanese fills to eight). The shortcut help breaks before "menu icon", not
+inside it (233 / 214 / 263 px). HelpMessage1019 (367 px on one line, help window JP widest 286) and
+HelpMessage0933 (345), floating_window_sc_shortcut_exp (303, JP 270), RaceMessage
+race_tutorial_step1_2_start_2 (322, JP 293), BattleEventMessage AutoTutorial (305, JP 299),
+mix_skill_check_akasi_get (229, JP 182) and mix_skill_choice_num (261, JP 257): only the breaks
+move, at phrase boundaries, every line inside the Japanese bound. And 41 ItemMessage names lose a
+trailing space the 2021 patch gave them (38 of them 18 letters plus the space; no Japanese name
+has one): 82 copies. The space printed as a double space when the name filled a slot, e.g.
+MSG_006_1 `Fusing the Δ Chimaera's Heart  with`.
+
+The naming round the user folded into this build (GEMINI_DQMJ3PRO_ROUND80_NAMES.md, three new chats):
+iyashi no fue, "Requiem of Restoration" (113 px in the 106 px battle status list, where the widest
+Japanese status name is 104; and a requiem in name only, since reku-iemu no fue is Dire Dirge), is
+"Hymn of Healing" (77 px) in all 20 labels that named it (Gemini Q1, option A). chousei haigou and its
+kai were Super Synthesis in 20 of the 30 labels whose Japanese names it, Super Fusion in 10, Super
+Synthesis+ in 3, and Super Synthesis Revised, Super Fusion Revised, Super Raw Fusion and Ultra
+Reincarnation Fusion Revision in 12 between them (one copy per label); all 16 labels that differed now
+say Super Synthesis / Super Synthesis+ (Q2, option A, with Gemini's wording for the tips, the trait
+choice screen, the trade warnings and Scout-Q 13), every line measured inside its window, the trade
+warnings inside their own narrow layout. The unlock message's second page says "When you want to try
+it" now; "try one" had lost its noun when "perform Super Fusions" became "for Super Synthesis".
+
+Not in this build, open: the "Battle" prefix of the battle number (local wireless only) and
+MapNameV02_01 (205 px against a Japanese widest 192, pane not identified).

@@ -14,10 +14,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,032,000 | 33d3823e2921a2371f2f6047028eee5fd7b765a3556f02731f448a3180e4b2e3 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | 2072cb18193419ded98653dedf49a42cd662e6eb3a7274b32402e7780ad72370 |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,637,373 | f124f4303760370aae45e781bfb318d322f4667334fd252d741f5e9ab2dc0ed2 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,178,110 | ce51475a16a5a64cf3fafba3172a85fbe8fa2f6e961284026472db5abf7b5625 |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,032,000 | 0d7c7a1491415cba497768eba309144a699635ab033853e63bd12a74ddee9d5c |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | c86ef21228cff6bef1cda8b5740a0938d45c1af720b3d5307bde90c9ef96dfd2 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,645,806 | 936c88279fac042947133ee34644c835173011e37a9d8b54b8cfb30a0a8058e8 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,178,015 | ad71c6db0ccc052ad78b46889b8dc903a0523ce018084cb7b14eaaf5cf439e55 |
 
 Install **both CIAs**, the base first and then the update. The update carries the Ver.1.3 content and the executable, including the keyboard fix; the base carries the rest of the game's data. With only one of them installed you get a mix of old and new text.
 
@@ -67,7 +67,7 @@ Never done this before, or something already went wrong? Start again from here. 
 8. If it stops with a checksum mismatch, go back to **how you dumped**. They must be encrypted dumps decrypted on the PC, not decrypted or trimmed by GodMode9. Check the source sizes above too.
 9. You should now have `DQMJ3P-base-fixed-0.1.0.cia` and `DQMJ3P-update-fixed-3.4.0.cia`. Copy both to your SD card.
 10. Open FBI on your 3DS (you have it if you followed the usual modding guide), go to SD, and install **the base first, then the update**.
-11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.13" (the update patch) and the bottom right corner says "base EN 2.13" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
+11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.14" (the update patch) and the bottom right corner says "base EN 2.14" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
 
 Thanks to oho, who wrote these steps out on Discord.
 
