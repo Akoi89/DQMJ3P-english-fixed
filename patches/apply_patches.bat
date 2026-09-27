@@ -32,7 +32,9 @@ pause
 exit /b 0
 :fail
 echo.
-echo xdelta3 reported an error. The usual cause is a source file that is not the decrypted Japanese file
-echo described in README.md (compare its size), or not the Japanese Ver.1.3 update.
+echo xdelta3 reported an error. The usual cause is a dump that GodMode9 decrypted or trimmed
+echo itself: dump the game as an encrypted CIA and decrypt it on the PC, as README.md explains.
+echo A file of the right size can still be the wrong one. The update patch also needs the
+echo Japanese Ver.1.3 update as its source.
 pause
 exit /b 1

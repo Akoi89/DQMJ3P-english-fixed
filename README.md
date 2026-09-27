@@ -103,13 +103,13 @@ Dumping doesn't change: pull both titles off the 3DS with GodMode9 as **encrypte
    ```
    - **Turn trimming ON.** Without it the output is around 2.1 GB instead of 1,591,599,104 bytes.
    - Run `rom-converto ctr --help` if that doesn't match your build. Its flags move between releases and the help output is the authority, not this README.
-   - oho walked this route on Fedora 44 and reproduced both hashes above, using the GUI AppImage build rather than the CLI, and had to tick the trim option there.
+   - oho walked this route on Fedora 44 for v2.4 and reproduced that version's hashes, using the GUI AppImage build rather than the CLI, and had to tick the trim option there.
 5. **Check both sizes before going further:** base `.cci` exactly 1,591,599,104, update `.cia` exactly 15,725,568. A larger `.cci` is very likely padded out to a card size; the patch needs the untrimmed-but-unpadded layout, a 16 KiB header followed by the CIA's two contents back to back.
 6. Apply both patches with the same two xdelta3 commands as above. The base one wants about 2 GB of free RAM.
 7. Check what came out: `sha256sum DQMJ3P-base-fixed-0.1.0.cia DQMJ3P-update-fixed-3.4.0.cia`.
 8. Copy both to the SD card, open FBI, install the base first and then the update.
 
-Fair warning on step 4: these patches were built and checked on Windows and nobody has reported back from the Linux route end to end, so the conversion step is the one I can't vouch for. The size in step 5 is what tells you whether it worked. If rom-converto won't give you a `.cci` of the right length, both Windows tools run under Wine, and that's the same code path everyone else uses.
+Fair warning on step 4: these patches were built and checked on Windows. The size in step 5 is what tells you whether it worked. If rom-converto won't give you a `.cci` of the right length, both Windows tools run under Wine, and that's the same code path everyone else uses.
 
 ## What's fixed
 
@@ -128,10 +128,10 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
   toolchain can see it, because in the stored text the two halves are separate. Every one
   found so far was found by somebody playing. If a line reads like two things run together,
   that is this, and I want it.
-- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen, and post it in [the reports thread](../../issues/3). Don't worry about whether it's already known, I'd much rather read the same report twice than miss one.
+- **Unchecked screens** are "Tier 3" in `TESTING.md`. Found something? Note the exact text and which screen, and post it in [the reports thread](https://github.com/Akoi89/DQMJ3P-english-fixed/issues/3). Don't worry about whether it's already known, I'd much rather read the same report twice than miss one.
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including the monster name this release corrects and the skill set whose name sent me back to check every other one against the official releases.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including Great Godbird's name and the skill set whose name sent me back to check every other one against the official releases.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting. Every wording decision was reviewed and every change checked against the shipped files. This rebuild only fixes what was broken; it doesn't claim the translation.

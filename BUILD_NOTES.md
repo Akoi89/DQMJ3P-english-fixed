@@ -1,6 +1,6 @@
 # The rebuilt CIAs
 
-First built 2026-09-08; the thirty-first and latest build is dated 2026-09-13. Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
+This file is a build log, oldest at the top; the version history in RELEASE_NOTES.md says which release each build became. What follows is the first release (the thirty-first build, dated 2026-09-13). Output is in `FIXED_BUILD/` at the project root, alongside a copy of these notes and the test plan.
 
 | File | Size | Title | Version |
 |---|---|---|---|
@@ -16,14 +16,13 @@ The menu font `break_font.bffnt` is deliberately left as the English patch shipp
 project's version is redrawn artwork with identical layout and identical glyph coverage, so taking
 it would change how English text looks for no benefit.
 
-Built with your own `TGAA 1-2/testimony_pipeline/build.py`. Both original CIAs carry plaintext
+Built with my CIA rebuild tool (the one from my TGAA patch). Both original CIAs carry plaintext
 RomFS, so each took the safe path: splice the new RomFS into the NCCH in place and repair the hash
 chain, never `3dstool -c -t cxi`. Every TMD hash was recomputed and re-verified by the tool, and I
 re-verified both independently afterwards with `ncch.verify`.
 
 **One version note.** The original base CIA's filename says v0.1.0 but its TMD said 0.0.0. The
 rebuild is stamped 0.1.0, so it installs cleanly over the original and is distinguishable from it.
-If you would rather it matched the original exactly, that is a three minute rebuild.
 
 ## Verified from the packed file, not the working tree
 

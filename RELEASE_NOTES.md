@@ -4,7 +4,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 ## What this build fixes
 
-- **Two crashes and five stuck prompts.** A broken font crashed the game at a cutscene. Five yes/no questions closed before you could answer, and two of those locked you out of the later Speed Road races.
+- **A crash and five stuck prompts.** A broken font crashed the game at a cutscene. Five yes/no questions closed before you could answer, and two of those locked you out of the later Speed Road races.
 - **Text that said the wrong thing.** Every translated line was read against the Japanese. A few thousand said something else and are corrected: bestiary entries with the story backwards, spells listing the wrong element, directions that sent you the wrong way, menu buttons labelled the opposite of what they do.
 - **Spelling, and one name for one thing.** Just over a thousand spelling and wrong-word slips. Monsters, skills, items and places are now called the same thing in dialogue, menus and tables, and monster names match the ones the series uses.
 - **Text that didn't fit its box.** The game won't shrink text or move a word to the next line. Too wide, and it chops the line off partway through a word; one line too many, and the extra is drawn outside the box on top of whatever's there. Fixed across descriptions, warnings and conversations.
@@ -58,6 +58,6 @@ Two xdelta patches, one for the Japanese base and one for the Japanese Ver.1.3 u
 
 ## Credits
 
-The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including the monster name this release corrects and the skill set whose name sent me back to check every other one against the official releases. The click by click instructions in the README, and the Linux route beside them, are oho's.
+The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including Great Godbird's name and the skill set whose name sent me back to check every other one against the official releases. The click by click instructions in the README, and the Linux route beside them, are oho's.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting, with every wording decision reviewed and every change checked against the shipped files.
