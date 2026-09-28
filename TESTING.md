@@ -39,7 +39,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | A long entry (never seen) | same, for a monster whose entry runs to five lines (52 do; the Slime does not) | whether a fifth line is visible or cut. Either answer is useful |
 | Item descriptions (seen) | Library > Items > any crafting material, e.g. Sunstone or Strange Seaweed | every line breaks between words. Before v2.14 the Sunstone line read "shines bri" / "lliantly with" |
 | Trait info box (seen on the ninth build) | Library > Traits > All > any trait | text broken between words, not mid-word |
-| Item help in the bag (not yet seen since v2.14 re-broke 28 descriptions) | the bag menu | same |
+| Item help in the bag (seen) | the bag menu | same |
 | Skill books in a shop | any item shop that sells books | names read "<skill> Book" matching the skill list: "Quake Ward Book", "HP Boost SP Book" |
 | A book's help line | select a book | "Skill: X" names a skill that exists in the skill list |
 | Crack family | any monster with the Crack skill set, skill list | Crack, Crack+, Crack SP, Crack EX |
@@ -111,7 +111,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Dialogue | any town, the Aroma quest board, the crystal-cave boulders | no line runs past the box, no page needs a third line, no name insert or highlight looks out of place |
 | Lines with an item or your name in them (not yet seen on screen) | Ace's break-monster fusion at the Center Building ("handed over the ... and ..."), Kandata handing over an item, the scroll-pair quests, the ruin keys | each line breaks between words; nothing runs past the box |
 | Super Synthesis names (not yet seen on screen) | Ace and Hogan in the Center Building, the Helpful Tips, Scout-Q missions 13 and 16, the trait choice after a Super Synthesis | only "Super Synthesis" and "Super Synthesis+"; no Super Fusion or Ultra Reincarnation |
-| Help and tutorial lines (not yet seen on screen) | the field menu's shortcut explanation (registering a command as a shortcut), the battle speed tutorial, the Slime race tutorial | every line inside its window, broken between words |
+| Help and tutorial lines (not yet seen on screen) | the field menu's shortcut explanation (registering a command as a shortcut), the battle speed tutorial, the Slime race tutorial, a StreetPass help line, a disc keyword help line, two fusion screen lines | every line inside its window, broken between words |
 | Fusion guide menu (not yet seen on screen) | the advice board on the fusion machine, About Fusion | the topics read "Super Synthesis" and "Super Synthesis+" and fit their rows |
 | Reactor analyze panes (not yet seen on screen) | outdoors, reactor on, the two item lines in the analyze readout | item names longer than 10 characters drawn in full; nothing wider than its line |
 | Page layout | any multi-page dialogue, the Aroma contact call, the summoning shrine | no page opens with a blank line or a leading space; no page needs a third line except the results and instruction panels |

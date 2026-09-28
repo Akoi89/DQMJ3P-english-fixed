@@ -122,6 +122,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 - **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
   - It asks for a game whose code is untouched. This build changes 171 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, the routines that write a wild monster's name for battle, the Set AI list, and the title menu's version box.
   - I checked all nine addresses it uses (five hooks, four version probes). Every one still holds the stock instructions and the nearest changed word is over three kilobytes away, so the two should coexist. I haven't run them together.
+- **Two labels might not fit.** The map banner for "Resistance Secret Base - Underground Lab" is wider than the original Japanese, so it might get cut off at the edge. Also, the local wireless battle counter uses the word "Battle" instead of a single character, so it might look cramped. I haven't seen either on screen yet, so a screenshot of either would settle it.
 - **Text that lands against a number or a name the game prints.** The game writes some
   values in at the moment it draws the line, a monster's name, a count, a place. Where a
   translated line sits right up against one of those with no space, nothing in the
