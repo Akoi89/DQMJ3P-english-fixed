@@ -58,7 +58,7 @@ The game doesn't word wrap and doesn't shrink text. A line wider than its box is
 - **Skill-set names.** The status screen's Skill panel, the Library's Basic Info header and the Monsters list under Library > Skill cut names at 14 ("Wisdom Boost E"). They show in full now.
 - **Ability names.** The Teaches list, Library > Abilities, a monster's skill pages on the status and battle Swap screens, the field ability menu, the Ride Fuse screen, the Allocate Skill Points Info window and the Set AI list cut names at 18 ("Giga Essence Extra", "Combustive Rending"). The skill-point hint under the counter cut them at 10 ("Venom Brea"). All show in full now. Two StreetPass match-up screens I never managed to reach are unchanged.
 - **Player titles.** 54 titles are shortened to the 14 characters the game draws, and nine more are corrected. "Legendary Scout" showed as "Legendary Scou" and is "Legend Master" now.
-- **Labels.** The race screen showed "Hors" and "Accel" for Horsepower and Acceleration. Nine labels that were too wide read Pwr, Acc, Plan, Speed, Sp., Rwd, Trait, W/L and "# Traits" now, and the Wi-Fi ranking's "Score" is W/L because the Japanese means a win and loss record. Three map place names are still too wide and are left alone on purpose, since shortening them would contradict the same names elsewhere.
+- **Labels.** The race screen showed "Hors" and "Accel" for Horsepower and Acceleration. Nine labels that were too wide read Pwr, Acc, Plan, Speed, Sp., Rwd, Trait, W/L and "# Traits" now, and the Wi-Fi ranking's "Score" is W/L because the Japanese means a win and loss record. Four place names on the area map (Center Building, Power Plant, Secret Base, Incarnus Village) were wider than their name tags, so the last letter or two dropped under the tag ("Center Buildin", "Power Pla"); the tags are wider now and the names stay as they are everywhere else.
 
 ## Japanese that was never translated
 
@@ -80,7 +80,7 @@ The Japanese gives its characters their own way of talking, and the 2021 English
 
 - 41 item names carried a stray space at the end from the 2021 patch, so a line that printed one put two spaces after it (`Fusing the Δ Chimaera's Heart  with the`). The space is gone.
 - The name-entry keyboard opens on the Latin "Aa" tab instead of hiragana, and its kanji page, where the 2021 patch had left English words like "Round" and "Breath" on the keys, is restored.
-- The title menu shows the version of each patch: the box above Continue reads "EN 2.14" from the update, and a line in the bottom corner reads "base EN 2.14" from the base. No corner line means the base patch didn't install (older builds of this patch show neither).
+- The title menu shows the version of each patch: the box above Continue reads "EN 2.15" from the update, and a line in the bottom corner reads "base EN 2.15" from the base. No corner line means the base patch didn't install (older builds of this patch show neither).
 - The boss-fight forfeit button says "Give up" rather than "Defeat All", which read as an order to win the fight.
 - A monster's Library entry with more fusion recipes than it shows says "etc." under them again, and bestiary habitats read "Fiery Volcano etc." instead of "as Fiery Volcano".
 - The Red Colour Fondude's menu listed the Yellow trader's rewards and then handed over something else. It lists its own now.

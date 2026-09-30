@@ -2733,3 +2733,35 @@ it" now; "try one" had lost its noun when "perform Super Fusions" became "for Su
 
 Not in this build, open: the "Battle" prefix of the battle number (local wireless only) and
 MapNameV02_01 (205 px against a Japanese widest 192, pane not identified).
+
+## Sixty-seventh build, 2026-09-29: the navi-map place names (v2.15)
+
+Two players on Discord sent captures of the Fallen City area map: the Center Building marker
+read "Center Buildin" and the Power Plant marker "Power Pla" with "nt" on a second line under
+the pill. That overturns my 2026-09-20 call that PlaceName_A01_00 was not a defect. The marker
+name is a txt1 pane `tb_plc_<id>` in `Layout/NaviMap/<map>.arc`, filled from LayoutMessage
+`PlaceName_<id>`, and it wraps BY CHARACTER at its declared width: "Center Buildin" is 66 px and
+"Center Building" 72 in the 68 px pane; "Power Pla" is 47 and "Power Plan" 53 in the 52 px one.
+The max(declared, Japanese) bound I gave single-line panes is wrong for these.
+
+`naviwiden.py` (new, runs on the base tree after charspace.py) sets the pane widths: tb_plc_A01
+68 to 76, tb_plc_A02 52 to 62 (A00_00.arc), tb_plc_V02 52 to 62 (V00_00.arc), tb_plc_Z01 46 to
+80 (Z00_00a.arc and Z00_00b.arc; the second file is the same map in another state and was not in
+boxfit_singleline.tsv, which lists one pane per label). The names themselves stay, since each
+appears in many other strings. The dark pill is a separate part pane, FacilityWindow_NN, whose
+width is an override float at offset 232 of its prt1 section (98 for a 68 px name pane, 82 for
+52, 73 for the 46 px one). The 98 and 82 px pills hold their names; the 73 px one did not
+("Incarnus Village" hung over both ends), so it is 102 now in both Z00_00 files. Seven floats in
+four archives; no size change. `naviwiden.py --scan` then measures every place-name pane in every
+NaviMap archive against the update's LayoutMessage and fails the build if one is too narrow
+(13 panes, 0 over).
+
+Seen on the rig on the installed v2.14 with the four archives loaded as a LayeredFS mod (the
+packed archives are byte-identical to those): all four names whole on one line inside their
+pills, nothing else on the map touched; without the mod the same save shows "Center Buildin"
+with the g under the pill. The Z00_00b state was not seen. Against v2.14 the base differs in
+those four archives and the title-menu stamp, the update in nothing but the version the
+executable prints (171 words, md5 e9ddcd94; the two pill words change one digit).
+
+Still open: "Ride Fuse" (47 px in the 26 px tb_title of battle/battle_lower/fusion.arc) passes
+only on the same Japanese-width bound and has never been seen on screen.

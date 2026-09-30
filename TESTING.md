@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.14" and the bottom right corner "base EN 2.14" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.15" and the bottom right corner "base EN 2.15" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -107,6 +107,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | The 天敵 readout | the reactor | reads in English |
 | Map marker | the Silent Meadows navi map, the marker with the NEXT icon | its pill reads "Wood Park", not "NOW_PRINTING" |
+| Map place names (seen) | the area maps of Fallen City, Fiery Volcano and Incarnus Realm | "Center Building", "Power Plant", "Secret Base" and "Incarnus Village" each whole on one line inside its tag. Before v2.15 the last letter or two sat under the tag |
 | Quest hints | the Silent Meadows scout-quest board, the Shiny Sap and mine puzzle hints | the hint names the same place, container and count as the Japanese; the mine hints say clockwise / counterclockwise |
 | Dialogue | any town, the Aroma quest board, the crystal-cave boulders | no line runs past the box, no page needs a third line, no name insert or highlight looks out of place |
 | Lines with an item or your name in them (not yet seen on screen) | Ace's break-monster fusion at the Center Building ("handed over the ... and ..."), Kandata handing over an item, the scroll-pair quests, the ruin keys | each line breaks between words; nothing runs past the box |
