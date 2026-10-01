@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.15" and the bottom right corner "base EN 2.15" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.16" and the bottom right corner "base EN 2.16" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -95,6 +95,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 |---|---|---|
 | The healing flute (not yet seen on screen) | in battle, use Hymn of Healing, then check the status panel | "Hymn of Healing" whole in the condition list; "Hymn of Healing has faded!" when it ends |
 | Ride Fuse and fusion names | in battle, Ride on one monster, then Ride on the other and pick "Nochorin Rides"; Ride Fuse; page Fusion Info with L/R; the Tactics menu's fusion settings; Allocate Skill Points, Info (Y) | "Fusion Ability", "Fusion Traits", "Fused From", the name line without 合体; whole ability names on every page; the settings labels inside their boxes; the Info header whole; the Liquid Metal King's bestiary entry in four lines; a new StreetPass profile's comment "Hello there!" |
+| A monster that gets back up | win battles until a beaten monster gets back up and asks to join, then answer No | "(name) got back up and seems to want to join you" with a space after the name, then "(name) sulked off sadly...". Before v2.16 the name ran into the next word ("Golemgot back up"). Not yet seen on screen |
 | One-shot battle reflects | a battle where a one-shot reflect is used, then wears off | the effect reads "x1" where it is the one-shot kind, and the wear-off line matches |
 | Max HP and Max MP Down casing | the status list and the battle log for the same effect | both read "Max HP Down" and "Max MP Down"; neither screen reads "MAX" while the other reads "Max" |
 | The forfeit button | a boss fight you cannot win | it reads "Give up" |
@@ -137,6 +138,7 @@ More StreetPass and network checks sit with their screens: the StreetPass profil
 | Check | Where | Looking for |
 |---|---|---|
 | A StreetPass greeting | a StreetPass arrival on the menu | the Nochorin's bubble ends in "cho!" ("came to play, cho!") and every word is inside the bubble. Not yet seen on screen |
+| The Legend Master prize | beat the Legend Master through StreetPass | "You've earned (item) x(count) as your prize." with a space before the x. Before v2.16 it read "And as a reward, (item)x(count)." Not yet seen on screen |
 
 ## The Ver.1.3 content, where the new writing lives
 

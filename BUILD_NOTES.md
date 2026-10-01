@@ -2765,3 +2765,45 @@ executable prints (171 words, md5 e9ddcd94; the two pill words change one digit)
 
 Still open: "Ride Fuse" (47 px in the 26 px tb_title of battle/battle_lower/fusion.arc) passes
 only on the same Japanese-width bound and has never been seen on screen.
+
+## Sixty-eighth build, 2026-09-30: a name in front of the line (v2.16)
+
+A Discord player (isanthraxbayad) asked who "Golemgot" was. BattleEventMessage ResultGetup is
+drawn straight after the monster's name with no separator and no slot in the string: the
+Japanese opens with a bare particle (が　起き上がり...), which reads correctly after a name. The
+plain Joker 3 English patch opened the line with a space; the 2021 Professional release dropped
+it, and every build of mine kept that. This is a third shape of the runtime-glue class: the
+value comes FIRST and the string holds nothing that says so, so neither boxfit nor the slot
+sweep (_gluesweep.py) can see it.
+
+Two new sweeps over the update and base Message trees (Field/Demo and Field/Event left out as
+duplicates): _prefixglue_sweep.py lists every label whose Japanese opens with a bare particle
+(はがのをにともでへやよ) followed by a space, punctuation or the end, and whose English opens
+with a letter; _prefixglue_j3.py lists every label that opens with a space in the plain Joker 3
+patch and not here. Together: ResultGetup, ResultGetupAway (は　さびしそうに...), and five
+MenuMessage lines of the Joker 3 transfer screen (TakeOverDataTakeQuestion, TakeDecide02,
+TakeCancelQuestion, TakeCancelDecide, NoOnly; を / の). Left alone: the BattleResultMessage
+Upper/Lower pairs (separate lines; the skill point pair was seen 2026-09-12), jougenti
+"(Upper Limit)" (default text of value panes), MenuMessagePlayerTeam "Team" (draw site unknown).
+
+round81.py (after round80.py) gives the seven a leading space; TakeCancelQuestion becomes
+"'s transfer will be cancelled." It also fixes MenuMessagePassingPrizeLegend, the StreetPass
+Legend Master prize, found by the slot sweep: "%lsx%ls" (item and count glued) in a fragment,
+now "You've earned %ls x%ls / as your prize." like its sibling PassingPrizeItem (same Japanese
+賞品として　%ls×%lsを). 8 labels in each of base/ and upd/; the rule is old text must match
+exactly. ResultGetup's first line grows 149 to 153 px, 297 with the widest species name (144);
+the widest line already drawn in that file is 284 and the battle box was never measured.
+
+Seen on the rig (Sonnet builder, installed v2.15 plus round81's two update files as a LayeredFS
+mod): the "Ride Fuse" command on the battle bottom screen draws whole on one line, both greyed
+and active, so the 47 px label in a 26 px tb_title is fine, which closes the last label left
+over from the v2.15 navi-map finding. The packed v2.16 pair installed (checkinstall OK) and
+shows "EN 2.16" / "base EN 2.16" on the title menu. No monster got back up in six won battles
+over the two runs, so the ResultGetup line itself has not been seen.
+
+The README now names GodMode9's "Build CIA (standard)" (which decrypts: gameutil.c
+InsertCiaContent, ncch_decrypt = !force_legit) against "Build CIA (legit)", after a support
+case where good downloaded CIAs were installed and rebuilt with the standard option. Against
+v2.15 the base differs in BattleEventMessage, MenuMessage and the title-menu stamp, the update
+in the two message files and the version the executable prints (171 words, md5 fd214f72; the
+two pill words change one digit).

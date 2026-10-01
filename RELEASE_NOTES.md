@@ -18,6 +18,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.16** - a monster that gets back up after a battle no longer has its name run into the next word ("Golemgot back up"), and neither do a few lines like it; the StreetPass Legend Master prize line reads as a sentence.
 - **v2.15** - four place names on the bottom-screen map (Center Building, Power Plant, Secret Base, Incarnus Village) fit their name tags now; the last letter or two used to drop under the tag.
 - **v2.14** - text that ran off the edge of its box breaks between words now: Library item descriptions, four lines that print an item or your name, and a few help and tutorial lines. Some item names lose a stray space that left a double gap, the healing flute is "Hymn of Healing", and the upgraded fusion is "Super Synthesis" everywhere.
 - **v2.13** - characters talk the way they do in Japanese again (the Nochoros' "cho", Chomach's speed talk, the Queen's airs, Toto, Azamook, the King and others), about a hundred lines that said something the Japanese doesn't are corrected (the King no longer calls Lucia "he", and Tiko and Kukuri are girls again), the harsh swearing and made-up laughs the 2021 English added are gone, and MAP Disc quest rewards no longer read "found 1000 xGold."
