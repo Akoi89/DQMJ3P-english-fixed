@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.16" and the bottom right corner "base EN 2.16" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.17" and the bottom right corner "base EN 2.17" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -130,6 +130,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | A MAP Disc quest reward | finish a MAP Disc quest that pays Gold or Exp. | "For successfully completing this, you / received 1000 Gold." (or "received Exp. 300."). Before v2.13 it read "found 1000 xGold." Not yet seen on screen |
 | Tiko in the Reactor | the Reactor record for Tiko | "A hard-working member of the Pipit tribe who fights with luck as her / weapon. She is no amateur." Before v2.13 it said "his" and "He". Not yet seen on screen |
 | A rescued Fondude | Free any Fondude from a Stealth Box and read what they say | no line is cut in the middle of a word and nothing is drawn below the message window |
+| A hidden chest by the Icy Monolith | the Grim Tundra, the hidden chest next to the Icy Monolith warp, the one holding Memoirs of a Witch | "Inside the Stealth Box, / you found Memoirs of a Witch!" and no crash. Before v2.17 the game crashed partway through the name. Not yet seen on screen |
 
 ## StreetPass and network
 

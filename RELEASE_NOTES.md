@@ -4,6 +4,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 ## What this build fixes
 
+- **Hidden chests no longer crash.** Some hidden chests crashed the game while the item name was being typed out. The pop-up is built differently now, so it can't happen, and long item names in it show in full.
 - **A crash and five stuck prompts.** A broken font crashed the game at a cutscene. Five yes/no questions closed before you could answer, and two of those locked you out of the later Speed Road races.
 - **Text that said the wrong thing.** Every translated line was read against the Japanese. A few thousand said something else and are corrected: bestiary entries with the story backwards, spells listing the wrong element, directions that sent you the wrong way, menu buttons labelled the opposite of what they do.
 - **Spelling, and one name for one thing.** Just over a thousand spelling and wrong-word slips. Monsters, skills, items and places are now called the same thing in dialogue, menus and tables, and monster names match the ones the series uses.
@@ -18,6 +19,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.17** - opening some hidden chests no longer crashes the game (the one by the Grim Tundra Icy Monolith warp crashed partway through "Memoirs of a Witch"), item names in that pop-up show in full instead of being cut short, and the pop-up says the item came from the Stealth Box, like the Japanese.
 - **v2.16** - a monster that gets back up after a battle no longer has its name run into the next word ("Golemgot back up"), and neither do a few lines like it; the StreetPass Legend Master prize line reads as a sentence.
 - **v2.15** - four place names on the bottom-screen map (Center Building, Power Plant, Secret Base, Incarnus Village) fit their name tags now; the last letter or two used to drop under the tag.
 - **v2.14** - text that ran off the edge of its box breaks between words now: Library item descriptions, four lines that print an item or your name, and a few help and tutorial lines. Some item names lose a stray space that left a double gap, the healing flute is "Hymn of Healing", and the upgraded fusion is "Super Synthesis" everywhere.

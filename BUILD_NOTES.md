@@ -2807,3 +2807,46 @@ case where good downloaded CIAs were installed and rebuilt with the standard opt
 v2.15 the base differs in BattleEventMessage, MenuMessage and the title-menu stamp, the update
 in the two message files and the version the executable prints (171 words, md5 fd214f72; the
 two pill words change one digit).
+
+## Sixty-ninth build, 2026-10-01: the hidden chest line (v2.17)
+
+isanthraxbayad and later Bothenheim (Discord; Bothenheim on the Darkiron Bastille chest holding
+Δ Chimaera's Heart, which the class sweep had predicted) crashed the game on hidden chests. First
+report: the hidden chest next to the Grim Tundra Icy Monolith
+warp, partway through "Memoirs of a Witch", on v2.14 and v2.16 (no report from earlier builds). The static audit
+is _crash_icymonolith/RESULT.md. A small Stealth Box item is announced in two passes: code at
+0x22fd70 formats an inner template from ItemGetMessage (box_get_one, box_get_some, box_get_gold)
+and 0x16ba84 copies it into a 64-byte parameter slot (0x16ba84: at most 31 UTF-16 units, then a
+NUL), and that slot fills the %ls of StealthBoxMessage Small_Get. The English inner line was
+"Found the <c>%ls</c>!" (name + 15 units), so for an 18-character name the cut at 31 lands between
+the two halves of the closing colour code and the line ends in a lone U+0001. The 2021 name had a
+trailing space (19 characters, the pair dropped whole, harmless); round 80 (v2.14) trimmed the
+space, which took Memoirs of a Witch, Mythical Beast Fur, Ring of Protection and Δ Chimaera's Heart
+(all four placed in hidden chests: I00_00, W01_21, H00_00, S00_00) to 18. slotcut_guard.py now runs
+in rebuild.py and fails the build if any fill of these templates is cut inside a code. The
+Japanese cannot hit it: longest item name 11, composed line at most 23.
+
+The class sweep (copy loops bounded at 0x1f, every push site, the 19 formatted templates read by
+hand) found one site that can split a two-unit code: this one. The other nested templates carry no
+code in their inner text and at worst clip a long custom disc name.
+
+round82.py (after round81.py in rebuild.py) rewrites four labels, each only if it holds exactly
+the recorded old text. ItemGetMessage box_get_one 'Found the <c>%ls</c>!' becomes '%ls',
+box_get_some '<c>%ls</c> x%ls obtained!' becomes '%ls x%ls', box_get_gold 'Found %ls<c>Ｇ</c>!'
+becomes '%lsＧ'; StealthBoxMessage Small_Get '%ls' becomes 'Inside the Stealth Box,\nyou found
+<c>%ls</c>!'. The inner part holds only the name (at most 29 units for any item, so never cut)
+and the outer line, formatted into a 2,048-byte buffer, carries the words and the colour. One
+outer line serves all three inner shapes, so it cannot say "the". Names over 19 characters, cut
+short in this pop-up since 2021, now show in full. Wording: Gemini option B, in
+GEMINI_DQMJ3PRO_ROUND82_CHESTLINE.md (A one line, C and D the other two-line orders); the
+widest outer line is 213 px against the Japanese second line's 228.
+
+Rebuild against the v2.16 tree: base 13,955 files, 3 differ (ItemGetMessage.mes,
+StealthBoxMessage.mes, the title-menu stamp title_menu.arc); update 127 files, 0 differ. The
+executable changes only in the two pill words (digit 6 to 7): 171 changed words as before, md5
+940a50b8b3b13dcd44971f85566cdfa4 (v2.17), was fd214f725c4c0d8a9997ec31e2d845c2 (v2.16), read from codepatch.py MD5_PATCHED. Shipped files:
+
+- DQMJ3P-base-fixed-0.1.0.cia: 1,596,032,000 bytes, sha256 24083a0eb891eec59b5792e1dfacb11973fa109daeae481c94034702e1ae839e
+- DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 4b02f9dea6bf94f10e9325161d9a8e7d2fdfdfd7b911c8ea8a4ac0625366a925
+- patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,666,027 bytes, sha256 ec272770c0b747a3687f423312ed76eaca3d4db90cb0203dbff6c232bdd0eac5
+- patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,178,038 bytes, sha256 fe1680663af07d834ad608c1dafd0a51b1e8743089896ec945e2e70392c7e4aa

@@ -6,6 +6,7 @@ This is every change this build makes compared with the Joker 3 Translation Team
 
 - **The font crash at The Core.** The original patch's broken font crashed the game for some players at the cutscene after the Break Archdemon boss. Both CIAs carry a corrected font from Lurpigi's Italian project, which matches the Japanese font layout and loses no glyph, and every character the game's text uses now exists in both fonts. The chest and transfer crashes reported in 2021 were already fixed in the 2021-05-30 build this starts from.
 - **Yes/no prompts that closed before you could answer.** Five prompts had lost the code that shows the choice, among them the Rank 2 and 3 star Speed Road prompts (the second conduit in the Incarnus realm), which closed on their own and locked you out of the later races. They wait for your answer now, and a few system lines that had the wrong window style match the Japanese too.
+- **Hidden chests that crashed the game.** Opening a hidden chest whose item name was exactly 18 characters long (Memoirs of a Witch, Mythical Beast Fur, Ring of Protection, Δ Chimaera's Heart) crashed the game partway through the name. The game cuts that pop-up at 31 characters, and with those names the cut landed in the middle of a hidden colour code. My v2.14 cleanup of stray spaces in item names is what brought those four names to 18. The pop-up now reads "Inside the Stealth Box, you found (item)!", nothing in it can be cut, and item names over 19 characters, which were cut short there before, show in full. Reported by isanthraxbayad (Grim Tundra) and Bothenheim (Darkiron Bastille).
 
 ## Text that said the wrong thing
 
@@ -80,7 +81,7 @@ The Japanese gives its characters their own way of talking, and the 2021 English
 
 - 41 item names carried a stray space at the end from the 2021 patch, so a line that printed one put two spaces after it (`Fusing the Δ Chimaera's Heart  with the`). The space is gone.
 - The name-entry keyboard opens on the Latin "Aa" tab instead of hiragana, and its kanji page, where the 2021 patch had left English words like "Round" and "Breath" on the keys, is restored.
-- The title menu shows the version of each patch: the box above Continue reads "EN 2.16" from the update, and a line in the bottom corner reads "base EN 2.16" from the base. No corner line means the base patch didn't install (older builds of this patch show neither).
+- The title menu shows the version of each patch: the box above Continue reads "EN 2.17" from the update, and a line in the bottom corner reads "base EN 2.17" from the base. No corner line means the base patch didn't install (older builds of this patch show neither).
 - The boss-fight forfeit button says "Give up" rather than "Defeat All", which read as an order to win the fight.
 - A monster's Library entry with more fusion recipes than it shows says "etc." under them again, and bestiary habitats read "Fiery Volcano etc." instead of "as Fiery Volcano".
 - The Red Colour Fondude's menu listed the Yellow trader's rewards and then handed over something else. It lists its own now.
