@@ -19,6 +19,7 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 Newest first.
 
+- **v2.18** - a few quest and story lines still used monster names from before v2.5 (a Scout-Q asked for a Boreal Serpent, then said you'd brought a "Snow Dragon"); they use the current names now. The five Broken monster souls are named after their monsters ("Δ Chimaera's Heart" is "Evil Chimaera's Soul"), and the StreetPass Legend Master's name tag fits its space.
 - **v2.17** - opening some hidden chests no longer crashes the game (the one by the Grim Tundra Icy Monolith warp crashed partway through "Memoirs of a Witch"), item names in that pop-up show in full instead of being cut short, and the pop-up says the item came from the Stealth Box, like the Japanese.
 - **v2.16** - a monster that gets back up after a battle no longer has its name run into the next word ("Golemgot back up"), and neither do a few lines like it; the StreetPass Legend Master prize line reads as a sentence.
 - **v2.15** - four place names on the bottom-screen map (Center Building, Power Plant, Secret Base, Incarnus Village) fit their name tags now; the last letter or two used to drop under the tag.

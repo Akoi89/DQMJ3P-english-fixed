@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.17" and the bottom right corner "base EN 2.17" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.18" and the bottom right corner "base EN 2.18" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -123,14 +123,16 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The player's name in dialogue | any story scene that addresses you by name; the king's line after demo 108 is a good one | the line breaks between words, never mid-word, with a long name in the save |
 | Your name inside a line | in the Center Building's basement, when Theresa hands you 5 Beastie Bites after a battle she arranged | "(your name) received 5 Beastie Bites from Theresa!", with a space after your name. Before v2.11 it ran into the next word |
 | A roaming boss | walk up to a roaming boss on the field | it asks "Challenge (name) to a fight?". Before v2.11 the name ran straight into "Do you challenge to a fight?" |
-| A Colour Fondude trade | Wood Park, the Red Fondude, once rescued | "If you have them, could we exchange / Red Gem (x4) for my treasure?", and the menu lists Werebeast Leather, Saint's Ashes, Essence of Labor and Temporal Crystal. Before v2.12 it asked for "Red Gem of your 4" and listed the Yellow trader's rewards |
+| A Rainbow Fromage trade | Wood Park, Red (the red Rainbow Fromage), once rescued | "If you have them, could we exchange / Red Gem (x4) for my treasure?", and the menu lists Werebeast Leather, Saint's Ashes, Essence of Labor and Temporal Crystal. Before v2.12 it asked for "Red Gem of your 4" and listed the Yellow trader's rewards |
 | A pedestal | one of the six Incarnus-area devices that reacts to the Light Orb | "Bring (title), (monster), and power will dwell in the Light Orb.", every line inside the box. Before v2.12 three of the six swapped the monster and the Light Orb |
 | A Nochoro inn | talk to the innkeeper at the Wood Park inn | "Welcome to the Inn! Here, weary travelers can rest / and recover, cho.", then a page with the yes/no question and no "cho" on it. Before v2.13 there was no "cho" |
 | The King on Lucia | the King, after you meet Lucia in the prison | "So she is doing well, then...". Before v2.13 he said "he" |
 | A MAP Disc quest reward | finish a MAP Disc quest that pays Gold or Exp. | "For successfully completing this, you / received 1000 Gold." (or "received Exp. 300."). Before v2.13 it read "found 1000 xGold." Not yet seen on screen |
 | Tiko in the Reactor | the Reactor record for Tiko | "A hard-working member of the Pipit tribe who fights with luck as her / weapon. She is no amateur." Before v2.13 it said "his" and "He". Not yet seen on screen |
-| A rescued Fondude | Free any Fondude from a Stealth Box and read what they say | no line is cut in the middle of a word and nothing is drawn below the message window |
+| A rescued Rainbow Fromage | Free any Rainbow Fromage from a Stealth Box and read what they say | no line is cut in the middle of a word and nothing is drawn below the message window |
 | A hidden chest by the Icy Monolith | the Grim Tundra, the hidden chest next to the Icy Monolith warp, the one holding Memoirs of a Witch | "Inside the Stealth Box, / you found Memoirs of a Witch!" and no crash. Before v2.17 the game crashed partway through the name. Two players confirmed on Discord that v2.17 opens it with no crash, and the Darkiron Bastille chest too |
+| Scout-Q #4 | hand in a Boreal Serpent for Scout-Q mission 4 | "You've brought a Boreal Serpent." and "Boreal Serpents have the "Mega Body" trait". Before v2.18 both said Snow Dragon. Not yet seen on screen |
+| The Broken monster souls | the bag, once you have one | "Evil Slime's Soul", "Evil Chimaera's Soul", "Evil King Squid's Soul", "Evil Liege Lizard's Soul", "Evil Prism Peacock's Soul", each whole in its row. Before v2.18 they were "Δ ... Heart" and "Δ Slime's Soul". Not yet seen on screen |
 
 ## StreetPass and network
 
@@ -140,6 +142,7 @@ More StreetPass and network checks sit with their screens: the StreetPass profil
 |---|---|---|
 | A StreetPass greeting | a StreetPass arrival on the menu | the Nochorin's bubble ends in "cho!" ("came to play, cho!") and every word is inside the bubble. Not yet seen on screen |
 | The Legend Master prize | beat the Legend Master through StreetPass | "You've earned (item) x(count) as your prize." with a space before the x. Before v2.16 it read "And as a reward, (item)x(count)." Not yet seen on screen |
+| The Legend Master's name tag | a StreetPass Legend Master, the name above the message box | "Legend". Before v2.18 the game copied "Legend Master" into a space too small for it. Not yet seen on screen |
 
 ## The Ver.1.3 content, where the new writing lives
 

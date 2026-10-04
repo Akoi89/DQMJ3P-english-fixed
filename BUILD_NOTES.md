@@ -2850,3 +2850,58 @@ executable changes only in the two pill words (digit 6 to 7): 171 changed words 
 - DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 4b02f9dea6bf94f10e9325161d9a8e7d2fdfdfd7b911c8ea8a4ac0625366a925
 - patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,666,027 bytes, sha256 ec272770c0b747a3687f423312ed76eaca3d4db90cb0203dbff6c232bdd0eac5
 - patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,178,038 bytes, sha256 fe1680663af07d834ad608c1dafd0a51b1e8743089896ec945e2e70392c7e4aa
+
+## Seventieth build, 2026-10-03: old names left in dialogue, the Legend name tag (v2.18)
+
+isanthraxbayad (Discord, 2026-10-03) reported that Scout-Q #4 asks for a Boreal Serpent and then says
+"You've brought a Snow Dragon". Cause: rename57.py carried a rename into a line only when the English
+and Japanese mention counts matched, and MSG_SCOUTQ_04_CLEAR_MSG was logged "skipped ... count
+mismatch E=1 J=2" (the Japanese has スノードラゴン twice, the English "Snow Dragon" once plus "Snow
+Dragons" once). 406 rows were skipped that way in v2.5; an earlier note judged them all boss
+epithets, which was wrong for these.
+
+The sweep: _audit/_stalenames/scan.py looks for every old name in names_r8/r9/r57.json, and with
+--diff2021 for every name-table entry changed since the 2021 patch (whole word plus plural and
+possessive, every .mes in both layers); variants.py does the same case-insensitively. Write-up in
+_audit/_stalenames/RESULT.md.
+
+round84.py rewrites 46 labels, 112 writes (the Field/ and Script/Field/ copies, base and update).
+Old -> new names, from RESULT.md:
+
+- Snow Dragon -> Boreal Serpent
+- Δ Slime -> Evil Slime
+- Copper Column -> Ori Column
+- Dark Robo-Slime -> Dark Robot Slime
+- Jack of All Trades -> Monster Maniac (the Library-complete title)
+- Fondude / Rainbow Fondude -> Fromage Fray / Rainbow Fromage
+- Big Hat -> Sham Hatwitch
+
+The five Broken monster soul items (I0921 to I0925), before -> after: "Δ Slime's Soul" -> "Evil
+Slime's Soul", "Δ Chimaera's Heart" -> "Evil Chimaera's Soul", "Δ Great Squid's Heart" -> "Evil King
+Squid's Soul", "Δ Liege Lizard's Heart" -> "Evil Liege Lizard's Soul", "Δ Prism Peacock's Heart" ->
+"Evil Prism Peacock's Soul". The yellow Rainbow Fromage's record said "bitter" lemon, the Japanese
+says sour: "tart" now.
+
+Second opinions: Gemini (Pro, Extended thinking), GPT and Copilot on the soul items (unanimous,
+"Evil X's Soul") and on ten brothers lines (decided per row by majority of three), in
+GEMINI_DQMJ3PRO_ROUND84_NAMES.md. Left alone on purpose: the Δ on Broken traits (Δ Light Body),
+the bird Δ Hraesvelgr (round 75), and boss lines that carry the Japanese epithet.
+
+round83.py: MenuMessagePassingNameJoker1 and Joker2 "Legend Master" (13 units) -> "Legend". The name
+is copied by wcsncpy at 0x291ff8 into a 12-unit field, with no NUL when the source fills it
+(_audit/_crash_sweep3/RESULT.md B1; GEMINI_DQMJ3PRO_ROUND83_LEGENDNAME.md). The player title stays
+"Legend Master".
+
+Guards: stalename_guard.py is new and runs after slotcut_guard in rebuild.py; it fails on the
+shipped v2.17 (155 old names) and passes on v2.18. slotcut_guard.py has a new name-tag check
+(the tag must stay 11 units or fewer); it fails on v2.17, where both labels are 13.
+
+Rebuild against v2.17: base 12 files differ, update 4; 116 labels differ (round84 112 plus round83
+4), no others (_stalenames/labeldiff_v218.py). boxfit: 32,365 checked, 0 over. slotcut OK,
+stalename OK. The executable changes only in the two pill words (digit 7 to 8): md5 68a660f1a9512c800a6c5f3e7cdf6379
+(v2.18), was 940a50b8b3b13dcd44971f85566cdfa4 (v2.17), read from codepatch.py MD5_PATCHED. Shipped files:
+
+- DQMJ3P-base-fixed-0.1.0.cia: 1,596,032,000 bytes, sha256 e0515dced92e7d703d797cb7312fad6a64fbacf07ceb51bab5135a382096ddb9
+- DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 aa45c7f9dfeb0237c816bf2636311ac61aa4d7c9e3f88e139693652df345cf6c
+- patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,673,200 bytes, sha256 4c42eb80037106d66e00d14acc11c8f7c56ebe9d23f9253cccbf29050cc0d5a6
+- patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,177,999 bytes, sha256 f78970439d93b00f09ae29800b339121951a30c9349db55a0941d83e44c2d35b
