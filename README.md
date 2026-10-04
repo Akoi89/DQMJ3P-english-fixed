@@ -14,10 +14,10 @@ Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs ar
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,032,000 | e0515dced92e7d703d797cb7312fad6a64fbacf07ceb51bab5135a382096ddb9 |
-| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | aa45c7f9dfeb0237c816bf2636311ac61aa4d7c9e3f88e139693652df345cf6c |
-| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,673,200 | 4c42eb80037106d66e00d14acc11c8f7c56ebe9d23f9253cccbf29050cc0d5a6 |
-| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,177,999 | f78970439d93b00f09ae29800b339121951a30c9349db55a0941d83e44c2d35b |
+| `DQMJ3P-base-fixed-0.1.0.cia` | 1,596,032,000 | 5a1cfa22a93886fb8700d1ca7013d707636fb5e03ebc0589229a481ec5fee06c |
+| `DQMJ3P-update-fixed-3.4.0.cia` | 21,427,200 | b5f04e24f9c8b88582220bf9db9a7144fbf974fff00b0df8021c1c118a9a4844 |
+| `patches/DQMJ3P-base-fixed-0.1.0.xdelta` | 13,675,451 | 608c172bd51a0355c0435b58ac57e98bd8e22e72e966e909dc7b2fb9f0dbc307 |
+| `patches/DQMJ3P-update-fixed-3.4.0.xdelta` | 4,541,106 | 5c0666e905a52635fb5050dde0c07c63c31016f14de295b119a0ec94b36962f7 |
 
 Install **both CIAs**, the base first and then the update. The update carries the Ver.1.3 content and the executable, including the keyboard fix; the base carries the rest of the game's data. With only one of them installed you get a mix of old and new text.
 
@@ -67,7 +67,7 @@ Never done this before, or something already went wrong? Start again from here. 
 8. If it stops with a checksum mismatch, go back to **how you dumped**. They must be encrypted dumps decrypted on the PC, not decrypted or trimmed by GodMode9. Check the source sizes above too.
 9. You should now have `DQMJ3P-base-fixed-0.1.0.cia` and `DQMJ3P-update-fixed-3.4.0.cia`. Copy both to your SD card.
 10. Open FBI on your 3DS (you have it if you followed the usual modding guide), go to SD, and install **the base first, then the update**.
-11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.18" (the update patch) and the bottom right corner says "base EN 2.18" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
+11. **Check both went on.** The title menu shows which versions you have: the small box above Continue says "EN 2.19" (the update patch) and the bottom right corner says "base EN 2.19" (the base patch). No corner line means the base didn't install, so install the base CIA too; "Ver.1.3" in the box means the update didn't. The two numbers should match. Builds before v2.12 show neither.
 
 Thanks to oho, who wrote these steps out on Discord.
 
@@ -117,7 +117,7 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 
 ## Not fixed, known
 
-- **Long monster names get shortened.** A stored name holds 11 characters, so "Metal Pearl Slime" is cut to 11 when you obtain or rename it. A wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of a kind are on the field. The record field is 24 bytes; widening it would change the save format.
+- **Long monster names get shortened.** A stored name holds 11 characters, so "Metal Pearl Slime" is cut to 11 when you obtain or rename it. A wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of a kind are on the field. The main bosses fight under a short name that fits ("Bundold" rather than "Bundold, the Thief"), and most of them keep the full title in the Library. Some bosses are still cut, like the Insurgent Demons. The record field is 24 bytes; widening it would change the save format.
 - **Names already in your save don't change.** The name is written onto the monster once, when you scout or fuse it, so monsters already in your party keep whatever your old build gave them. Only ones you get from now on use the corrected names. Names already cut to 8 stay until renamed.
 - **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
   - It asks for a game whose code is untouched. This build changes 171 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, the routines that write a wild monster's name for battle, the Set AI list, and the title menu's version box.

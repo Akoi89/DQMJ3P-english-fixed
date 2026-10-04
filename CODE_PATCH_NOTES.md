@@ -192,11 +192,11 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-171 changed words in the update's executable, md5 `68a660f1` (v2.18). If you are
+171 changed words in the update's executable, md5 `20f542bd` (v2.19). If you are
 counting against codepatch.py, that file has 172 entries: the one at `0x7747a8`
 writes the bytes already there and changes nothing, so the built file differs
 from the Japanese original in 171 words. Ten of them, new in v2.12, change the
-title menu's version box from "Ver.1.3" to "EN 2.18" (the format literal in the
+title menu's version box from "Ver.1.3" to "EN 2.19" (the format literal in the
 two copies of its writer, and a never-taken branch nopped). The literal's words
 change with each release's number, so the md5 does too; v2.12's was `e86f960a`. These notes said 154 until v2.7,
 because the figure came from the length of the list rather than the artifact.

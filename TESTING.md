@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.18" and the bottom right corner "base EN 2.18" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.19" and the bottom right corner "base EN 2.19" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -101,6 +101,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The forfeit button | a boss fight you cannot win | it reads "Give up" |
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
+| Boss names | any boss fight: Bundold, Azamook or Itaburu in the story or again on the bird flight, the four emperors, the old Dragon Quest villains | the name under the boss whole: "Bundold", "Azamook", "Death Psaro", "Emp Windeo". Before v2.19 they were cut ("Bundold, th"). Library > Monster still shows "Bundold, the Thief". Not yet seen on screen |
 
 ## Field and dialogue
 

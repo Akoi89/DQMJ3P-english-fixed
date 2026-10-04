@@ -2905,3 +2905,65 @@ stalename OK. The executable changes only in the two pill words (digit 7 to 8): 
 - DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 aa45c7f9dfeb0237c816bf2636311ac61aa4d7c9e3f88e139693652df345cf6c
 - patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,673,200 bytes, sha256 4c42eb80037106d66e00d14acc11c8f7c56ebe9d23f9253cccbf29050cc0d5a6
 - patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,177,999 bytes, sha256 f78970439d93b00f09ae29800b339121951a30c9349db55a0941d83e44c2d35b
+
+## Seventy-first build, 2026-10-03: boss names in battle, Freshia (v2.19)
+
+isanthraxbayad (Discord, 2026-10-03) reported that the boss on the bird flight reads "Bundold, th".
+Cause: a monster in battle keeps only 11 units of its species name (the README known problem, since
+v2.6, which made long names cut instead of blank), and v2.5 gave 強奪王ブンドルド "Bundold, the Thief"
+(18 units; the 2021 patch had "Bundold", the Japanese is 8). The same cut hit every boss whose v2.5
+title is longer than 11.
+
+The sweep: _audit/_bundold_cut/scan.py (437 species names over 11 in v2.18), parties.py
+(MonsterPartyTable.tp "bf_*" entries -> MonsterParam.tp records, 72 bytes, u16 id at +0, u16 species
+at +2 -> species; 311 species in scripted parties, 174 over 11) and bosslist.py (Japanese, 2021,
+current). Scripted fights started outside MonsterPartyTable are not covered.
+
+The names: three assistants (Gemini Pro with Extended thinking, GPT, Copilot), rounds 85, 85B and
+85C, majority per row, in GEMINI_DQMJ3PRO_ROUND85_BOSSNAMES.md. The collisions were found by me:
+Psaro, Windeo, Ackle and Gaogaya are other species' names, hence Death Psaro and the Emp set. The
+Freisha/Freshia split was found the same way.
+
+The rig check (2026-10-03, end-game save, a probe mod putting the entry number before every name):
+Library > Monster draws MK0526 Bundold, MK0457 Zoma, MK0791 Captain Crow, MK0551 Black Flying Dragon
+and MK0807 Madullajah Djinn, in each case the entry that is not in a scripted party. So round85
+renames the battle copies only where such an entry exists (_audit/_bundold_cut/RESULT.md). Not seen
+on the rig: Bjørn's entry, and MK0611 (a Boshock copy in no party), assumed by the same pattern.
+
+round85.py: the name table (battle copy -> new; the Library entry kept where listed):
+
+- Bundold, the Thief -> Bundold (MK0603, MK0642; Library MK0526 keeps the title)
+- Cunning King Azamook -> Azamook (MK0604, MK0643; Library MK0527)
+- Torture King Itaburu -> Itaburu (MK0605, MK0644; Library MK0528)
+- Gourmet King Boshock -> Boshock (MK0601, MK0611, MK0641; Library MK0531)
+- Archfiend Zoma -> Zoma (MK0650; MK0457)
+- Psaro the Manslayer -> Death Psaro (MK0651; MK0458)
+- Grandmaster Nimzo -> Nimzo (MK0652; MK0459)
+- Demonlord Mortamor -> Mortamor (MK0653; MK0461)
+- Corvus the Fallen -> Corvus (MK0656; MK0464)
+- Bjørn the Behemoose -> Bjørn (MK0714; MK0666)
+- Captain Crow -> Capt. Crow (MK0594; MK0791)
+- Madullajah Djinn -> Madul Djinn (MK0581, MK0981-0985; MK0807)
+- Madullajah Marid -> Madul Marid (MK0986-0990; MK0808)
+- Black Flying Dragon -> Black Drake (MK0589; MK0551)
+- Dark Robot Slime -> Robo Slime (MK0684; MK0839)
+- Single entries (Library changes too): Leonyx the Divine Battler -> Leonyx (MK0468), Marquis de Léon -> Léon (MK0732), Slon the Rook -> Slon (MK0836), Kon the Knight -> Kon (MK0837), Emperor Windeo -> Emp Windeo (MK0800), Queen Freshia -> Emp Freshia (MK0801), Emperor Ackle -> Emp Ackle (MK0802), Emperor Gaogaya -> Emp Gaogaya (MK0803), Incarnus Guardian -> I. Guardian (MK0685), Incarnus Gatekeeper -> Gatekeeper (MK0686).
+
+Freshia in MK0797, message_query_5_1_1 and GOD_ACE_HUKUROU_REBORN_MSG ("Freisha" in three places,
+"Freshia" in eight; same Japanese フレイシャ). Every new name is 11 or fewer and none equals another
+species. The rebuild reports round 85: 84 labels written: 40 MonsterKindMessage labels (39 boss
+entries and MK0797) in each layer, 80, plus message_query_5_1_1 (base only) and
+GOD_ACE_HUKUROU_REBORN_MSG in its three copies (base Field/ and Script/Field/, update Script/Field/).
+
+Checks: rerun 0; label diff vs v2.18 exactly those 84 (_bundold_cut/r85_labeldiff.txt on the
+test copy); itemfit 0 too long, boxfit 0, slotcut OK, stalename OK; no renamed boss shares a party
+with a twin (the " A"/" B" form would cut to 9). Rebuild against v2.18 (rebuild_v219.log): base
+5 files differ, update 2. The executable changes only in the two pill words (digit 8 to 9):
+md5 20f542bd82461c41fc347ac3b947b1c1 (v2.19), was 68a660f1a9512c800a6c5f3e7cdf6379 (v2.18), read from codepatch.py MD5_PATCHED. Shipped files:
+
+- DQMJ3P-base-fixed-0.1.0.cia: 1,596,032,000 bytes, sha256 5a1cfa22a93886fb8700d1ca7013d707636fb5e03ebc0589229a481ec5fee06c
+- DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 b5f04e24f9c8b88582220bf9db9a7144fbf974fff00b0df8021c1c118a9a4844
+- patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,675,451 bytes, sha256 608c172bd51a0355c0435b58ac57e98bd8e22e72e966e909dc7b2fb9f0dbc307
+- patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,541,106 bytes, sha256 5c0666e905a52635fb5050dde0c07c63c31016f14de295b119a0ec94b36962f7
+
+The update xdelta is 4,541,106 bytes against v2.18's 4,177,999. Measured by the refuter (_refute_v219/RESULT.md): all of the growth is in the first 8 MB of the update, the compressed executable. Only 2 bytes differ after decompression, but the recompressed .code (4,477,048 bytes either way) differs from v2.18's in 3,668,832 bytes, while v2.17 to v2.18 differed in 2. The romfs part of the patch is flat. v2.12's update xdelta was a similar 4,540,167 bytes. Harmless; a second decompressor agrees on the code.
