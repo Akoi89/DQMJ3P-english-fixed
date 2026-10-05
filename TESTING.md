@@ -25,7 +25,8 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.19" and the bottom right corner "base EN 2.19" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.20" and the bottom right corner "base EN 2.20" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The title menu's top bar | the title menu, after Press Start | the bar at the top of the menu is a patterned plate behind white lettering with a dark outline ("DQM Joker 3 PROFESSIONAL"), with no dark specks above or around the letters. Seen on screen in v2.20 |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
 ## Library, shops and skill books
@@ -88,6 +89,8 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The race stat labels | Colosseum reception, pick a monster for a race, read the stat list | the rows read "Pwr" and "Acc". Before v2.9 they read "Hors" and "Accel", cut mid-word |
 | The top player title | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | The scout keyboard | Scout a monster and let the naming keyboard open | the whole species name is filled in, not its first two letters |
+| The Size and Set pills | Center Building 1F, the big man Hogan at the north end: "Are you here to synthesize?", Yes, Fusion, pick two monsters, then look at the child's preview on the top screen | a gold "SET" pill to the left of a fixed trait, whole and rounded, the lettering legible. Seen on screen in v2.20. The "Size" pill is the same graphic and is not yet seen on screen |
+| Race banners | a race: wait for a sudden event; leave the marked area; the Grand Prix elimination round results | the "SUDDEN EVENT" banner with an unbroken glow, "Return to the area or forfeit!" in gold on red, and a clean gold "1st" tag. The "RANKED!!" tag belongs to the online Global Cup ranking, which may not be reachable offline. Not yet seen on screen |
 
 ## Battle
 
@@ -102,6 +105,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | Names in battle | any wild fight with a long-named species (a Halberdsaurus south of the Wood Park zoom point is the easiest) | the name printed under the monster and on its Status page, "Halberdsaur" rather than nothing |
 | Two of a kind | a fight with two monsters of the same species | "Halberdsa A" and "Halberdsa B", or "Slime A" and "Slime B" for a short name: a name, a space, a letter |
 | Boss names | any boss fight: Bundold, Azamook or Itaburu in the story or again on the bird flight, the four emperors, the old Dragon Quest villains | the name under the boss whole: "Bundold", "Azamook", "Death Psaro", "Emp Windeo". Before v2.19 they were cut ("Bundold, th"). Library > Monster still shows "Bundold, the Thief". Not yet seen on screen |
+| The final boss's first form | the Break World boss near the end: its cutscenes, the name under it in battle, Library > Monster | "Snapped-off" in all of them. Before v2.20 it read "Garuvirus". Its last form fights as "Snap-Almty" (before v2.20 the battle cut "Snapped-Almighty" to "Snapped-Alm") and keeps "Snapped-Almighty" in the Library. "Darth Garma" is unchanged. Seen on screen in v2.20: the Library entries (Library > Monster > the ??? family, near "Dr Snapped" and "Darth Garma"). The cutscenes and the battle name are not yet seen |
 
 ## Field and dialogue
 
@@ -144,6 +148,7 @@ More StreetPass and network checks sit with their screens: the StreetPass profil
 | A StreetPass greeting | a StreetPass arrival on the menu | the Nochorin's bubble ends in "cho!" ("came to play, cho!") and every word is inside the bubble. Not yet seen on screen |
 | The Legend Master prize | beat the Legend Master through StreetPass | "You've earned (item) x(count) as your prize." with a space before the x. Before v2.16 it read "And as a reward, (item)x(count)." Not yet seen on screen |
 | The Legend Master's name tag | a StreetPass Legend Master, the name above the message box | "Legend". Before v2.18 the game copied "Legend Master" into a space too small for it. Not yet seen on screen |
+| Network Coin "BRONZE" | collect a Network Coin on the coin screen | "BRONZE" is drawn in the same style as the other coin names. Not yet seen on screen |
 
 ## The Ver.1.3 content, where the new writing lives
 

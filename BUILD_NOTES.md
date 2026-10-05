@@ -2967,3 +2967,79 @@ md5 20f542bd82461c41fc347ac3b947b1c1 (v2.19), was 68a660f1a9512c800a6c5f3e7cdf63
 - patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,541,106 bytes, sha256 5c0666e905a52635fb5050dde0c07c63c31016f14de295b119a0ec94b36962f7
 
 The update xdelta is 4,541,106 bytes against v2.18's 4,177,999. Measured by the refuter (_refute_v219/RESULT.md): all of the growth is in the first 8 MB of the update, the compressed executable. Only 2 bytes differ after decompression, but the recompressed .code (4,477,048 bytes either way) differs from v2.18's in 3,668,832 bytes, while v2.17 to v2.18 differed in 2. The romfs part of the patch is flat. v2.12's update xdelta was a similar 4,540,167 bytes. Harmless; a second decompressor agrees on the code.
+
+## Seventy-second build, 2026-10-05: Snapped-off, damaged banners and tags (v2.20)
+
+hawkEyeDguY (Discord, after v2.19) asked why Snapped-off had become Garuvirus. The monster is the final
+boss's first form, ガルビルス. The 2021 patch called it "Snapped-off" and v2.5 renamed it "Garuvirus", but Dr
+Snapped and Snapped-Almighty were never renamed, so the form between them read in a different style, and
+one shipped line showed the clash: "Garuvirus... no, it was Snapped-Almighty". Darth Garma was renamed in
+v2.5 as well. The Japanese has no word for "snapped" in it; the pun is the 2021 translators'. The
+measurement is in GEMINI_DQMJ3PRO_ROUND86_GARMA.md.
+
+The decision: three assistants (Gemini, Copilot, GPT) all chose to restore the 2021 pun family (option B in
+that file). Gemini restored Snapped-Dragon too, the 2021 name of Darth Garma; Copilot and GPT kept Darth
+Garma, a separate boss, and I chose that. Darth Garma, Dr Snapped and Snapped-Almighty are unchanged. The
+verdicts are in the same file.
+
+round86.py: Garuvirus -> Snapped-off in every .mes string, 73 strings (base 68 in 43 files, update
+5 in 4 files, counted as raw UTF-16 in the v2.19 trees; a first scan reported 4 and was wrong). The
+monster name appears twice, then its name tag, one bestiary line, and the cutscene and event lines.
+"Snapped-off" is 11 characters, the battle name limit. The widest new line is 346 px, the field window's
+own width, and the shipped text already has 165 lines between 345 and 349 px, so nothing was re-wrapped.
+Tested on copies (written 73, rerun 0, the only change is the word). On the rig, with the v2.16 update's executable and these text files loaded as a mod, the Library showed "Snapped-off", "Snapped-Almighty", "Dr Snapped" and "Darth Garma" and no "Garuvirus"; the cutscenes and the battle name were not seen.
+
+round87.py: the last form, Snapped-Almighty (ガルマザード), has two entries, and the battle name shows
+only the first 11 characters. MK0634 is the copy the last fight uses (party
+bf_W00_05) and MK0490 is the Library entry; round 85 had found that the Library draws the entry that is
+not in a party, so only MK0634 is renamed, to "Snap-Almty" (10 characters; before this the battle cut
+it to "Snapped-Alm"). The choice was between "Almighty", "Mighty Snap" and "Snap-Almty"; Gemini picked
+"Snap-Almty" because it keeps the Snapped family and reads as a deliberate abbreviation (the question and
+the answer are in GEMINI_DQMJ3PRO_ROUND87_ALMIGHTY.md; its remark that "The Almighty" is an established
+name in the series was not verified). Written 2 labels (base and update), rerun 0, tested on copies; the
+only text that differs from a build without round87 is MK0634 in MonsterKindMessage.mes.
+On the rig, with the final build's text files loaded as a mod, the Library still printed "Snapped-Almighty" for that entry (??? family, page 8: RANK SS, Ride Type Air) and "Snap-Almty" was in none of its 102 rows. The battle name itself was not seen.
+
+The textures: the image review of 2026-10-04 (114 changed .bflim textures in 49 Layout archives, every one
+looked at at 4x and 8x on black) found 11 distinct textures with real defects, 14 files once identical
+copies are counted. They are in _audit/imgfix/, written by _audit/imgfix_apply.py right after banners.py,
+each the same length as the one it replaces (the script refuses a mismatch). The plates are flat or pure
+vertical gradients, so they were rebuilt exactly, row by row, from clean Japanese columns; LaMa smeared the
+title menu's dither when tried and was not used. The Size and Set pills and the Grand Prix "1st" and "RANKED!!" tags are lettered with hand-drawn pixel glyphs (pixfont.py in _image_review) in the Japanese pixels' own colours; a first pass with Arial Bold at eight pixels and Impact at nine, rendered from the font files, was blurry and the wrong weight, and was redone. The Size and Set pills share one plate (the Set texture's clean caps and rows, with the Japanese art's own faint edge alpha). The SUDDEN EVENT and WARNING banners use Impact with the same yellow to orange fill, red outline and glow, and the glow fades to nothing at the texture border (the Japanese art's glow reaches the border only faintly, alpha 34 at most). The title menu's top bar starts from the Japanese bar itself: only the katakana block is replaced, by the exact plate and by "Joker" set in Segoe UI Bold with the Japanese outline, so "DQM", the "3" and "PROFESSIONAL" are the original pixels (the first v2.20 version kept the 2021 lettering, which carried wipe residue and had no outline, and was redone after the rig showed dark specks along its top; the rig then showed a light nub next to the "3", the anti-aliased tail of the katakana dash, and its two pixels were removed afterwards; the shipped bar was then shown on the rig, with no specks and no nub). BRONZE is redrawn in the French COPPER letter style. The
+race banner reads "Return to the area or forfeit!". Fourteen UI textures in 9 Layout archives changed:
+
+- Race/race_upper.arc
+- common/status_coupling.arc
+- menu/grand_prix/elimination_round.arc
+- menu/wifi_ranking_gcup/upper/gcup_flash_ranking.arc
+- mix/mix_ability_check.arc
+- mix/mix_ability_choice.arc
+- network_coin_get/network_coin_get.arc
+- quest/upper/quest_area_out.arc
+- title/lower/title_menu.arc
+
+Checks, read from the logs rather than typed:
+
+- rebuild_v220.log: round 86: 73 labels in 47 files written, round 87: 2 labels written, 0 problems; item fit 0 too
+  long; box fit 0 screen, 0 pane, 0 label; slotcut guard OK; stalename guard OK. Against the v2.19 build the
+  base has 52 files differing (the round86 files plus the 9 archives) and the update 4.
+- prove_imgfix_v220.log: all 14 textures and all 9 archives were found inside the packed base CIA, and
+  none in the v2.19 CIA (0 failures).
+- xdelta_v220.log: each patch gives the right CIA from the real dump, from two copies with the
+  volatile header bytes randomised and from a copy with the whole scrubbed area randomised (four of
+  four each; the CIA hashes begin aa71f25df0703e66 for the base and 002cc3676633c843 for the update).
+- fresh_decrypt_v220.log: both patches rebuild both CIAs from a fresh Batch CIA 3DS Decryptor decrypt
+  as well as from the project's own dump. The fresh decrypts hash differently from the project's
+  (base .cci 1,591,599,104 bytes, 2b9b757ad0199632 against 79078f60ebe03069; update .cia 15,725,568 bytes, 8eee0819b1b76c62 against ec75431825c48507), and
+  all four outputs equal the wanted hashes.
+
+The pack: the executable changes only in the version digits of the two title pills (EN 2.19 to EN 2.20):
+md5 c8132bd1d86ac78c720ec4b7bcaba9a5 (v2.20), was 20f542bd82461c41fc347ac3b947b1c1 (v2.19), read from codepatch.py MD5_PATCHED. The update CIA's romfs
+differs from the v2.19 update only in the 6 strings of round86 and round87 (pack_v220.log: MonsterKindMessage.mes 3, MonsterTriviaMessage.mes 1, TalkNameMessage.mes 1, A01_00.mes 1); the base
+differs in its 69 strings, the textures above, and one line of the title menu layout (the corner
+version line, "base EN 2.19" to "base EN 2.20"). Shipped files:
+
+- DQMJ3P-base-fixed-0.1.0.cia: 1,596,032,000 bytes, sha256 aa71f25df0703e66a725c2df12c6b2a78501bbbd837c5ec9d2c54da2f00513d4
+- DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 002cc3676633c8432b432242c9ebedd8f53771a5493931924543b511aeeeba81
+- patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,623,739 bytes, sha256 d570deac1325c59093cb696541d78eca32385a5caf56a632f93836d3e6da6d91
+- patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,541,175 bytes, sha256 937e1ab64e4aa388c736351726d8caa473e2e7cdc3db5035818a78a55e71866e
