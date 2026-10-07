@@ -3043,3 +3043,42 @@ version line, "base EN 2.19" to "base EN 2.20"). Shipped files:
 - DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 002cc3676633c8432b432242c9ebedd8f53771a5493931924543b511aeeeba81
 - patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,623,739 bytes, sha256 d570deac1325c59093cb696541d78eca32385a5caf56a632f93836d3e6da6d91
 - patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,541,175 bytes, sha256 937e1ab64e4aa388c736351726d8caa473e2e7cdc3db5035818a78a55e71866e
+
+## Seventy-third build, 2026-10-06: Quick Fusion Filters names (v2.21)
+
+Two players (ProgramerGamer and isanthraxbayad, on Discord) reported that in the Quick Fusion Filters list the
+first parent's name shows whole and the second is cut to 10 letters ("Metal Slim", "Emperor Sl"). The row
+function at 0x609ad8 prints the second parent's coloured family icon (5 characters) and species name into a
+16-character stack buffer through the builder at 0x231700 with the printf maximum 0x10 in r1, which leaves
+10 letters. The first parent never goes through a buffer: the game returns the MonsterKindMessage string
+itself. Three edits grow the buffer to 32 characters (26 letters; the longest species name is 25) and the
+frame from 0x140 to 0x158 bytes (FUSIONFILTER_RE.md): the sub sp at 0x609adc, the maximum at 0x609d04 and
+the add sp at 0x609da4, the only exit. Nothing in the function reads at or above sp+0x140. Seen on the rig
+with a test image that carries the same three words (it also held the parked A1 routine, which was never
+reached, and an "EN 2.20" pill) on an installed v2.16 base: "Nameless King of Darkness" (25 letters) whole in the
+row, and the buffer read through GDB (_rig_v221/RESULT.md). Then the shipped v2.21 code and text were booted on the rig (_rig_v221b/RESULT.md): the title pill read "EN 2.21" and the corner "base EN 2.16" (the installed base is the v2.16 build); in the Quick Fusion Filters rows "Maldragora, Worldmaker" is whole on one line with the rows in place, "Nameless King of Darkness" is whole, and so are "Liquid Metal Slime King" (23 letters) and "Evil Dragon Zombie". No row with Emperor Slime or Metal Slime as the second name was found.
+
+round88.py: one name, "Maldragora the Worldmaker" (MK0475), is 134 px wide, and the row fits about 131 px of
+name once the family icon is in front. That was measured against the two names seen on the rig: "Nameless
+King of Darkness" fits at 128 px, "Maldragora the Worldmake" at 130 px, and the full name wrapped its last
+letter onto a second line. FUSIONFILTER_WIDTHS.md measured all 1,024 species names and no other is over
+128 px. The monster-list entry is now "Maldragora, Worldmaker" (119 px); with the shipped build on the rig it sits on one line inside the row. Two of three second opinions
+picked it (Gemini and Copilot; GPT preferred "Worldmaker Maldragora"), GEMINI_DQMJ3PRO_ROUND88_MALDRAGORA.md.
+The dialogue name tag (TalkNameMessage.mes) keeps the full name. Written 2 labels (base and update),
+rerun 0, tested on copies.
+
+The pack: codepatch.py now has 175 entries (174 applied, 1 already present). The patched code md5 is
+9a7a188b6c050ecdf7ca0f65c57cd6cb (v2.21), was c8132bd1d86ac78c720ec4b7bcaba9a5 (v2.20), read from
+codepatch.py MD5_PATCHED; seven bytes differ from v2.20: the version digits of the two title pills and the
+three words above. The update CIA's romfs differs from the v2.20 update only in MonsterKindMessage.mes
+(1 label); the base differs in MonsterKindMessage.mes (1 label) and one line of the title menu layout (the
+corner version line, "base EN 2.20" to "base EN 2.21"). The update xdelta is larger than v2.20's because the
+recompressed executable differs over a longer stretch. Shipped files:
+
+- DQMJ3P-base-fixed-0.1.0.cia: 1,596,032,000 bytes, sha256 526c784b94e9a7519adf1babfa7325851efa6eb1358830dbb4e5af8ad4333436
+- DQMJ3P-update-fixed-3.4.0.cia: 21,427,200 bytes, sha256 5c1f39991fd3aa4bce7e2605214b5960fc3784d93961e11c76759fbae5d76974
+- patches/DQMJ3P-base-fixed-0.1.0.xdelta: 13,623,736 bytes, sha256 5ff6591a84e56722e577532801776e1a79d847c91577b188b783171995972b74
+- patches/DQMJ3P-update-fixed-3.4.0.xdelta: 4,960,393 bytes, sha256 6e77da022944e13df20a3056a6f6e19954e4081fbab76b2a311d34f4f0e386b1
+
+fresh_decrypt_v221.log: both patches rebuild both CIAs from a fresh Batch CIA 3DS Decryptor decrypt as well as
+from the project's own dump (fresh base .cci c0155719e72a6bea, fresh update .cia d388976f85411ce7), and all four outputs equal the wanted hashes.

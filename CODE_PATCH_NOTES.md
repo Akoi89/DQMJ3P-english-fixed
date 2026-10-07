@@ -192,11 +192,11 @@ re-run the paths that build these panels, and the black-screen bug in section
 
 ## 6. Where this build stands
 
-171 changed words in the update's executable, md5 `c8132bd1` (v2.20). If you are
-counting against codepatch.py, that file has 172 entries: the one at `0x7747a8`
+174 changed words in the update's executable, md5 `9a7a188b` (v2.21). If you are
+counting against codepatch.py, that file has 175 entries: the one at `0x7747a8`
 writes the bytes already there and changes nothing, so the built file differs
-from the Japanese original in 171 words. Ten of them, new in v2.12, change the
-title menu's version box from "Ver.1.3" to "EN 2.20" (the format literal in the
+from the Japanese original in 174 words. Ten of them, new in v2.12, change the
+title menu's version box from "Ver.1.3" to "EN 2.21" (the format literal in the
 two copies of its writer, and a never-taken branch nopped). The literal's words
 change with each release's number, so the md5 does too; v2.12's was `e86f960a`. These notes said 154 until v2.7,
 because the figure came from the length of the list rather than the artifact.
@@ -208,6 +208,22 @@ with the frame grown to hold it), and the word count had not been updated
 since. Nothing in the name family is known-broken now.
 
 The base title's executable is untouched.
+
+### Quick Fusion Filters: the second name (v2.21)
+
+The Quick Fusion Filters row function at `0x609ad8` (update code, decompressed file offset `0x509ad8`) prints the
+second parent's coloured family icon (5 characters) and the species name into a 16-character stack buffer at
+`sp+0x118` through the formatter `0x231700`, with the printf maximum `0x10` in `r1`, so only 10 letters survive. The
+first parent is drawn straight from the string and is never cut. Three words grow the buffer to 32 characters
+(26 letters) and the frame with it:
+
+| what | file offset | VA | old | new |
+|---|---|---|---|---|
+| `sub sp,sp,#0x140` to `#0x158` | `0x509adc` | `0x609adc` | `05 dd 4d e2` | `56 df 4d e2` |
+| `mov r1,#0x10` to `#0x20` | `0x509d04` | `0x609d04` | `10 10 a0 e3` | `20 10 a0 e3` |
+| `add sp,sp,#0x140` to `#0x158` (the only exit) | `0x509da4` | `0x609da4` | `05 dd 8d e2` | `56 df 8d e2` |
+
+Nothing in the function reads at or above `sp+0x140`. The base title has the same function `0x11f8` lower.
 
 ## 7. Licensing, so it is not a question
 

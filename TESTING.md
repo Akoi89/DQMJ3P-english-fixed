@@ -25,7 +25,7 @@ I'd much rather read the same report twice than miss one.
 
 | Check | Where | Looking for |
 |---|---|---|
-| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.20" and the bottom right corner "base EN 2.20" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
+| The version stamps | the title menu, after Press Start | the box above Continue says "EN 2.21" and the bottom right corner "base EN 2.21" (each build shows its own number). An older update shows "Ver.1.3" instead; an older base shows no corner line |
 | The title menu's top bar | the title menu, after Press Start | the bar at the top of the menu is a patterned plate behind white lettering with a dark outline ("DQM Joker 3 PROFESSIONAL"), with no dark specks above or around the letters. Seen on screen in v2.20 |
 | The new game warning | Title screen, then Start from the beginning, and read the warning | all three lines are on the screen. Before v2.8 it was one long line and the end of it was off the edge |
 
@@ -90,6 +90,7 @@ Open the Library from the menu (bottom-left icon of the grid).
 | The top player title | Open the main menu and read the Title row, then Library, Title, All | it reads "Legend Master" in both places. Before v2.8.1 both showed "Legendary Scou", cut one character short |
 | The scout keyboard | Scout a monster and let the naming keyboard open | the whole species name is filled in, not its first two letters |
 | The Size and Set pills | Center Building 1F, the big man Hogan at the north end: "Are you here to synthesize?", Yes, Fusion, pick two monsters, then look at the child's preview on the top screen | a gold "SET" pill to the left of a fixed trait, whole and rounded, the lettering legible. Seen on screen in v2.20. The "Size" pill is the same graphic and is not yet seen on screen |
+| The Quick Fusion Filters list | Center Building 1F, the big man Hogan: Yes, then the Quick Fusion Filters entry (it opens after enough fusions), Apply Filters, then pick a monster | each row shows both parents' names and the second one is whole, even a very long name; before v2.21 it stopped after ten letters (Emperor Slime read "Emperor Sl"). Seen on screen with the v2.21 code and text: long second names such as "Liquid Metal Slime King" and "Evil Dragon Zombie" show whole, and the one monster name that was too wide for the row, now shortened, sits on one line inside it. Rows with Emperor Slime or Metal Slime as the second name were not found in the part of the list that was looked through |
 | Race banners | a race: wait for a sudden event; leave the marked area; the Grand Prix elimination round results | the "SUDDEN EVENT" banner with an unbroken glow, "Return to the area or forfeit!" in gold on red, and a clean gold "1st" tag. The "RANKED!!" tag belongs to the online Global Cup ranking, which may not be reachable offline. Not yet seen on screen |
 
 ## Battle
