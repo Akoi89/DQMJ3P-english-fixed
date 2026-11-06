@@ -3082,3 +3082,112 @@ recompressed executable differs over a longer stretch. Shipped files:
 
 fresh_decrypt_v221.log: both patches rebuild both CIAs from a fresh Batch CIA 3DS Decryptor decrypt as well as
 from the project's own dump (fresh base .cci c0155719e72a6bea, fresh update .cia d388976f85411ce7), and all four outputs equal the wanted hashes.
+
+## Optional online and Enhanced overlays, 2026-11-06 (Lurpigi)
+
+This is an optional addition to v2.21, not a new translation release or a CIA
+rebuild. Both xdelta files, their output CIAs and the EN 2.21 version stamps
+are unchanged. The three small IPS files apply at load time over the installed
+English update. There is a 3DS version, an Azahar version without the graphics
+changes, and an Azahar Enhanced version. Use exactly one, renamed `code.ips`,
+under the base title ID. The README gives the console and emulator paths.
+
+Source provenance:
+
+- `scripts/online_patch.py` is byte-for-byte the online project's
+  [`re/tools/make_url_patch.py`](https://github.com/Lurpigi/DQMJ3P-Online/blob/ad310cf9a61830d8b1c252fa3bc261c607c842b7/re/tools/make_url_patch.py),
+  revision `ad310cf9a61830d8b1c252fa3bc261c607c842b7`.
+- `scripts/enhanced_patch.py` carries the graphics routines from the Italian
+  project's [`scripts/build_enhanced_ips.py`](https://github.com/Lurpigi/DQMJ3P-IT-FanTranslation/blob/8e635153c7018d25d6365b86a0793211905838c2/scripts/build_enhanced_ips.py),
+  source Git blob `f03817b6012b9c695db7b3050be79f830dc68dfc`. The interface is
+  reduced to the graphics records; comments are English and the Azahar HTTP
+  records are added once by the wrapper.
+- `scripts/build_optional_ips.py` builds the three overlays, checks complete
+  input fingerprints, checks expected bytes and padding, rejects overlapping
+  or out-of-range records, and emits the manifest and SHA-256 list. Python
+  3.9 or newer and the standard library are enough.
+
+The online options are the public server setup: SIL and SpotPass redirected,
+NASC game authentication skipped, NEX at `188.245.46.173:45000`, per-player
+password derivation, two different public NAT-check hosts and featured
+communities requesting the full list. System friends login is retained.
+There is no shared password, fake NEX login, PID offset, HLE-BOSS shortcut or
+forced BREAK task download. The Azahar variants add the HTTP fixes and the
+single-chunk replay upload. Enhanced then adds the 15 graphics records.
+
+Reference executable: the 161 shared translation-fix words already ported to
+the Italian project, the ten English version-stamp words and the three v2.21
+Quick Fusion Filters words reproduce the complete published v2.21 MD5
+`9a7a188b6c050ecdf7ca0f65c57cd6cb`. That reference is 8,159,232 bytes, SHA-256
+`483c886b3a9c109c98770e5ad8f21f5da04876cee2fe8034a7b58bbc31b0c46b`,
+with exactly 174 changed words against the Japanese Ver.1.3 executable.
+The reference and all temporary game data stayed outside this repository.
+No reconstructed CIA is distributed or claimed as an output of this work.
+
+The checks made for this contribution:
+
+- All three overlays leave every byte of all 174 translation-modified words
+  alone; none of their record ranges intersects those words. The title stamps,
+  Quick Fusion Filters, default greeting and previous name fixes are retained.
+- Every byte covered by the 44-record union has the same expected value in
+  stock Ver.1.3 and English Fixed v2.21. Building from either complete
+  fingerprint gives identical IPS files, SHA256SUMS and manifest.
+- Records are in bounds and do not overlap. All cave bytes are zero on both
+  reference inputs. The address map records full write ranges, including
+  unchanged bytes inside an instruction or string slot.
+- The Azahar records match the original online generator. The Enhanced
+  records, including their branches and literal values, match the Italian
+  generator's graphics plus HTTP records byte for byte. The 3DS version has
+  none of those emulator-only records.
+- The original system-login branches, original friends-password getter and
+  real NEX login entry remain unchanged. The debug-only options listed above
+  are absent.
+- Truncated, extended and modified inputs fail the fingerprint check;
+  overlapping, negative and out-of-range record tests are rejected.
+- `--check` passes on both supported executables and reproduces all five
+  generated outputs without writing. Both existing xdelta hashes still
+  match the README's v2.21 table.
+
+The counts below come from applying each IPS to the verified English code,
+not from counting entries in a script. A changed word means an aligned
+four-byte block differing from the Japanese executable, including strings
+and data. It is not necessarily an ARM instruction.
+
+| Variant | IPS records | IPS bytes | Bytes written | Bytes changed from v2.21 | Added changed words | Total changed words vs Japanese |
+|---|---:|---:|---:|---:|---:|---:|
+| 3DS online | 22 | 758 | 640 | 524 | 159 | 333 |
+| Azahar online | 29 | 841 | 688 | 557 | 169 | 343 |
+| Azahar online + Enhanced | 44 | 1,200 | 972 | 819 | 240 | 414 |
+
+| IPS file | SHA-256 |
+|---|---|
+| `patches/optional/code_online_3ds.ips` | `7ea596acd73b1f4e760a4498423878871f29ae980547a7df0276881d99a5d730` |
+| `patches/optional/code_online_azahar.ips` | `581cd3d875330a3a8f1edbd0748bdc64005719a66e20aea256c914a383b11fe0` |
+| `patches/optional/code_online_enhanced.ips` | `5df3d71caaebdc8b13359427d2b28dfe0ab7591bcf3ff9521777434f0b94fec1` |
+
+For checking a decompressed v2.21 executable after applying one overlay once:
+
+| Variant | Patched code MD5 | Patched code SHA-256 |
+|---|---|---|
+| 3DS online | `8f1c21ec4cd034130269b773f204032e` | `1e01f4b3e940a1fb0e48e61c7409036d166ade3fbc2d50babcb4d9492e33011a` |
+| Azahar online | `28e6beb1f2544b39b4bd60031cb848f2` | `b385b39cd861fba01014367c8f5ba31779c5c7100a6cf214329f9644bf0c350e` |
+| Azahar online + Enhanced | `e1d15ce0683af262227dd7ef82b6f18a` | `6c8e6c9e7126c00e48d71ca54760fc70d533137ac6af6e4557d9f9fb179537da` |
+
+`CODE_PATCH_NOTES.md` section 8 describes every family of changes, all three
+padding reservations and the caveat about BLZ recompression. The full record
+list is in `patches/optional/patch_manifest.json`, with the readable table in
+`patches/optional/ADDRESS_MAP.md`. The occupied padding ends at file offsets
+`0x6b98f4` (Enhanced), `0x6b9b40` (player authentication) and `0x6b9b6c`
+(Azahar upload); all are below the mapped-page end at VA `0x7ba000`.
+
+What this does not prove: these exact English combinations have not been
+booted or played on either platform. The online project's tested battles,
+community, tournament and download paths and the Italian project's PC
+Enhanced tests are prior results, not tests of these artifacts. Friend
+Battle with two mutually registered accounts is still pending there too.
+Field SpotPass events other than the hidden box, Android, other emulators,
+and Anthony's plugin alongside an optional IPS remain unverified. The
+online service is a public test deployment, with P2P/NAT limits and no
+availability guarantee. TESTING.md gives the checks to turn those unknowns
+into observations. No system-module RSA bypass is included or required for
+serving the project's original archived SpotPass files.
