@@ -15,17 +15,6 @@ A rebuild of the 2021 English fan translation (3DS, Ver.1.3) with its mistakes f
 
 `FIXES.md` has the detail under the same headings. `BUILD_NOTES.md` is the full record.
 
-## Optional additions, 2026-11-06 (v2.21 unchanged)
-
-Three optional IPS overlays add DQMJ3P Online for 3DS, DQMJ3P Online with Azahar
-HTTP/replay fixes, and the Azahar version with Enhanced visibility, distant
-animation, double-speed battle rendering, LOD and model-memory changes.
-Install both existing English Fixed CIAs first, then choose one IPS. The xdelta
-patches and their CIA outputs keep their existing hashes and version numbers.
-The overlays preserve the v2.21 executable's 174 changed words in binary checks;
-the combined English build still needs an in-game test. README has installation
-and known limits; CODE_PATCH_NOTES has the full address reservations and sources.
-
 ## Version history
 
 Newest first.

@@ -8,6 +8,14 @@ The 2021 English fan translation of DQM Joker 3 Professional (3DS), rebuilt with
 - `BUILD_NOTES.md` - the full record
 - `CODE_PATCH_NOTES.md` - addresses and traps, for anyone porting the code patch to another language
 
+## Optional online play and Enhanced
+
+[DQMJ3P Online](https://github.com/Lurpigi/DQMJ3P-Online#english-fixed-v221-overlays)
+provides optional IPS overlays for online play on 3DS and Azahar, plus an
+emulator-only Enhanced variant. Install both English Fixed CIAs first, then
+follow that project's guide for downloads, setup and supported versions.
+The IPS files, builder, server status and support are maintained there.
+
 ## What you get
 
 Two xdelta patches that produce the two CIAs from the Japanese game. The CIAs aren't distributed; the table lets you check what the patches produced.
@@ -111,92 +119,6 @@ Dumping doesn't change: pull both titles off the 3DS with GodMode9 as **encrypte
 
 Fair warning on step 4: these patches were built and checked on Windows. The size in step 5 is what tells you whether it worked. If rom-converto won't give you a `.cci` of the right length, both Windows tools run under Wine, and that's the same code path everyone else uses.
 
-## Optional online and Enhanced patches
-
-The xdelta patches above still produce the same English Fixed v2.21 CIAs and
-hashes. Once both are installed, you can add one of these small IPS files from
-[`patches/optional`](patches/optional). They apply on top of the English update;
-they do not contain the translation and do not replace either xdelta.
-
-| File | Where it runs | What it adds |
-|---|---|---|
-| `code_online_3ds.ips` | A real 3DS with Luma | Connection to DQMJ3P Online's replacement servers |
-| `code_online_azahar.ips` | Azahar | The same connection, plus Azahar HTTP and replay-upload fixes |
-| `code_online_enhanced.ips` | Azahar, on a fast enough device | The Azahar online patch plus the Enhanced changes below |
-
-**Pick one, rename it `code.ips`, and replace any older `code.ips`.** Luma and
-Azahar load one IPS per title. Do not stack these files or use a raw `code.bin`
-override from a different build: it can replace the English fixes. Removing the
-optional IPS returns to the installed v2.21 code.
-
-On a **3DS**, put the renamed 3DS file at
-`SD:/luma/titles/00040000001ACB00/code.ips` and enable **Enable game patching**
-in Luma's SELECT-at-boot menu. Use the 3DS file on a console. Both Azahar files
-are emulator-only; the Enhanced version has crashed at startup on real hardware.
-
-On **Azahar**, right click the game, choose **Open Mods Location**, and put the
-renamed Azahar file in `exefs/code.ips`. The complete path is
-`<Azahar user directory>/load/mods/00040000001ACB00/exefs/code.ips`.
-Use the base title ID, even though the update supplies the executable. For
-online play, install the online system modules (LLE) and set up your account
-using the [Pretendo Azahar guide](https://pretendo.network/docs/install/citra).
-For a console, use [Pretendo with Nimbus](https://pretendo.network/docs/install/3ds).
-Android and other emulators have not been checked for these additions.
-
-### What online means here
-
-[DQMJ3P Online](https://github.com/Lurpigi/DQMJ3P-Online) runs the game servers.
-Pretendo supplies the system friends login and the player's identity, used to
-derive the credentials for the replacement servers. That login is also needed
-for random battles, communities, G-Cup, Grand Prix and Present Codes with these
-patches; "friends service" does not mean only Friend Battle. SpotPass files come
-directly from the project's server. The game's system-login path is retained.
-
-The online project's results, before this English integration:
-
-| Feature | What has been checked |
-|---|---|
-| Free Battle and Ranked Wi-Fi Battle | Two Azahar instances, and 3DS against Azahar |
-| Friend Battle | Implemented; a test with two mutually registered friend accounts is still needed |
-| Community creation, official communities by language, featured communities, Community Challenge | Verified by the online project |
-| G-Cup: weekly cups, rankings, replays and rewards | Verified by the online project |
-| Grand Prix: Masters and Challenger, rankings and rewards | Verified by the online project |
-| All 130 original Present Codes | Verified on the server |
-| Gift discs and the Wi-Fi Square Network Coin shop | Verified by the online project |
-| Field SpotPass events: hidden box, sky monster, StreetPass assassin | Only the hidden box has been seen working; these IPS files do not force background downloads on Azahar |
-
-These builds point to the project's public test server, `188.245.46.173`, and
-use `78.47.138.100` for the second NAT check. Availability depends on that
-server. See the [online project's guide](https://github.com/Lurpigi/DQMJ3P-Online#readme)
-for its current status. A VPN can stop Azahar from finding its local address;
-disable it if connection or battle errors appear. The save confirmation can
-stay up for about 30 seconds before entering the Square. Battles are direct
-P2P, without a relay, so CGNAT or symmetric NAT may stop a match from starting.
-After changing Pretendo accounts, a rejected NEX login may need the server
-administrator to reset the ID's stored credential.
-
-### What Enhanced changes
-
-- Monsters, NPCs and field objects stay visible five times farther away.
-- Distant monsters animate every tick instead of at a reduced update rate.
-- Double-speed battles render at 60 fps. The rest of the game stays at 30 fps;
-  forcing it to 60 would also double the game logic's speed.
-- Higher-detail map tiles remain in use longer at LOD transitions.
-- The device heap for models grows from 39 MiB to 71 MiB. New 3DS mode must be
-  enabled in Azahar; the wider monster-group range depends on that allocation.
-
-This asks more of the emulator. If it slows down, use `code_online_azahar.ips`
-to keep online play without the graphics changes. Use neither Azahar file on a
-real 3DS. The Enhanced work was tried on Azahar for PC in the Italian project;
-this exact English combination still needs an in-game test.
-
-All three overlays have been checked against the published v2.21 executable
-fingerprint. They preserve its 174 changed words and have no overlapping IPS
-records. That is a binary check, not a claim of a completed English play test.
-[`CODE_PATCH_NOTES.md`](CODE_PATCH_NOTES.md#8-optional-online-and-enhanced-overlays)
-has the addresses, source provenance and reproduction commands;
-[`TESTING.md`](TESTING.md#optional-online-and-enhanced-overlays) lists what to try.
-
 ## What's fixed
 
 Crashes, soft-locks, text that said the wrong thing, spelling, names cut short in menus and battle, text that didn't fit its box, and Japanese that was never translated. `RELEASE_NOTES.md` has the summary and `FIXES.md` has the detail.
@@ -205,9 +127,9 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 
 - **Long monster names get shortened.** A stored name holds 11 characters, so "Metal Pearl Slime" is cut to 11 when you obtain or rename it. A wild one shows its first 11 in battle, or its first 9 plus " A" and " B" when two of a kind are on the field. The main bosses fight under a short name that fits ("Bundold" rather than "Bundold, the Thief"), and most of them keep the full title in the Library. Some bosses are still cut, like the Insurgent Demons. The record field is 24 bytes; widening it would change the save format.
 - **Names already in your save don't change.** The name is written onto the monster once, when you scout or fuse it, so monsters already in your party keep whatever your old build gave them. Only ones you get from now on use the corrected names. Names already cut to 8 stay until renamed.
-- **Some discontinued content still needs a separate solution.** The optional online IPS files restore the services listed above; they do not unlock every StreetPass exclusive, transfer or download event. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) unlocks content on a modded 3DS with the Luma plugin loader or on Azahar.
-  - The plugin asks for untouched code. The installed v2.21 translation changes 174 words. The earlier check of its nine addresses (five hooks and four version probes) applies to the translation alone; it is not a compatibility test of these optional overlays.
-  - Running the plugin together with the new online or Enhanced IPS has not been tested. Check them separately if anything goes wrong.
+- **Online content is out of scope:** the Wi-Fi Square shop, download monsters and events, StreetPass and SpotPass exclusives, the transfers. [Anthony's plugin](https://github.com/Anthcny144/DQMJ3P-unobtainable-content) restores it, on a modded 3DS with the Luma plugin loader or on Azahar.
+  - It asks for a game whose code is untouched. This build changes 171 words of the update's code: the keyboard tab, the name buffers, the keyboard limits, one built-in prefix, one default greeting, the routines that write a wild monster's name for battle, the Set AI list, and the title menu's version box.
+  - I checked all nine addresses it uses (five hooks, four version probes). Every one still holds the stock instructions and the nearest changed word is over three kilobytes away, so the two should coexist. I haven't run them together.
 - **One label might not fit.** The local wireless battle counter uses the word "Battle" instead of a single character, so it might look cramped. I haven't seen it on screen yet, so a screenshot would settle it.
 - **Text that lands against a number or a name the game prints.** The game writes some
   values in at the moment it draws the line, a monster's name, a count, a place. Where a
@@ -220,7 +142,5 @@ Crashes, soft-locks, text that said the wrong thing, spelling, names cut short i
 ## Credits
 
 The translation is the Joker 3 Translation Team's work (team lead Z6n4; the GBAtemp Joker 3 project). This rebuild starts from the 2021-05-30 Professional patch posted on the woodus.com forum, which used the team's text without their full consent, so the team is credited as the authors of every line it didn't write. The font fix is Lurpigi's. The click by click walkthrough is oho's. Fifteen UI textures are reused from Team Incarnus's French patch where they had already drawn English. A number of these fixes began as Retho's reports on Discord, including Great Godbird's name and the skill set whose name sent me back to check every other one against the official releases.
-
-The optional online and Enhanced overlays were contributed by Lurpigi, from the DQMJ3P Online and Italian fan-translation projects. Their added scripts, addresses and verification limits are documented separately below the translation's code notes.
 
 The fixes were made with Claude (Anthropic) doing the reading, measuring and scripting. Every wording decision was reviewed and every change checked against the shipped files. This rebuild only fixes what was broken; it doesn't claim the translation.

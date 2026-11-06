@@ -5,16 +5,13 @@ anyone else patching Dragon Quest Monsters: Joker 3 Professional into a
 language other than English.
 
 The text work in this project does not transfer, because it is English. The
-original code fixes do, because they address buffer sizes and a default
-tab index, not words. Section 8 documents separate online and Enhanced overlays.
-If your translation has longer names than the
+code patch does, because every fix below is about buffer sizes and a default
+tab index, not about words. If your translation has longer names than the
 Japanese, you will hit the same walls I did.
 
-The original translation fixes were measured on the running game. Where a number appears, it
+Everything here was measured on the running game. Where a number appears, it
 came from a debugger or a byte comparison, not from reading a disassembly and
 guessing. That distinction cost me several days, and section 5 is the reason.
-The optional English integration in section 8 has binary and static checks;
-its combined gameplay checks are still pending.
 
 ## 1. Which executable, and the trap that will cost you an evening
 
@@ -233,154 +230,3 @@ Nothing in the function reads at or above `sp+0x140`. The base title has the sam
 Nothing here is claimed as mine to license. The offsets are facts about
 someone else's binary. Use them however you like, with no attribution
 required. If it helps your players, that is the point.
-
-## 8. Optional online and Enhanced overlays
-
-These are separate IPS files, applied at load time over the installed v2.21
-English update. They leave both xdelta patches, both CIA hashes, the title's
-version stamps and the base executable alone. The 174-word figure in section 6
-describes the translation without an optional IPS; it is not the combined count.
-Unlike the earlier translation fixes, this integration has only had binary and
-static checks. The gameplay results below belong to the source projects.
-
-### Inputs, outputs and the whole-record rule
-
-`scripts/build_optional_ips.py` accepts only a decompressed 8,159,232-byte update
-executable with one of these complete MD5s:
-
-| Input | MD5 |
-|---|---|
-| Japanese Ver.1.3 | `566939cd4b5260b4d5265fde9a69462a` |
-| English Fixed v2.21 | `9a7a188b6c050ecdf7ca0f65c57cd6cb` |
-
-The same overlays result from either input. They contain the optional additions
-only: install both English Fixed CIAs first. A Japanese input is useful when
-porting, but generating an IPS from it does not turn it into an English patch.
-Every replaced instruction and string is checked, as are all bytes reserved for
-new routines. The builder rejects an unknown fingerprint, overlapping records,
-or an out-of-range write before creating outputs. No game binary is distributed.
-
-File offsets below are in decompressed `.code`; VA = offset + `0x100000`.
-[`patches/optional/patch_manifest.json`](patches/optional/patch_manifest.json)
-lists **every record**, with offset, VA, length, old bytes, new bytes and variants.
-[`patches/optional/ADDRESS_MAP.md`](patches/optional/ADDRESS_MAP.md) is the table
-version. Reserve the whole record when merging, including unchanged bytes inside
-it. The IPS count is not a count of changed ARM words: strings, vtable pointers,
-zero padding and instructions are all represented as records.
-
-### Online, common to the three variants
-
-| File offset | VA | What changes |
-|---|---|---|
-| `0x76c83c` | `0x86c83c` | SIL base URL to `http://188.245.46.173:8381/00300701/` |
-| `0x76a0c4` | `0x86a0c4` | SpotPass base URL to `http://188.245.46.173:8380/p01/nsa/H7btVjYWs7p5dGj6` |
-| `0x7711aa`, `0x7711c5` | `0x8711aa`, `0x8711c5` | Two NAT-check hosts in ASCII |
-| `0x7791de`, `0x779214` | `0x8791de`, `0x879214` | The same two hosts in UTF-16LE |
-| `0x356f90`, `0x3572a4`, `0x3572c0` | `0x456f90`, `0x4572a4`, `0x4572c0` | `mov r0,#0` replaces the NASC request, event wait and result read |
-| `0x42d088` | `0x52d088` | NEX locator: fixed server/port, HTTP 200, derived player token |
-| `0x356b58` | `0x456b58` | Call the password routine at VA `0x7b9a60` |
-| `0x6b9a60` | `0x7b9a60` | Password routine, salt, hex digits, SIL token stub and buffer literal |
-| `0x56cb48`, `0x56cb90` | `0x66cb48`, `0x66cb90` | NOP the SIL job's NASC/NEX queue and wait checks |
-| `0x56cbc4` | `0x66cbc4` | Conditional BL to the SIL-token stub, replacing the service-token request branch |
-| `0x2ca944` | `0x3ca944` | NOP the Grand Prix NEX-session check |
-| `0x288044`, `0x2880ac` | `0x388044`, `0x3880ac` | Advance Square connection states 7/8 to state 10 |
-| `0x339ec4`, `0x1ca434`, `0x222de4` | `0x439ec4`, `0x2ca434`, `0x322de4` | `mov r0,#1` at gift-disc, coin-shop and Present Code NEX-connected checks |
-| `0x4b5878` | `0x5b5878` | NOP the saved-ID copy so featured communities request the complete list; a code search stays exact |
-
-The first NAT host is `188.245.46.173`; the second is `78.47.138.100`. URL slots
-are NUL-terminated and padded only through the original slot's terminator.
-The NEX locator uses port 45000. Authentication derives the first 16 hexadecimal
-characters of `MD5("DQMJ3P-Online-v1" + friends_password)`; the salt is exactly
-16 bytes, without a trailing NUL. The same value supplies the SIL token. The friends
-password itself is not sent to the project server.
-
-This does **not** skip the system friends login. In particular, the friends job
-at offset `0x56ede0`, `HasLoggedIn` at `0x3bb860`, and the original password
-getter `0x42c674` are retained. NEX login itself (`0x56c4ec`) is not faked.
-There is no shared password, PID offset, HLE-BOSS shortcut or forced BREAK
-download in these builds. Pretendo still supplies the system identity; the
-replacement project handles the game services.
-
-### Azahar HTTP and upload fixes, in both Azahar variants
-
-| File offset | VA | Old -> new |
-|---|---|---|
-| `0x503e88` | `0x603e88` | `moveq r9,#0` -> NOP |
-| `0x503e8c` | `0x603e8c` | `beq` past lazy POST setup -> NOP |
-| `0x6d5f8c` | `0x7d5f8c` | Four zero words -> `{0, 0x7d5f8c, 0, 1}` (one-byte POST entry) |
-| `0x504290` | `0x604290` | `tst r0,#0x80000000` -> `mov r0,#0x1000` |
-| `0x504294` | `0x604294` | `bne` error -> `str r0,[r4,#0x14]` |
-| `0x3aa3b4` | `0x4aa3b4` | `ldr r1,[r5,#0x18]` -> BL to VA `0x7b9b60` |
-| `0x6b9b60` | `0x7b9b60` | Zero padding -> `ldr r1,[r5,#0x20]; add r1,r1,#0x4000; bx lr` |
-
-Azahar otherwise leaves empty POSTs pending, misreports the response-header
-probe's size, and can reorder upload chunks. These changes make the empty body
-a byte the SIL server treats as empty, reserve a 4 KiB header buffer so
-`X-Sil-Digest` can be found, and send a replay in one chunk. None is in the 3DS IPS.
-
-### Enhanced graphics, in `code_online_enhanced.ips` only
-
-| File offset | VA | Old -> new |
-|---|---|---|
-| `0x0050f0` | `0x1050f0` | `eorlo r0,r0,#1` -> `movlo r0,#0`: render every tick in x2 battles |
-| `0x005460` | `0x105460` | Device-memory setup call -> BL to the heap stub |
-| `0x116420` | `0x216420` | Conditional distant-animation path -> B to VA `0x216450` |
-| `0x201584` | `0x301584` | `vldr s16,[r0,#4]` -> BL to the scaled activation stub |
-| `0x201844`, `0x2018d8` | `0x301844`, `0x3018d8` | `vldr s0,[r0,#4]` -> BL to the scaled activation stub |
-| `0x0d96a0` | `0x1d96a0` | Fade setter -> B to the fade stub |
-| `0x5ecb4c` | `0x6ecb4c` | `vmul.f32 s0,s0,s0` -> BL to the LOD stub |
-| `0x738104`, `0x7438bc`, `0x731b4c`, `0x734f48`, `0x734ed0`, `0x734fc0` | `0x838104`, `0x8438bc`, `0x831b4c`, `0x834f48`, `0x834ed0`, `0x834fc0` | Six spawner vtable distance pointers -> their respective group stubs |
-| `0x6b9810` | `0x7b9810` | 228 zero bytes -> fade, LOD, activation, group and heap stubs |
-
-The fade and activation stubs multiply distances by 5. The LOD stub doubles
-the radius before the original square. Each group stub calls its original
-function (VAs `0x40dae8`, `0x58ad94`, `0x3db6c0`, `0x3f4680`, `0x3f4440`,
-`0x3f470c`) and scales its result only when the device heap exceeds the stock
-`0x2700000` bytes. The heap stub tries `0x4700000` (71 MiB) through VA `0x1067f4`,
-falling back to the original 39 MiB if refused; the size variable is at VA
-`0x8c0328`. New 3DS mode is required for the wider monster-group range. This
-fallback does not make the patch console-safe. The source project observed an
-Enhanced startup crash on real hardware; both Azahar variants are emulator-only.
-
-### Padding reservations and why the old warning is not enough
-
-The historical warning in section 4b must not be read as proof that a new
-routine can never fit. These overlays use zero-filled alignment padding after
-the `.text` payload, inside its mapped page. The builder checks those exact
-bytes on both supported fingerprints; it does not claim them for other builds.
-Ends below are exclusive.
-
-| File range | VA range | Owner |
-|---|---|---|
-| `0x6b9810-0x6b98f4` | `0x7b9810-0x7b98f4` | Enhanced stubs (228 bytes) |
-| `0x6b9a60-0x6b9b40` | `0x7b9a60-0x7b9b40` | Player-password routine and SIL token stub (224 bytes) |
-| `0x6b9b60-0x6b9b6c` | `0x7b9b60-0x7b9b6c` | Azahar upload stub (12 bytes) |
-
-The online project's optional BREAK routine starts at `0x6b9900`, but is not
-included here. Do not assume that gap belongs to a port or another mod.
-Every occupied range stays below the mapped-page end at VA `0x7ba000`.
-
-### Reproducing and checking the overlays
-
-Python 3.9 or newer, standard library only, from this repository's root:
-
-```
-python scripts/build_optional_ips.py --code /path/to/decompressed-update-code.bin
-python scripts/build_optional_ips.py --code /path/to/decompressed-update-code.bin --check
-```
-
-`--check` compares all three IPS files, `SHA256SUMS` and the complete manifest
-without writing. `--out-dir` selects another output folder. `--server` and
-`--nat-server` rebuild the three variants for another deployment and regenerate
-their hashes; the two NAT hosts must differ and fit the original slots.
-The generator builds all outputs in memory and validates them before writing.
-Do not apply the IPS to a compressed `.code`, a CIA, the base executable or a
-RomFS file. A rebuilt CIA would need BLZ recompression and a fresh ExeFS space
-check: section 1's compressed size and 392-byte slack do not describe it.
-
-`scripts/online_patch.py` is an unchanged copy of the online project's
-`re/tools/make_url_patch.py` at the source revision recorded in BUILD_NOTES.
-`scripts/enhanced_patch.py` ports the graphics-only routines from the Italian
-project's `scripts/build_enhanced_ips.py`; the wrapper adds Azahar HTTP fixes
-once. The three runtime overlays do not embed the Italian translation.
-All combined English gameplay checks and plugin coexistence remain pending.

@@ -1,5 +1,0 @@
-patches/optional/*.ips -text
-patches/optional/*.json text eol=lf
-patches/optional/SHA256SUMS text eol=lf
-patches/optional/ADDRESS_MAP.md text eol=lf
-scripts/*.py text eol=lf

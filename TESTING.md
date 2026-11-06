@@ -157,34 +157,3 @@ More StreetPass and network checks sit with their screens: the StreetPass profil
 (A01_02). The Collab Battle at the Monster Arena covers most of them: the
 announcement, the ticket prompt, the win and loss lines, and the Vearn,
 Myst-Vearn, Great King Vearn and Chiu dialogue.
-
-## Optional online and Enhanced overlays
-
-Install both v2.21 CIAs first. Keep a copy of any existing mod folder so the
-baseline can be restored. The automated checks are binary checks: they do not
-mark any of these new English gameplay rows as seen.
-
-| Check | Where | Looking for |
-|---|---|---|
-| Clean boot (not yet seen with these English overlays) | 3DS with the 3DS IPS; Azahar with each of its two IPS files | Title screen still says EN 2.21 and base EN 2.21; load and save work |
-| Translation regression | Library long names, wild-monster battle names, naming keyboard, Set AI, Quick Fusion Filters | The existing fixes still work after a fresh boot |
-| Friends login | Pretendo configured with Nimbus or Azahar's online LLE modules | Login succeeds before entering the Wi-Fi Square; the save message may stay for about 30 seconds |
-| Free/Ranked Battle | Two players with different accounts; Azahar/Azahar and 3DS/Azahar | Matchmaking finds the opponent, battle starts, finishes and disconnects cleanly; record the NAT types if it cannot start |
-| Friend Battle | Two accounts that have registered each other as friends | Host is visible to the other player, join and finish a battle; this is still unverified in the source project too |
-| Communities | Create, browse by code, featured list, official language communities, Community Challenge | Correct language/list, exact code search, join and leave |
-| G-Cup | Enter a weekly cup, submit a race, view rankings, download a replay, claim a reward | Replay order is correct; uploads do not time out or fail the digest check on Azahar |
-| Grand Prix | Masters and Challenger | Entry, team upload, result download, rankings and rewards complete |
-| Present Codes | Enter a known valid unredeemed code | Correct reward and no second redemption |
-| Gift discs and coin shop | Wi-Fi Square counters | Gifts download; daily shop stock refreshes; no repeated download failure |
-| Background SpotPass | Console standby with SpotPass enabled | Hidden box, sky monster and StreetPass assassin appear when appropriate. These IPS do not force their background tasks on Azahar |
-| Enhanced visibility | Azahar, New 3DS mode, a field with distant monsters | Farther visibility, smooth distant animation, stable models, tolerable frame time |
-| Enhanced battle rate | Compare normal and double-speed battles | Only double-speed battles render at 60 fps; walking and ordinary battles keep their original speed |
-| Enhanced LOD and memory | Move across map detail boundaries and monster-heavy areas | Detail changes look stable; no out-of-memory crash during extended play |
-| Remove the overlay | Remove code.ips and boot again | The unchanged v2.21 translation runs, with the original visibility and service addresses |
-| Anthony's plugin | Test separately before combining | No compatibility claim for an optional IPS; the earlier nine-address check covers only the translation |
-
-Do not test the Enhanced or Azahar-only IPS on a real 3DS. Android and other
-emulators have not been verified. Include the IPS filename and SHA-256, English
-version stamps, emulator/Luma version, New 3DS setting, LLE setup, account setup
-(never credentials), VPN state and NAT type in a report. The optional additions'
-build checks and their limits are recorded in BUILD_NOTES.md.
