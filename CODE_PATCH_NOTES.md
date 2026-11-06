@@ -166,8 +166,10 @@ for about an hour. Zero is what every other mode passes, at `0x22acc0`.
 
 Two things that cost a night. `0x15b068` looks unreferenced and is not,
 because `0x15b064` falls through into it, and overwriting it black-screens the
-game. And there is no free padding at the end of the text segment, which is
-why the routine above had to go inside the function that needed it.
+game. And I thought there was no free padding at the end of the text segment,
+which is why the routine above had to go inside the function that needed it.
+There is some: the code ends at file offset `0x6b9810` and its last page runs
+to `0x6ba000`, so 2,032 zero bytes are mapped as code. I haven't used them yet.
 
 ## 5. How these were actually found, which matters more than the addresses
 
